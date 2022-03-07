@@ -1,7 +1,9 @@
 # Custom
 minirt
 .vscode/
-_learn/
+*.swiftdoc
+*.swiftmodule
+*.swiftsourceinfo
 
 # learn
 test
