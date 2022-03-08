@@ -1,14 +1,16 @@
 #include "minirt.h"
+#include "x11_events.h"
 #include <stdio.h>
 
 int	main(void)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
+	t_mlx	mlx;
 
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 1920, 1080, "miniRT");
+	mlx.mlx = mlx_init();
+	mlx.win = mlx_new_window(mlx.mlx, 1920, 1080, "miniRT");
 
-	mlx_loop(mlx_ptr);
+	mlx_hook(mlx.win, X11_KEYPRESS, 1L << 0, key_press, &mlx);
+	mlx_hook(mlx.win, X11_CLOSEBTN, 1L << 2, exit_button, &mlx);
+	mlx_loop(mlx.mlx);
 	return (0);
 } 

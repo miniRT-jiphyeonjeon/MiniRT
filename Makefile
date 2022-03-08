@@ -19,7 +19,9 @@ MLX_DIR		:= ./lib/mlx_mms
 
 
 # ===== Packages =====
-PKGS		:=
+PKGS		:= event
+
+eventV		:= hook_key_n_exit
 
 
 # ===== Macros =====
