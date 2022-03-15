@@ -34,6 +34,7 @@ t_bool	hit_sphere(t_object objects[], t_ray *ray, t_hit_record *rec)
 	rec->t = root;
 	rec->p = ray_at(ray, root);
 	rec->normal = vunit(vminus_(rec->p, sp->center));
+	rec->albedo = objects->albedo;
 	set_face_normal(ray, rec);
 	return (TRUE);
 }

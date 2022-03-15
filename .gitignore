@@ -4,7 +4,7 @@ minirt
 *.swiftdoc
 *.swiftmodule
 *.swiftsourceinfo
-*.ppm
+# *.ppm
 
 # learn
 test

@@ -1,6 +1,9 @@
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
+# define EPSILON 1e-6
+# define LUMEN 3
+
 typedef enum e_bool
 {
 	FALSE = 0,
@@ -9,7 +12,8 @@ typedef enum e_bool
 
 typedef enum e_object_type
 {
-	SPHERE = 0,
+	LIGHT_POINT = 0,
+	SPHERE = 1,
 }	t_object_type;
 
 typedef struct s_vec3 t_vec3;
@@ -37,6 +41,7 @@ typedef struct s_hit_record
 	double		tmax;
 	double		t;
 	t_bool		front_face;
+	t_color3	albedo;
 }	t_hit_record;
 
 typedef struct s_camera
@@ -61,8 +66,16 @@ typedef struct s_object
 {
 	t_object_type	type;
 	void			*data;
+	t_color3		albedo;
 	void			*next;
 }	t_object;
+
+typedef struct s_light
+{
+	t_point3	origin;
+	t_color3	light_color;
+	double		bright_ratio;
+}	t_light;
 
 typedef struct s_sphere
 {
@@ -70,5 +83,16 @@ typedef struct s_sphere
 	double		radius;
 	double		radius2;
 }	t_sphere;
+
+typedef struct s_scene
+{
+	t_canvas		canvas;
+	t_camera		camera;
+	t_object		*objects;
+	t_object		*lights;
+	t_color3		ambient;
+	t_ray			ray;
+	t_hit_record	rec;
+}	t_scene;
 
 #endif
