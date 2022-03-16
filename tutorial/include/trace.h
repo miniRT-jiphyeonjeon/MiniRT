@@ -12,6 +12,7 @@ t_color3	ray_color(t_scene *scene);
 t_bool		hit(t_object objects[], t_ray *ray, t_hit_record *rec);
 t_bool		hit_object(t_object objects[], t_ray *ray, t_hit_record *rec);
 t_bool		hit_sphere(t_object objectsp[], t_ray *ray, t_hit_record *rec);
+t_bool		hit_plane(t_object objects[], t_ray *ray, t_hit_record *rec);
 
 void		set_face_normal(t_ray *ray, t_hit_record *rec);
 

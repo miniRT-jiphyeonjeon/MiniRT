@@ -36,3 +36,14 @@ t_sphere	*sphere(t_point3 center, double radius)
 	sp->radius2 = radius * radius;
 	return (sp);
 }
+
+t_plane	*plane(t_point3 point, t_vec3 normal)
+{
+	t_plane	*pl;
+
+	if(!(pl = malloc(sizeof(t_plane))))
+		return (NULL);
+	pl->point = point;
+	pl->normal = normal;
+	return (pl);
+}

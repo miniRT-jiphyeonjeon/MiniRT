@@ -16,11 +16,13 @@ t_scene	*scene_init(void)
 		return (NULL);
 	scene->canvas = canvas(1920, 1080);
 	scene->camera = camera(&scene->canvas, point3(0, 0, 0));
-	objects = object(SPHERE, sphere(point3(-2, 0, -5), 2), color3(0.5, 0, 0));
-	object_add(&objects, object(SPHERE, sphere(point3(2, 0, -5), 2), color3(0, 0.5, 0)));
-	object_add(&objects, object(SPHERE, sphere(point3(-50, 10, -100), 80), color3(1, 1, 1)));
+	objects = object(PLANE, plane(point3(0, 0, -30), vunit(vec3(0, 0, 1))), color3(0.4, 0.6, 0.4));
+	// objects = object(SPHERE, sphere(point3(-2, 0, -5), 2), color3(0.5, 0, 0));
+	object_add(&objects, object(SPHERE, sphere(point3(0, 0, -20), 5), color3(0.6, 0.6, 0)));
+	// object_add(&objects, object(SPHERE, sphere(point3(-50, 10, -100), 80), color3(1, 1, 1)));
+	// object_add(&objects, object(PLANE, plane(point3(5, 0, -20), vunit(vec3(1, 1, 0))), color3(0.5, 0.5, 0)));
 	scene->objects = objects;
-	lights = object(LIGHT_POINT, light_point(point3(5, 5, 0), color3(1, 1, 1), 0.5), color3(0, 0, 0));
+	lights = object(LIGHT_POINT, light_point(point3(0, 20, 0), color3(1, 1, 1), 0.5), color3(0, 0, 0));
 	scene->lights = lights;
 	ka = 0.1;
 	scene->ambient = vmult(color3(1, 1, 1), ka);
