@@ -15,6 +15,7 @@ typedef enum e_object_type
 	LIGHT_POINT = 0,
 	SPHERE = 1,
 	PLANE = 2,
+	CYLINDER = 3,
 }	t_object_type;
 
 typedef struct s_vec3 t_vec3;
@@ -90,6 +91,15 @@ typedef struct s_plane
 	t_point3	point;
 	t_vec3		normal;
 }	t_plane;
+
+typedef struct s_cylinder
+{
+	t_point3	center;
+	// t_vec3		normal;
+	double		radius;
+	double		radius2;
+	double		height;
+}	t_cylinder;
 
 typedef struct s_scene
 {

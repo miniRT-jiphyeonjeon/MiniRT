@@ -47,3 +47,16 @@ t_plane	*plane(t_point3 point, t_vec3 normal)
 	pl->normal = normal;
 	return (pl);
 }
+
+t_cylinder	*cylinder(t_point3 center, double radius, double height)
+{
+	t_cylinder	*cy;
+
+	if(!(cy = malloc(sizeof(t_cylinder))))
+		return (NULL);
+	cy->center = center;
+	cy->radius = radius;
+	cy->radius2 = radius * radius;
+	cy->height = height;
+	return (cy);
+}

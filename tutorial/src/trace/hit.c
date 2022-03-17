@@ -29,5 +29,7 @@ t_bool	hit_object(t_object objects[], t_ray *ray, t_hit_record *rec)
 		hit_result = hit_sphere(objects, ray, rec);
 	if (objects->type == PLANE)
 		hit_result = hit_plane(objects, ray, rec);
+	if (objects->type == CYLINDER)
+		hit_result = hit_cylinder(objects, ray, rec);
 	return (hit_result);
 }
