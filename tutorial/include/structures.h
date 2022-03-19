@@ -95,7 +95,7 @@ typedef struct s_plane
 typedef struct s_cylinder
 {
 	t_point3	center;
-	// t_vec3		normal;
+	t_vec3		normal;
 	double		radius;
 	double		radius2;
 	double		height;

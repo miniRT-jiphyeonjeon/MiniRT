@@ -48,7 +48,7 @@ t_plane	*plane(t_point3 point, t_vec3 normal)
 	return (pl);
 }
 
-t_cylinder	*cylinder(t_point3 center, double radius, double height)
+t_cylinder	*cylinder(t_point3 center, double radius, double height, t_vec3 normal)
 {
 	t_cylinder	*cy;
 
@@ -58,5 +58,6 @@ t_cylinder	*cylinder(t_point3 center, double radius, double height)
 	cy->radius = radius;
 	cy->radius2 = radius * radius;
 	cy->height = height;
+	cy->normal = normal;
 	return (cy);
 }
