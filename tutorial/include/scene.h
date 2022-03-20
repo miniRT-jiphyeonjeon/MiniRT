@@ -11,5 +11,6 @@ t_light		*light_point(t_point3 light_origin, t_color3 light_color, double bright
 t_sphere	*sphere(t_point3 center, double radius);
 t_plane		*plane(t_point3 point, t_vec3 normal);
 t_cylinder	*cylinder(t_point3 center, double radius, double height, t_vec3 normal);
+t_cone		*cone(t_point3 center, double radius, double height, t_vec3 normal);
 
 #endif

@@ -16,6 +16,7 @@ typedef enum e_object_type
 	SPHERE = 1,
 	PLANE = 2,
 	CYLINDER = 3,
+	CONE = 4,
 }	t_object_type;
 
 typedef struct s_vec3 t_vec3;
@@ -100,6 +101,8 @@ typedef struct s_cylinder
 	double		radius2;
 	double		height;
 }	t_cylinder;
+
+typedef t_cylinder	t_cone;
 
 typedef struct s_scene
 {

@@ -19,9 +19,9 @@ t_scene	*scene_init(void)
 	// objects = object(CYLINDER, cylinder(point3(0, 0, -10), 3), color3(0.2, 0.3, 1));
 	objects = object(PLANE, plane(point3(0, 0, -30), vunit(vec3(0, 0, 1))), color3(0.4, 0.6, 0.4));
 	// objects = object(SPHERE, sphere(point3(-2, 0, -5), 2), color3(0.5, 0, 0));
-	object_add(&objects, object(CYLINDER, cylinder(point3(0, 0, -20), 10, 10), color3(0.2, 0.3, 1)));
-	// object_add(&objects, object(SPHERE, sphere(point3(0, 0, -20), 5), color3(0.6, 0.6, 0)));
-	// object_add(&objects, object(SPHERE, sphere(point3(-50, 10, -100), 80), color3(1, 1, 1)));
+	object_add(&objects, object(CONE, cone(point3(0, 0, -20), 4, 15, vunit(vec3(0, -1, 0))), color3(0.5, 0.5, 0.4)));
+	object_add(&objects, object(SPHERE, sphere(point3(0, 0, -20), 4.5), color3(0.6, 0, 0.2)));
+	object_add(&objects, object(SPHERE, sphere(point3(0, 6, -20), 4.5), color3(0.2, 0.2, 0)));
 	// object_add(&objects, object(PLANE, plane(point3(5, 0, -20), vunit(vec3(1, 1, 0))), color3(0.5, 0.5, 0)));
 	scene->objects = objects;
 	lights = object(LIGHT_POINT, light_point(point3(0, 0, 0), color3(1, 1, 1), 0.5), color3(0, 0, 0));

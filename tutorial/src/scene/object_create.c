@@ -61,3 +61,17 @@ t_cylinder	*cylinder(t_point3 center, double radius, double height, t_vec3 norma
 	cy->normal = normal;
 	return (cy);
 }
+
+t_cone	*cone(t_point3 center, double radius, double height, t_vec3 normal)
+{
+	t_cone	*cn;
+
+	if(!(cn = malloc(sizeof(t_cone))))
+		return (NULL);
+	cn->center = center;
+	cn->radius = radius;
+	cn->radius2 = radius * radius;
+	cn->height = height;
+	cn->normal = normal;
+	return (cn);
+}
