@@ -7,5 +7,6 @@
 # include "ft_memory.h"
 # include "ft_string.h"
 # include "ft_write.h"
+# include "ft_ascii.h"
 
 #endif
