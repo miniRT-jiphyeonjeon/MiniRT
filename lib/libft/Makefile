@@ -14,11 +14,12 @@ INCD		:= -I./include/
 
 
 # ===== Packages =====
-PKGS		:= memory string write
+PKGS		:= memory string write ascii
 
 memoryV		:= ft_bzero ft_calloc ft_memset
 stringV		:= ft_strlen
 writeV		:= ft_write ft_writes
+asciiV		:= ft_atof ft_isdigit ft_isspace
 
 
 # ===== Macros =====
