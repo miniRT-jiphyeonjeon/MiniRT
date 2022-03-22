@@ -1,6 +1,6 @@
-#include "minirt.h"
+#include "mlx.h"
 #include "x11_events.h"
-#include <stdio.h>
+#include "event.h"
 
 int	main(void)
 {
@@ -13,4 +13,4 @@ int	main(void)
 	mlx_hook(mlx.win, X11_CLOSEBTN, 1L << 2, exit_button, &mlx);
 	mlx_loop(mlx.mlx);
 	return (0);
-} 
+}
