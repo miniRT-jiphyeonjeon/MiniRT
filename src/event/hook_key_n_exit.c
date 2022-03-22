@@ -1,6 +1,7 @@
 #include <stdlib.h>
-#include "minirt.h"
+#include "mlx.h"
 #include "x11_events.h"
+#include "event.h"
 
 int	key_press(int keycode, t_mlx *mlx)
 {
