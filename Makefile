@@ -19,9 +19,10 @@ MLX_DIR		:= ./lib/mlx_mms
 
 
 # ===== Packages =====
-PKGS		:= event
+PKGS		:= event vector3
 
 eventV		:= hook_key_n_exit
+vector3V	:= vector_operation1 vector_operation2 vector_operation3 vector_set
 
 
 # ===== Macros =====
