@@ -16,12 +16,12 @@ typedef struct s_parse
 {
 	char	*ident;
 	char	*bri_ratio;
-	char	*point[3];
+	char	*point;
 	char	*nor_vec;
 	char	*diameter;
 	char	*height;
 	char	*fov;
-	char	*rgb[3];
+	char	*rgb;
 }t_parse;
 
 // enum 추가되면 int type -> enum으로 변경해야 할 듯

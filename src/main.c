@@ -1,4 +1,5 @@
 #include "mlx.h"
+#include "parse.h"
 #include "x11_events.h"
 #include "event.h"
 
@@ -11,12 +12,20 @@ static void	program_init(t_mlx *mlx)
 	mlx->win = mlx_new_window(mlx->mlx, WIN_WIDTH, WIN_HEIGHT, "miniRT");
 }
 
-int	main(void)
+int	main(int argv, char **argc)
 {
+	int		fd;
 	t_mlx	mlx;
+
+	fd = fd_get(argv, argc);
+	info_get(fd);
 
 	program_init(&mlx);
 	scene_draw(&mlx);
+
+	mlx.mlx = mlx_init();
+	mlx.win = mlx_new_window(mlx.mlx, 1920, 1080, "miniRT");
+
 	mlx_hook(mlx.win, X11_KEYPRESS, 1L << 0, key_press, &mlx);
 	mlx_hook(mlx.win, X11_CLOSEBTN, 1L << 2, exit_button, &mlx);
 	mlx_loop(mlx.mlx);

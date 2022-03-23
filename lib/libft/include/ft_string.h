@@ -1,7 +1,7 @@
 #ifndef FT_STRING_H
 # define FT_STRING_H
 
-char	**ft_split(char const *s, char c);
+char	**ft_split(char const *s, char *charset);
 int		ft_strcmp(char *s1, char *s2);
 char	*ft_strdup(const char *s1);
 char	*ft_strjoin(char const *s1, char const *s2);
