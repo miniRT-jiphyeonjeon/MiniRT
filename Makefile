@@ -19,11 +19,12 @@ MLX_DIR		:= ./lib/mlx_mms
 
 
 # ===== Packages =====
-PKGS		:= event list vector3 #parse
+PKGS		:= event list scene trace vector3
 
-eventV		:= hook_key_n_exit
+eventV		:= draw draw_util hook_key_n_exit
 listV		:= list_utils
-# parseV		:= parse
+sceneV		:= scene
+traceV		:= ray
 vector3V	:= vector_operation1 vector_operation2 vector_operation3 vector_set
 
 
