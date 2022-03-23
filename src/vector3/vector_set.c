@@ -20,7 +20,7 @@ t_point3	point3(double x, double y, double z)
 	return (point);
 }
 
-t_point3	color3(double r, double g, double b)
+t_color3	color3(double r, double g, double b)
 {
 	t_color3	color;
 

@@ -2,13 +2,21 @@
 #include "x11_events.h"
 #include "event.h"
 
+static void	program_init(t_mlx *mlx)
+{
+	mlx->mlx = mlx_init();
+	mlx->img.img = mlx_new_image(mlx->mlx, WIN_WIDTH, WIN_HEIGHT);
+	mlx->img.addr = mlx_get_data_addr(
+			mlx->img.img, &mlx->img.bpp, &mlx->img.line, &mlx->img.endian);
+	mlx->win = mlx_new_window(mlx->mlx, WIN_WIDTH, WIN_HEIGHT, "miniRT");
+}
+
 int	main(void)
 {
 	t_mlx	mlx;
 
-	mlx.mlx = mlx_init();
-	mlx.win = mlx_new_window(mlx.mlx, 1920, 1080, "miniRT");
-
+	program_init(&mlx);
+	scene_draw(&mlx);
 	mlx_hook(mlx.win, X11_KEYPRESS, 1L << 0, key_press, &mlx);
 	mlx_hook(mlx.win, X11_CLOSEBTN, 1L << 2, exit_button, &mlx);
 	mlx_loop(mlx.mlx);
