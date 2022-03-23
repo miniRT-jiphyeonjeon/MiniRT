@@ -19,9 +19,11 @@ MLX_DIR		:= ./lib/mlx_mms
 
 
 # ===== Packages =====
-PKGS		:= event vector3
+PKGS		:= event list vector3 #parse
 
 eventV		:= hook_key_n_exit
+listV		:= list_utils
+# parseV		:= parse
 vector3V	:= vector_operation1 vector_operation2 vector_operation3 vector_set
 
 
@@ -81,7 +83,7 @@ INDEX = 0
 		echo -en "$(FG_TEXT)◼︎︎︎︎︎︎︎︎◼︎◼︎︎︎︎︎︎︎︎◼" ; \
 	fi
 	@$(CC) $(CFLAGS) $(INCD) -c $< -o $@ -g
-	
+
 
 # ===== Lib Rules =====
 mlx :
@@ -90,7 +92,7 @@ mlx :
 mlx_clean :
 	@make --no-print-directory -C $(MLX_DIR) clean
 
-$(LIBFT) : 
+$(LIBFT) :
 	@make --no-print-directory -C $(LIBFT_DIR) all
 
 libft_fclean :
