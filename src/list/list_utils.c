@@ -1,32 +1,32 @@
-#include "parse.h"
+#include "libft.h"
+#include "list.h"
+#include <stdlib.h>
 
 t_obj_list	*new_obj_list(void *object, int type)
 {
 	t_obj_list	*new_lst;
 
-	new_lst = (t_obj_list *)malloc(sizeof(t_obj_list));
-	if (!new_lst)
-		return (NULL);
+	new_lst = ft_calloc(sizeof(t_obj_list), 0);
 	new_lst->type = type;
 	new_lst->object = object;
 	new_lst->next = NULL;
 	return (new_lst);
 }
 
-void	obj_list_add_back(t_obj_list **lst, t_obj_list *new)
+void	obj_list_add_back(t_obj_list **lst, t_obj_list *new_lst)
 {
 	t_obj_list	*tmp;
 
 	if (!(*lst))
-		*lst = new;
+		*lst = new_lst;
 	else
 	{
 		tmp = *lst;
 		while (tmp->next)
 			tmp = tmp->next;
-		tmp->next = new;
+		tmp->next = new_lst;
 	}
-	new->next = NULL;
+	new_lst->next = NULL;
 	return ;
 }
 

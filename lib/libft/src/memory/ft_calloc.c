@@ -10,7 +10,7 @@ void	*ft_calloc(size_t size, size_t count)
 	ptr = malloc(allocated_space);
 	if (!ptr)
 	{
-		perror("Cannot allocate memory");
+		perror("Error\nCannot allocate memory\n");
 		exit(EXIT_FAILURE);
 	}
 	ft_bzero(ptr, allocated_space);
