@@ -8,7 +8,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-int		fd_get(int argv, char **argc);
-int		info_get(int fd);
+int			fd_get(int argv, char **argc);
+t_obj_list	*info_get(int fd);
+t_scene		*parse_to_obj(t_obj_list *lst);
 
 #endif

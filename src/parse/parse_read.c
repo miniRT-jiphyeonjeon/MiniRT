@@ -1,18 +1,6 @@
 #include "libft.h"
 #include "parse.h"
-
-static void	error_user(char *s)
-{
-	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd(s, 2);
-	exit(0);
-}
-
-static void	error_system(void)
-{
-	perror("Error\n");
-	exit(0);
-}
+#include "error.h"
 
 int	fd_get(int argv, char **argc)
 {

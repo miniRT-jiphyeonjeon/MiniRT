@@ -1,9 +1,9 @@
 #include "libft.h"
 #include <stdlib.h>
 
-static double	return_func(double d, int *valid, int i)
+static double	return_func(double d, t_res *valid, t_res res)
 {
-	*valid = i;
+	*valid = res;
 	return (d);
 }
 
@@ -11,7 +11,7 @@ static double	return_func(double d, int *valid, int i)
 e+10 e-10 E+10 E-10 미구현, 찾아봐야할듯
 25줄 이슈 있음
 */
-double	ft_atof(char *str, int *valid)
+double	ft_atof(char *str, t_res *valid)
 {
 	double		integer;
 	double		decimal;
@@ -23,8 +23,8 @@ double	ft_atof(char *str, int *valid)
 	sign = 1;
 	decimal_idx = 0;
 	if (str == NULL)
-		return (return_func(integer, valid, -1));
-	while (ft_isspace(*str) == 1)
+		return (return_func(integer, valid, ERR));
+	while (ft_isspace(*str) == TRUE)
 		++str;
 	if (*str == '+' || *str == '-')
 	{
@@ -32,17 +32,19 @@ double	ft_atof(char *str, int *valid)
 			sign *= -1;
 		++str;
 	}
-	if (ft_isdigit(*str) == 0 && *str != '.')
-		return (return_func(integer, valid, 0));
-	while (*str != '\0' && ft_isdigit(*str) == 1)
+	if (ft_isdigit(*str) == FALSE && *str != '.')
+		return (return_func(integer, valid, NOTCLEAN));
+	while (*str != '\0' && ft_isdigit(*str) == TRUE)
 	{
 		integer = integer * 10 + *str - '0';
 		++str;
 	}
-	if (*str != '.')
-		return (return_func(integer * sign, valid, 0));
+	if (*str == '\0')
+		return (return_func(integer * sign, valid, CLEAN));
+	else if (*str != '.')
+		return (return_func(integer * sign, valid, NOTCLEAN));
 	++str;
-	while (*str != '\0' && ft_isdigit(*str) == 1)
+	while (*str != '\0' && ft_isdigit(*str) == TRUE)
 	{
 		decimal = decimal * 10 + *str - '0';
 		++str;
@@ -50,6 +52,9 @@ double	ft_atof(char *str, int *valid)
 	}
 	while (--decimal_idx >= 0)
 		decimal /= 10;
-	*valid = *str == '\0';
+	if (*str == '\0')
+		*valid = CLEAN;
+	else
+		*valid = NOTCLEAN;
 	return ((integer + decimal) * sign);
 }

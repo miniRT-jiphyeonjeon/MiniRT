@@ -1,13 +1,8 @@
 #include "libft.h"
 #include "parse.h"
+#include "vector3.h"
 #include "list.h"
-
-static void	error_user(char *s)
-{
-	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd(s, 2);
-	exit(0);
-}
+#include "error.h"
 
 int	is_range(int value_min, int value_max, int value_cur)
 {
@@ -75,8 +70,8 @@ void	parse_set(t_parse *lst, char **str)
 		lst->height = str[idx++];
 	if (!ft_strcmp(id, "C"))
 		lst->fov = str[idx++];
-	if (!ft_strcmp(id, "A") || !ft_strcmp(id, "sp") || \
-	!ft_strcmp(id, "pl") || !ft_strcmp(id, "cy"))
+	if (!ft_strcmp(id, "A") || !(ft_strcmp(id, "L")) || \
+	!ft_strcmp(id, "sp") || !ft_strcmp(id, "pl") || !ft_strcmp(id, "cy"))
 		lst->rgb = str[idx++];
 	if (is_element_valid(str, idx) == 0)
 		error_user("Elements came in more than standard.\n");
@@ -119,8 +114,8 @@ void	parse_print(t_obj_list *lst)
 			printf("%s\t", ps->height);
 		if (!ft_strcmp(id, "C"))
 			printf("%s\t", ps->fov);
-		if (!ft_strcmp(id, "A") || !ft_strcmp(id, "sp") || \
-		!ft_strcmp(id, "pl") || !ft_strcmp(id, "cy"))
+		if (!ft_strcmp(id, "A") || !(ft_strcmp(id, "L")) || \
+		!ft_strcmp(id, "sp") || !ft_strcmp(id, "pl") || !ft_strcmp(id, "cy"))
 			printf("%s\t", ps->rgb);
 		printf("\n");
 		lst = lst->next;
@@ -144,16 +139,18 @@ t_parse	*info_set(char *line)
 }
 
 // (x,y,z)가 오는 경우 쉼표 사이에 띄어쓰기 가능??
-int	info_get(int fd)
+// 대문자가 하나도 없거나 여러개에 대한 대비
+t_obj_list	*info_get(int fd)
 {
 	char		*line;
 	int			gnl_ret;
 	t_obj_list	*lst_head;
 	t_parse		*lst_parse;
+	t_color3	color;
 
+	color = color3(0, 0, 0);
 	gnl_ret = 1;
 	lst_head = NULL;
-
 	while (gnl_ret == 1)
 	{
 		gnl_ret = get_next_line(fd, &line);
@@ -161,11 +158,10 @@ int	info_get(int fd)
 			error_user("get_next_line - dynamic allocation problem.\n");
 		lst_parse = info_set(line);
 		if (lst_parse != NULL)
-			obj_list_add_back(&lst_head, new_obj_list(lst_parse, 0));
+			obj_list_add_back(&lst_head, new_obj_list(lst_parse, 0, color));
 		if (line != NULL)
 			free(line);
 	}
-	parse_print(lst_head);
-	// 1차 파싱 -> 해당 구조체로 변환해주기
-	return (0);
+	// parse_print(lst_head);
+	return (lst_head);
 }
