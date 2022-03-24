@@ -8,5 +8,6 @@
 # include "ft_string.h"
 # include "ft_write.h"
 # include "ft_ascii.h"
+# include "ft_read.h"
 
 #endif

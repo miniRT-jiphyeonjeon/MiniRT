@@ -1,7 +1,9 @@
-int	ft_isdigit(int c)
+#include "ft_ascii.h"
+
+t_bool	ft_isdigit(int c)
 {
 	if (c >= 48 && c <= 57)
-		return (1);
+		return (TRUE);
 	else
-		return (0);
+		return (FALSE);
 }
