@@ -14,18 +14,15 @@ static void	program_init(t_mlx *mlx)
 
 int	main(int argv, char **argc)
 {
-	int		fd;
+	// int		fd;
 	t_mlx	mlx;
 
-	fd = fd_get(argv, argc);
-	info_get(fd);
-
+	// fd = fd_get(argv, argc);
+	// info_get(fd);
+	(void)argv;
+	(void)argc;
 	program_init(&mlx);
 	scene_draw(&mlx);
-
-	mlx.mlx = mlx_init();
-	mlx.win = mlx_new_window(mlx.mlx, 1920, 1080, "miniRT");
-
 	mlx_hook(mlx.win, X11_KEYPRESS, 1L << 0, key_press, &mlx);
 	mlx_hook(mlx.win, X11_CLOSEBTN, 1L << 2, exit_button, &mlx);
 	mlx_loop(mlx.mlx);

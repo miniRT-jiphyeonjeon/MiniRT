@@ -23,8 +23,8 @@ PKGS		:= event list scene trace parse vector3
 
 eventV		:= draw draw_util hook_key_n_exit
 listV		:= list_utils
-sceneV		:= scene
-traceV		:= ray
+sceneV		:= object scene
+traceV		:= hit_sphere hit phong_illumination phong_light ray
 parseV		:= parse parse_read
 vector3V	:= vector_operation1 vector_operation2 vector_operation3 vector_set
 
