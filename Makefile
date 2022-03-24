@@ -68,9 +68,13 @@ fclean : clean
 
 re : fclean all
 
+lclean : libft_fclean fclean
+
 tclean : mlx_clean libft_fclean fclean
 
-rere : tclean all
+rere : lclean all
+
+tre : tclean all
 
 $(NAME) : $(OBJS)
 	@$(CC) $(LIB) $(MLX_FLAG) $(OBJS) -o $(NAME) -g

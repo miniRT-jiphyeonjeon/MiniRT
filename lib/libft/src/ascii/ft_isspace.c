@@ -1,7 +1,9 @@
-int	ft_isspace(int c)
+#include "ft_ascii.h"
+
+t_bool	ft_isspace(int c)
 {
 	if ((c >= 9 && c <= 13) || c == 32)
-		return (1);
+		return (TRUE);
 	else
-		return (0);
+		return (FALSE);
 }

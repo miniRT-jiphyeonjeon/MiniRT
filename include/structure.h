@@ -22,15 +22,23 @@ typedef struct s_parse
 	char	*height;
 	char	*fov;
 	char	*rgb;
-}t_parse;
+}	t_parse;
 
-// enum 추가되면 int type -> enum으로 변경해야 할 듯
+typedef enum e_obj_type
+{
+	LIGHT = 0,
+	SPHERE = 1,
+	PLANE = 2,
+	CYLINDER = 3,
+}	t_obj_type;
+
 typedef struct s_obj_list
 {
-	int		type;
-	void	*object;
-	void	*next;
-}t_obj_list;
+	t_obj_type	type;
+	t_color3	color;
+	void		*object;
+	void		*next;
+}	t_obj_list;
 
 typedef struct s_canvas
 {
@@ -58,10 +66,47 @@ typedef struct s_ray
 	t_vec3		direction;
 }	t_ray;
 
+typedef struct s_ambient
+{
+	double		light_ratio;
+	t_color3	light_color;
+}	t_ambient;
+
+typedef struct s_light
+{
+	t_point3	origin;
+	double		bright_ratio;
+}	t_light;
+
+typedef struct s_sphere
+{
+	t_point3	center;
+	double		radius;
+	double		radius2;
+}	t_sphere;
+
+typedef struct s_plane
+{
+	t_point3	point;
+	t_vec3		normal;
+}	t_plane;
+
+typedef struct s_cylinder
+{
+	t_point3	center;
+	t_vec3		normal;
+	double		radius;
+	double		radius2;
+	double		height;
+}	t_cylinder;
+
 typedef struct s_scene
 {
 	t_canvas	canvas;
 	t_camera	camera;
+	t_obj_list	*object;
+	t_obj_list	*light;
+	t_ambient	ambient;
 	t_ray		ray;
 }	t_scene;
 
