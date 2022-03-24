@@ -1,6 +1,10 @@
 #ifndef STRUCTURE_H
 # define STRUCTURE_H
 
+# include "libft_type.h"
+
+# define EPSILON 1e-6
+
 typedef struct s_vec3	t_vec3;
 typedef struct s_vec3	t_point3;
 typedef struct s_vec3	t_color3;
@@ -26,7 +30,7 @@ typedef struct s_parse
 
 typedef enum e_obj_type
 {
-	LIGHT = 0,
+	POINT_LIGHT = 0,
 	SPHERE = 1,
 	PLANE = 2,
 	CYLINDER = 3,
@@ -66,6 +70,17 @@ typedef struct s_ray
 	t_vec3		direction;
 }	t_ray;
 
+typedef struct s_hit_record
+{
+	t_point3	p;
+	t_vec3		normal;
+	double		tmin;
+	double		tmax;
+	double		t;
+	t_bool		front_face;
+	t_color3	color;
+}	t_hit_record;
+
 typedef struct s_ambient
 {
 	double		light_ratio;
@@ -102,12 +117,16 @@ typedef struct s_cylinder
 
 typedef struct s_scene
 {
-	t_canvas	canvas;
-	t_camera	camera;
-	t_obj_list	*object;
-	t_obj_list	*light;
-	t_ambient	ambient;
-	t_ray		ray;
+	t_canvas		canvas;
+	t_camera		camera;
+	t_obj_list		*objects;
+	t_obj_list		*lights;
+	t_ambient		ambient;
+	t_ray			ray;
+	t_hit_record	record;
 }	t_scene;
+
+typedef t_bool			(*t_obj_hit_f)(
+		t_obj_list *objects, t_ray *ray, t_hit_record *rec);
 
 #endif

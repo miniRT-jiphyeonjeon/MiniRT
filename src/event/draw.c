@@ -3,6 +3,7 @@
 #include "event.h"
 #include "scene.h"
 #include "trace.h"
+#include "list.h"
 
 static int	get_color(t_color3 pixel_color)
 {
@@ -24,7 +25,7 @@ static void	ray_trace(t_mlx *mlx, t_scene *scene, int row, int col)
 	alpha = (double)col / (WIN_WIDTH - 1);
 	beta = (double)row / (WIN_HEIGHT - 1);
 	scene->ray = ray_primary(&scene->camera, alpha, beta);
-	pixel_color = ray_color(scene);
+	pixel_color = ray_tracing(scene);
 	my_mlx_pixel_put(
 		&mlx->img, col, WIN_HEIGHT - 1 - row, get_color(pixel_color));
 }
@@ -44,6 +45,8 @@ static void	scene_create(t_mlx *mlx)
 			ray_trace(mlx, scene, row, col);
 		row--;
 	}
+	obj_list_clear(&scene->objects);
+	obj_list_clear(&scene->lights);
 	free(scene);
 }
 
