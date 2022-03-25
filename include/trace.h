@@ -30,4 +30,9 @@ t_color3	phong_diffuse(t_scene *scene, t_obj_list *light, t_vec3 light_dir);
 t_color3	phong_specular(t_scene *scene, t_obj_list *light, t_vec3 light_dir);
 t_bool		is_in_shadow(t_scene *scene, t_vec3 light_dir);
 
+// util.c
+
+double		root(t_eq eq, t_root_type type);
+void		set_face_normal(t_ray *ray, t_hit_record *rec);
+
 #endif
