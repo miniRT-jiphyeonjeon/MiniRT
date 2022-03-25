@@ -1,6 +1,7 @@
 #include "libft.h"
 #include "parse.h"
 #include "error.h"
+#include <fcntl.h>
 
 int	fd_get(int argv, char **argc)
 {

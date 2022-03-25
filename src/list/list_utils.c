@@ -1,5 +1,6 @@
 #include "libft.h"
 #include "list.h"
+#include "parse.h"
 #include <stdlib.h>
 
 t_obj_list	*new_obj_list(void *object, int type, t_color3 color)
@@ -31,8 +32,7 @@ void	obj_list_add_back(t_obj_list **lst, t_obj_list *new_lst)
 	return ;
 }
 
-// del로 이름 바꿔야 함
-void	obj_list_clear(t_obj_list **lst)
+void	del_obj_list(t_obj_list **lst)
 {
 	t_obj_list	*first_lst;
 	t_obj_list	*second_lst;
@@ -43,6 +43,24 @@ void	obj_list_clear(t_obj_list **lst)
 	{
 		first_lst = second_lst;
 		second_lst = second_lst->next;
+		free(first_lst->object);
+		free(first_lst);
+	}
+}
+
+// 함수포인터 이용해서 리펙토링 필요할 듯
+void	del_obj_lst_parse(t_obj_list **lst)
+{
+	t_obj_list	*first_lst;
+	t_obj_list	*second_lst;
+
+	second_lst = *lst;
+	*lst = NULL;
+	while (second_lst)
+	{
+		first_lst = second_lst;
+		second_lst = second_lst->next;
+		del_parse(first_lst->object);
 		free(first_lst->object);
 		free(first_lst);
 	}

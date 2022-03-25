@@ -4,6 +4,8 @@
 # define WIN_WIDTH	1920
 # define WIN_HEIGHT	1080
 
+#include "scene.h"
+
 typedef struct s_image
 {
 	void	*img;
@@ -22,7 +24,7 @@ typedef struct s_mlx
 
 // draw.c
 
-void	scene_draw(t_mlx *mlx);
+void	scene_draw(t_mlx *mlx, t_scene *scene);
 int		color_calc(double rgb);
 void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
 
