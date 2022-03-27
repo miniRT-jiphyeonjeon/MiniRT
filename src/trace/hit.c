@@ -24,6 +24,10 @@ static t_obj_hit_f	object_type_check(t_obj_list object)
 {
 	if (object.type == SPHERE)
 		return (hit_sphere);
+	if (object.type == PLANE)
+		return (hit_plane);
+	if (object.type == CYLINDER)
+		return (hit_cylinder);
 	return (0);
 }
 

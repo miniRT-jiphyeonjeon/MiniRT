@@ -18,6 +18,8 @@ t_bool		object_hit(t_obj_list objects[], t_ray *ray, t_hit_record *record);
 // hit_*.c
 
 t_bool		hit_sphere(t_obj_list objects[], t_ray *ray, t_hit_record *rec);
+t_bool		hit_plane(t_obj_list objects[], t_ray *ray, t_hit_record *rec);
+t_bool		hit_cylinder(t_obj_list objects[], t_ray *ray, t_hit_record *rec);
 
 // phong_illumination.c
 
