@@ -19,13 +19,14 @@ MLX_DIR		:= ./lib/mlx_mms
 
 
 # ===== Packages =====
-PKGS		:= event list scene trace parse vector3
+PKGS		:= error event list scene trace parse vector3
 
+errorV		:= error
 eventV		:= draw draw_util hook_key_n_exit
 listV		:= list_utils
 sceneV		:= object scene
 traceV		:= hit_sphere hit phong_illumination phong_light ray
-parseV		:= parse parse_read
+parseV		:= ambient_set camera_set light_set objects_set parse_read parse_to_num parse_to_obj parse_to_str parse_utils
 vector3V	:= vector_operation1 vector_operation2 vector_operation3 vector_set
 
 

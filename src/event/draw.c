@@ -30,13 +30,15 @@ static void	ray_trace(t_mlx *mlx, t_scene *scene, int row, int col)
 		&mlx->img, col, WIN_HEIGHT - 1 - row, get_color(pixel_color));
 }
 
-static void	scene_create(t_mlx *mlx)
+// 인자값에 scene 추가, new_scene는 파싱 과정에서 진행하였음.
+static void	scene_create(t_mlx *mlx, t_scene *scene)
 {
-	t_scene	*scene;
+	// t_scene	*scene;
 	int		row;
 	int		col;
 
-	scene = new_scene(WIN_WIDTH, WIN_HEIGHT);
+	// scene = new_scene(WIN_WIDTH, WIN_HEIGHT);
+
 	row = WIN_HEIGHT - 1;
 	while (row >= 0)
 	{
@@ -45,13 +47,13 @@ static void	scene_create(t_mlx *mlx)
 			ray_trace(mlx, scene, row, col);
 		row--;
 	}
-	obj_list_clear(&scene->objects);
-	obj_list_clear(&scene->lights);
+	del_obj_list(&scene->objects);
+	del_obj_list(&scene->lights);
 	free(scene);
 }
 
-void	scene_draw(t_mlx *mlx)
+void	scene_draw(t_mlx *mlx, t_scene *scene)
 {
-	scene_create(mlx);
+	scene_create(mlx, scene);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, 0, 0);
 }

@@ -9,9 +9,9 @@ typedef enum e_bool
 
 typedef enum e_res
 {
-	OK = 0,
-	ERR = -1,
-	UNSET = -2,
+	CLEAN = 0,
+	NOTCLEAN = -1,
+	ERR = -2,
 }	t_res;
 
 #endif
