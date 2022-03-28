@@ -16,6 +16,19 @@ struct s_vec3
 	double	z;
 };
 
+typedef enum e_root_type
+{
+	ALPHA = 0,
+	BETA = 1,
+}	t_root_type;
+
+typedef struct s_eq
+{
+	double	a;
+	double	half_b;
+	double	c;
+}	t_eq;
+
 typedef struct s_parse
 {
 	char	*ident;
