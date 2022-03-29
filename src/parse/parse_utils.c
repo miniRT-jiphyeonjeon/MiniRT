@@ -1,5 +1,6 @@
 #include "libft.h"
-#include "parse.h"
+#include "structure.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 void	parse_print(t_obj_list *lst)
@@ -72,28 +73,4 @@ t_parse	*del_split(char **str)
 		free(str[idx++]);
 	free(str);
 	return (NULL);
-}
-
-t_bool	is_object(char *s)
-{
-	if (ft_strcmp(s, "A") && ft_strcmp(s, "C") && ft_strcmp(s, "L") \
-	&& ft_strcmp(s, "sp") && ft_strcmp(s, "pl") && ft_strcmp(s, "cy"))
-		return (FALSE);
-	return (TRUE);
-}
-
-/*
-t_bool로 처리하는게 좋을듯.
-참조했던 정보들의 갯수 != 들어온 정보의 개수 -> 인자가 잘못 들어온 경우임
-*/
-t_bool	is_element_valid(char **str, int idx)
-{
-	int		i;
-
-	i = 0;
-	while (str[i] != NULL)
-		++i;
-	if (i != idx)
-		return (FALSE);
-	return (TRUE);
 }

@@ -1,6 +1,12 @@
 #include "parse.h"
 #include "scene.h"
 #include "vector3.h"
+#include <math.h>
+
+static double	degree_to_radian(double degree)
+{
+	return (degree * M_PI / 180);
+}
 
 t_camera	camera_prev_set(t_scene *scene, t_obj_list *lst)
 {
