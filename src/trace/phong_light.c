@@ -36,7 +36,7 @@ t_color3	phong_specular(t_scene *scene, t_obj_list *light, t_vec3 light_dir)
 	return (vec3_mult_scalar(vec3_mult_scalar(light->color, ks), spec));
 }
 
-t_bool	is_in_shadow(t_scene *scene, t_vec3 light_dir)
+t_bool	is_in_shadow(t_scene *scene, t_vec3 light_dir, double light_len)
 {
 	t_ray			shadow_ray;
 	t_hit_record	record;
@@ -44,7 +44,7 @@ t_bool	is_in_shadow(t_scene *scene, t_vec3 light_dir)
 	shadow_ray = ray_set(vec3_plus(scene->record.p,
 				vec3_mult_scalar(light_dir, EPSILON)), light_dir);
 	record.tmin = 0;
-	record.tmax = vec3_length(light_dir);
+	record.tmax = light_len;
 	if (hit(scene->objects, &shadow_ray, &record))
 		return (TRUE);
 	return (FALSE);
