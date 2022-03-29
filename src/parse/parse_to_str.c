@@ -5,38 +5,30 @@
 #include "error.h"
 #include <stdlib.h>
 
-
-// 25줄 수정요망
 void	parse_set(t_parse *lst, char **str)
 {
-	char	*id;
 	int		idx;
 
-	if (is_object(str[0]) == 0)
+	if (is_object(str[0]) == FALSE)
 		error_user("invalid object name.\n");
-	else
-		lst->ident = str[0];
-	id = lst->ident;
+	lst->ident = str[0];
 	idx = 1;
-	if (!ft_strcmp(id, "C") || !ft_strcmp(id, "L") || \
-	!ft_strcmp(id, "sp") || !ft_strcmp(id, "pl") || !ft_strcmp(id, "cy"))
+	if (is_type_valid(lst->ident, "point"))
 		lst->point = str[idx++];
-	if (!ft_strcmp(id, "A") || !ft_strcmp(id, "L"))
+	if (is_type_valid(lst->ident, "bri_ratio"))
 		lst->bri_ratio = str[idx++];
-	if (!ft_strcmp(id, "C") || !ft_strcmp(id, "pl") || !ft_strcmp(id, "cy"))
+	if (is_type_valid(lst->ident, "nor_vec"))
 		lst->nor_vec = str[idx++];
-	if (!ft_strcmp(id, "sp") || !ft_strcmp(id, "cy"))
+	if (is_type_valid(lst->ident, "diameter"))
 		lst->diameter = str[idx++];
-	if (!ft_strcmp(id, "cy"))
+	if (is_type_valid(lst->ident, "height"))
 		lst->height = str[idx++];
-	if (!ft_strcmp(id, "C"))
+	if (is_type_valid(lst->ident, "fov"))
 		lst->fov = str[idx++];
-	if (!ft_strcmp(id, "A") || !(ft_strcmp(id, "L")) || \
-	!ft_strcmp(id, "sp") || !ft_strcmp(id, "pl") || !ft_strcmp(id, "cy"))
+	if (is_type_valid(lst->ident, "rgb"))
 		lst->rgb = str[idx++];
 	if (is_element_valid(str, idx) == 0)
 		error_user("Elements came in more than standard.\n");
-	return ;
 }
 
 t_parse	*info_set(char *line)
@@ -58,8 +50,6 @@ t_parse	*info_set(char *line)
 	return (lst);
 }
 
-// (x,y,z)가 오는 경우 쉼표 사이에 띄어쓰기 가능??
-// 대문자가 하나도 없거나 여러개에 대한 대비
 t_obj_list	*parse_to_str(int fd)
 {
 	char		*line;
@@ -82,7 +72,7 @@ t_obj_list	*parse_to_str(int fd)
 		if (line != NULL)
 			free(line);
 	}
-	// parse_print(lst_head);
-
+	if (is_objnum_valid(lst_head) == FALSE)
+		error_user("Each Ambient, Light and Camera must be one.");
 	return (lst_head);
 }

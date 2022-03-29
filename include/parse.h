@@ -26,7 +26,12 @@ void			parse_print(t_obj_list *lst);
 t_parse			*new_parse(void);
 void			del_parse(t_parse *parse);
 t_parse			*del_split(char **str);
+
+// parse_bool
+
+t_bool			is_objnum_valid(t_obj_list *lst);
 t_bool			is_object(char *s);
 t_bool			is_element_valid(char **str, int idx);
+t_bool			is_type_valid(char *id, char *type);
 
 #endif

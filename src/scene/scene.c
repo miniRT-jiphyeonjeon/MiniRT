@@ -1,4 +1,3 @@
-#include <math.h>
 #include "scene.h"
 #include "libft.h"
 #include "list.h"
@@ -20,9 +19,4 @@ t_canvas	canvas_set(int width, int height)
 	canvas.height = height;
 	canvas.aspect_ratio = (double)height / (double)width;
 	return (canvas);
-}
-
-static double	degree_to_radian(double degree)
-{
-	return (degree * M_PI / 180);
 }

@@ -13,7 +13,6 @@ t_scene	*parse_to_obj(t_obj_list *lst)
 	while (lst)
 	{
 		lst_parse = lst->object;
-		// printf("<%s>\n", lst_parse->ident);
 		if (!(ft_strcmp(lst_parse->ident, "A")))
 			scene->ambient = ambient_set(lst);
 		else if (!(ft_strcmp(lst_parse->ident, "C")))

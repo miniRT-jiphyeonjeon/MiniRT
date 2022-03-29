@@ -3,14 +3,12 @@
 #include "vector3.h"
 #include "error.h"
 
-//printf 주석 존재
 double	double_get(char *s, double min, double max)
 {
 	double	d;
 	t_res	res;
 
 	d = ft_atof(s, &res);
-	// printf("%f, %d\n", d, res);
 	if (res != CLEAN)
 		error_user("Elements must came in standard.\n");
 	if (min == 0 && max == 0)
