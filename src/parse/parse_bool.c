@@ -1,7 +1,7 @@
 #include "libft.h"
 #include "structure.h"
 
-t_bool	is_objnum_valid(t_obj_list *lst)
+t_bool	is_scene_env_valid(t_parse_list *lst)
 {
 	int		ambient_num;
 	int		light_num;
@@ -27,14 +27,6 @@ t_bool	is_objnum_valid(t_obj_list *lst)
 	return (FALSE);
 }
 
-t_bool	is_object(char *s)
-{
-	if (ft_strcmp(s, "A") && ft_strcmp(s, "C") && ft_strcmp(s, "L") \
-	&& ft_strcmp(s, "sp") && ft_strcmp(s, "pl") && ft_strcmp(s, "cy"))
-		return (FALSE);
-	return (TRUE);
-}
-
 t_bool	is_element_valid(char **str, int idx)
 {
 	int		i;
@@ -47,30 +39,27 @@ t_bool	is_element_valid(char **str, int idx)
 	return (TRUE);
 }
 
-t_bool	is_type_valid(char *id, char *type)
+t_bool	is_info_valid(t_obj_type id, char *type)
 {
 	if (!ft_strcmp(type, "point") && \
-	(!ft_strcmp(id, "C") || !ft_strcmp(id, "L") || !ft_strcmp(id, "sp") || \
-	!ft_strcmp(id, "pl") || !ft_strcmp(id, "cy")))
+	(id == CAMERA || id == POINT_LIGHT || id == SPHERE || id == PLANE || \
+	id == CYLINDER))
 		return (TRUE);
 	else if (!ft_strcmp(type, "bri_ratio") && \
-	(!ft_strcmp(id, "A") || !ft_strcmp(id, "L")))
+	(id == AMBIENT || id == POINT_LIGHT))
 		return (TRUE);
 	else if (!ft_strcmp(type, "nor_vec") && \
-	(!ft_strcmp(id, "C") || !ft_strcmp(id, "pl") || !ft_strcmp(id, "cy")))
+	(id == CAMERA || id == PLANE || id == CYLINDER))
 		return (TRUE);
-	else if (!ft_strcmp(type, "diameter") && \
-	(!ft_strcmp(id, "sp") || !ft_strcmp(id, "cy")))
+	else if (!ft_strcmp(type, "diameter") && (id == SPHERE || id == CYLINDER))
 		return (TRUE);
-	else if (!ft_strcmp(type, "height") && \
-	(!ft_strcmp(id, "cy")))
+	else if (!ft_strcmp(type, "height") && (id == CYLINDER))
 		return (TRUE);
-	else if (!ft_strcmp(type, "fov") && \
-	(!ft_strcmp(id, "C")))
+	else if (!ft_strcmp(type, "fov") && (id == CAMERA))
 		return (TRUE);
 	else if (!ft_strcmp(type, "rgb") && \
-	(!ft_strcmp(id, "A") || !(ft_strcmp(id, "L")) || !ft_strcmp(id, "sp") || \
-	!ft_strcmp(id, "pl") || !ft_strcmp(id, "cy")))
+	(id == AMBIENT || id == POINT_LIGHT || id == SPHERE || id == PLANE || \
+	id == CYLINDER))
 		return (TRUE);
 	return (FALSE);
 }

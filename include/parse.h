@@ -11,9 +11,9 @@ int				fd_get(int argv, char **argc);
 
 t_obj_list		*parse_to_str(int fd);
 
-// parse_to_obj
+// parse_to_element
 
-t_scene			*parse_to_obj(t_obj_list *lst);
+t_scene			*parse_to_element(t_parse_list *lst);
 
 // parse_to_num
 
@@ -22,16 +22,14 @@ struct s_vec3	vec_get(char *s, double min, double max);
 
 // parse_utils
 
-void			parse_print(t_obj_list *lst);
 t_parse			*new_parse(void);
 void			del_parse(t_parse *parse);
 t_parse			*del_split(char **str);
 
 // parse_bool
 
-t_bool			is_objnum_valid(t_obj_list *lst);
-t_bool			is_object(char *s);
+t_bool			is_scene_env_valid(t_parse_list *lst);
 t_bool			is_element_valid(char **str, int idx);
-t_bool			is_type_valid(char *id, char *type);
+t_bool			is_info_valid(t_obj_type id, char *type);
 
 #endif

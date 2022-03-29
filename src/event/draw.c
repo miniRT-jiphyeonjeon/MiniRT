@@ -30,14 +30,10 @@ static void	ray_trace(t_mlx *mlx, t_scene *scene, int row, int col)
 		&mlx->img, col, WIN_HEIGHT - 1 - row, get_color(pixel_color));
 }
 
-// 인자값에 scene 추가, new_scene는 파싱 과정에서 진행하였음.
 static void	scene_create(t_mlx *mlx, t_scene *scene)
 {
-	// t_scene	*scene;
 	int		row;
 	int		col;
-
-	// scene = new_scene(WIN_WIDTH, WIN_HEIGHT);
 
 	row = WIN_HEIGHT - 1;
 	while (row >= 0)

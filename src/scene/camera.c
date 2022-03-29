@@ -3,7 +3,7 @@
 #include "scene.h"
 #include "vector3.h"
 
-t_camera	camera_prev_set(t_scene *scene, t_obj_list *lst)
+t_camera	camera_prev_set(t_scene *scene, t_parse_list *lst)
 {
 	t_parse		*lst_parse;
 	t_camera	camera;

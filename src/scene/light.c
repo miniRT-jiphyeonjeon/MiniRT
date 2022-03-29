@@ -3,7 +3,7 @@
 #include "scene.h"
 #include "list.h"
 
-void	light_set(t_scene *scene, t_obj_list *lst)
+void	light_set(t_scene *scene, t_parse_list *lst)
 {
 	t_obj_list	*lst_new;
 	t_parse		*lst_parse;

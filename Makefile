@@ -26,7 +26,7 @@ eventV		:= draw draw_util hook_key_n_exit
 listV		:= list_utils
 sceneV		:= ambient camera light objects scene
 traceV		:= hit_cylinder hit_plane hit_sphere hit phong_illumination phong_light ray util
-parseV		:= parse_bool parse_read parse_to_num parse_to_obj parse_to_str parse_utils
+parseV		:= parse_bool parse_read parse_to_num parse_to_element parse_to_str parse_utils
 vector3V	:= vector_operation1 vector_operation2 vector_operation3 vector_set
 
 
