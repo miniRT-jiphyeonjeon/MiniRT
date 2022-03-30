@@ -3,7 +3,6 @@
 #include "parse.h"
 #include "event.h"
 
-//printf 주석 존재
 t_scene	*parse_to_element(t_parse_list *lst)
 {
 	t_scene		*scene;

@@ -31,19 +31,19 @@ static void	parse_set(t_parse *lst, char **str)
 	if (lst->id == NOTTYPE)
 		error_user("invalid element name.\n");
 	idx = 1;
-	if (is_info_valid(lst->id, "point"))
+	if (is_info_valid(lst->id, POINT))
 		lst->point = str[idx++];
-	if (is_info_valid(lst->id, "bri_ratio"))
+	if (is_info_valid(lst->id, BRI_RATIO))
 		lst->bri_ratio = str[idx++];
-	if (is_info_valid(lst->id, "nor_vec"))
+	if (is_info_valid(lst->id, NOR_VEC))
 		lst->nor_vec = str[idx++];
-	if (is_info_valid(lst->id, "diameter"))
+	if (is_info_valid(lst->id, DIAMETER))
 		lst->diameter = str[idx++];
-	if (is_info_valid(lst->id, "height"))
+	if (is_info_valid(lst->id, HEIGHT))
 		lst->height = str[idx++];
-	if (is_info_valid(lst->id, "fov"))
+	if (is_info_valid(lst->id, FOV))
 		lst->fov = str[idx++];
-	if (is_info_valid(lst->id, "rgb"))
+	if (is_info_valid(lst->id, RGB))
 		lst->rgb = str[idx++];
 	if (is_element_valid(str, idx) == 0)
 		error_user("Elements came in more than standard.\n");
