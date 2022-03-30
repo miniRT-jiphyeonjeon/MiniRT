@@ -3,6 +3,8 @@
 
 # define EPSILON 1e-6
 # define LUMEN 3
+# define CHECKER_WIDTH 16
+# define CHECKER_HEIGHT 8
 
 typedef enum e_bool
 {
