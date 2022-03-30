@@ -39,25 +39,23 @@ t_bool	is_element_valid(char **str, int idx)
 	return (TRUE);
 }
 
-t_bool	is_info_valid(t_obj_type id, char *type)
+t_bool	is_info_valid(t_obj_type id, t_info info)
 {
-	if (!ft_strcmp(type, "point") && \
+	if (info == POINT && \
 	(id == CAMERA || id == POINT_LIGHT || id == SPHERE || id == PLANE || \
 	id == CYLINDER))
 		return (TRUE);
-	else if (!ft_strcmp(type, "bri_ratio") && \
-	(id == AMBIENT || id == POINT_LIGHT))
+	else if (info == BRI_RATIO && (id == AMBIENT || id == POINT_LIGHT))
 		return (TRUE);
-	else if (!ft_strcmp(type, "nor_vec") && \
-	(id == CAMERA || id == PLANE || id == CYLINDER))
+	else if (info == NOR_VEC && (id == CAMERA || id == PLANE || id == CYLINDER))
 		return (TRUE);
-	else if (!ft_strcmp(type, "diameter") && (id == SPHERE || id == CYLINDER))
+	else if (info == DIAMETER && (id == SPHERE || id == CYLINDER))
 		return (TRUE);
-	else if (!ft_strcmp(type, "height") && (id == CYLINDER))
+	else if (info == HEIGHT && (id == CYLINDER))
 		return (TRUE);
-	else if (!ft_strcmp(type, "fov") && (id == CAMERA))
+	else if (info == FOV && (id == CAMERA))
 		return (TRUE);
-	else if (!ft_strcmp(type, "rgb") && \
+	else if (info == RGB && \
 	(id == AMBIENT || id == POINT_LIGHT || id == SPHERE || id == PLANE || \
 	id == CYLINDER))
 		return (TRUE);

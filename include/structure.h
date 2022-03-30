@@ -42,6 +42,17 @@ typedef enum e_obj_type
 	CYLINDER = 5,
 }	t_obj_type;
 
+typedef enum e_info
+{
+	POINT = 0,
+	BRI_RATIO = 1,
+	NOR_VEC = 2,
+	DIAMETER = 3,
+	HEIGHT = 4,
+	FOV = 5,
+	RGB = 6,
+}	t_info;
+
 typedef struct s_parse
 {
 	t_obj_type	id;

@@ -18,8 +18,6 @@ double	double_get(char *s, double min, double max)
 	return (d);
 }
 
-// split->3개의 값을 struct s_vec3로 리턴
-// 인자값 범위 지정
 struct s_vec3	vec_get(char *s, double min, double max)
 {
 	struct s_vec3	vec;
