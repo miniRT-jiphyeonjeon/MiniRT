@@ -30,6 +30,13 @@ struct s_vec3
 	double z;
 };
 
+typedef struct s_checker
+{
+	t_bool		on;
+	t_color3	even;
+	t_color3	odd;
+}	t_checker;
+
 typedef struct s_ray
 {
 	t_point3	origin;
@@ -43,6 +50,8 @@ typedef struct s_hit_record
 	double		tmin;
 	double		tmax;
 	double		t;
+	double		u;
+	double		v;
 	t_bool		front_face;
 	t_color3	albedo;
 }	t_hit_record;
@@ -70,6 +79,7 @@ typedef struct s_object
 	t_object_type	type;
 	void			*data;
 	t_color3		albedo;
+	t_checker		checker;
 	void			*next;
 }	t_object;
 

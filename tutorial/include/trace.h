@@ -22,4 +22,7 @@ t_bool		in_shadow(t_object objects[], t_ray shadow_ray, double light_len);
 t_color3	point_light_get(t_scene *scene, t_light *light);
 t_color3	phong_lighting(t_scene *scene);
 
+t_checker	checker(t_bool on, t_color3 even, t_color3 odd);
+t_color3	checker_color(double u, double v, t_point3 p, t_checker check);
+
 #endif

@@ -1,6 +1,18 @@
+#include <math.h>
 #include "structures.h"
 #include "utils.h"
 #include "trace.h"
+
+static void	get_sphere_uv(t_point3 p, double *u, double *v)
+{
+	double	theta;
+	double	phi;
+
+	theta = acos(-1 * p.y);
+	phi = atan2(-1 * p.z, p.x) + M_PI;
+	*u = phi * M_1_PI * 0.5;
+	*v = theta * M_1_PI;
+}
 
 t_bool	hit_sphere(t_object objects[], t_ray *ray, t_hit_record *rec)
 {
@@ -34,7 +46,14 @@ t_bool	hit_sphere(t_object objects[], t_ray *ray, t_hit_record *rec)
 	rec->t = root;
 	rec->p = ray_at(ray, root);
 	rec->normal = vunit(vminus_(rec->p, sp->center));
-	rec->albedo = objects->albedo;
+	get_sphere_uv(rec->p, &rec->u, &rec->v);
+
+	if (objects->checker.on == FALSE)
+		rec->albedo = objects->albedo;
+	else
+	{
+		rec->albedo = checker_color(rec->u, rec->v, rec->p, objects->checker);
+	}
 	set_face_normal(ray, rec);
 	return (TRUE);
 }
