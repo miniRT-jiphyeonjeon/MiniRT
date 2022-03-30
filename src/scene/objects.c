@@ -3,7 +3,7 @@
 #include "scene.h"
 #include "list.h"
 
-void	sphere_set(t_scene *scene, t_obj_list *lst)
+void	sphere_set(t_scene *scene, t_parse_list *lst)
 {
 	t_obj_list	*lst_new;
 	t_parse		*lst_parse;
@@ -21,7 +21,7 @@ void	sphere_set(t_scene *scene, t_obj_list *lst)
 	lst_new->object = sphere;
 }
 
-void	plane_set(t_scene *scene, t_obj_list *lst)
+void	plane_set(t_scene *scene, t_parse_list *lst)
 {
 	t_obj_list	*lst_new;
 	t_parse		*lst_parse;
@@ -38,7 +38,7 @@ void	plane_set(t_scene *scene, t_obj_list *lst)
 	lst_new->object = plane;
 }
 
-void	cylinder_set(t_scene *scene, t_obj_list *lst)
+void	cylinder_set(t_scene *scene, t_parse_list *lst)
 {
 	t_obj_list	*lst_new;
 	t_parse		*lst_parse;

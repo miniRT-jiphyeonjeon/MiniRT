@@ -1,7 +1,7 @@
 #include "parse.h"
 
 // rgb가 실수로 들어올때에 대해 고민해봐야함
-t_ambient	ambient_set(t_obj_list *lst)
+t_ambient	ambient_set(t_parse_list *lst)
 {
 	t_parse		*lst_parse;
 	t_ambient	ambient;

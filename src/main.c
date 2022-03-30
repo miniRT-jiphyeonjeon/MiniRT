@@ -15,19 +15,17 @@ static void	program_init(t_mlx *mlx)
 
 int	main(int argv, char **argc)
 {
-	int			fd;
-	t_scene		*scene;
-	t_obj_list	*info;
-	t_mlx		mlx;
+	int				fd;
+	t_scene			*scene;
+	t_parse_list	*info;
+	t_mlx			mlx;
 
 	fd = fd_get(argv, argc);
 	info = parse_to_str(fd);
-	scene = parse_to_obj(info);
+	scene = parse_to_element(info);
 	del_obj_lst_parse(&info);
-
 	program_init(&mlx);
 	scene_draw(&mlx, scene);
-
 	mlx_hook(mlx.win, X11_KEYPRESS, 1L << 0, key_press, &mlx);
 	mlx_hook(mlx.win, X11_CLOSEBTN, 1L << 2, exit_button, &mlx);
 	mlx_loop(mlx.mlx);

@@ -5,9 +5,11 @@
 
 # define EPSILON 1e-6
 
-typedef struct s_vec3	t_vec3;
-typedef struct s_vec3	t_point3;
-typedef struct s_vec3	t_color3;
+typedef struct s_vec3		t_vec3;
+typedef struct s_vec3		t_point3;
+typedef struct s_vec3		t_color3;
+
+typedef struct s_obj_list	t_parse_list;
 
 struct s_vec3
 {
@@ -29,25 +31,29 @@ typedef struct s_eq
 	double	c;
 }	t_eq;
 
-typedef struct s_parse
-{
-	char	*ident;
-	char	*bri_ratio;
-	char	*point;
-	char	*nor_vec;
-	char	*diameter;
-	char	*height;
-	char	*fov;
-	char	*rgb;
-}	t_parse;
-
 typedef enum e_obj_type
 {
-	POINT_LIGHT = 0,
-	SPHERE = 1,
-	PLANE = 2,
-	CYLINDER = 3,
+	NOTTYPE = -1,
+	AMBIENT = 0,
+	CAMERA = 1,
+	POINT_LIGHT = 2,
+	SPHERE = 3,
+	PLANE = 4,
+	CYLINDER = 5,
 }	t_obj_type;
+
+typedef struct s_parse
+{
+	t_obj_type	id;
+	char		*ident;
+	char		*bri_ratio;
+	char		*point;
+	char		*nor_vec;
+	char		*diameter;
+	char		*height;
+	char		*fov;
+	char		*rgb;
+}	t_parse;
 
 typedef struct s_obj_list
 {
