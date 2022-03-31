@@ -50,9 +50,7 @@ t_bool	hit_sphere(t_object objects[], t_ray *ray, t_hit_record *rec)
 	if (objects->checker.on == FALSE)
 		rec->albedo = objects->albedo;
 	else
-	{
 		rec->albedo = checker_color(rec->u, rec->v, rec->p, objects->checker);
-	}
 	set_face_normal(ray, rec);
 	return (TRUE);
 }
