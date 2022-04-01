@@ -1,5 +1,5 @@
-#ifndef VECTOR3_H
-# define VECTOR3_H
+#ifndef VECTOR3_BONUS_H
+# define VECTOR3_BONUS_H
 
 # include "structure_bonus.h"
 

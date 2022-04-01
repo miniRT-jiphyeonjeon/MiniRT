@@ -1,5 +1,5 @@
-#ifndef LIST_H
-# define LIST_H
+#ifndef LIST_BONUS_H
+# define LIST_BONUS_H
 
 # include "structure_bonus.h"
 

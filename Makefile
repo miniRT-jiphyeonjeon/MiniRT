@@ -53,7 +53,7 @@ endef
 
 define choose_bonus_modules
 	$(foreach pkg, $(1),\
-		$(foreach file, $($(pkg)M),\
+		$(foreach file, $($(pkg)B),\
 			$(SRCS_DIR)_bonus/$(pkg)/$(file)_bonus.c\
 		)\
 	) $(SRCS_DIR)_bonus/main_bonus.c

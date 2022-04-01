@@ -1,10 +1,10 @@
-#ifndef EVENT_H
-# define EVENT_H
+#ifndef EVENT_BONUS_H
+# define EVENT_BONUS_H
 
 # define WIN_WIDTH	1920
 # define WIN_HEIGHT	1080
 
-#include "scene_bonus.h"
+# include "scene_bonus.h"
 
 typedef struct s_image
 {

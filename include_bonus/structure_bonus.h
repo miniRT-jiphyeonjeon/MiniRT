@@ -1,5 +1,5 @@
-#ifndef STRUCTURE_H
-# define STRUCTURE_H
+#ifndef STRUCTURE_BONUS_H
+# define STRUCTURE_BONUS_H
 
 # include "libft_type.h"
 
@@ -156,7 +156,7 @@ typedef struct s_scene
 	t_hit_record	record;
 }	t_scene;
 
-typedef t_bool			(*t_obj_hit_f)(
+typedef t_bool				(*t_obj_hit_f)(
 		t_obj_list *objects, t_ray *ray, t_hit_record *rec);
 
 #endif

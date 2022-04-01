@@ -1,5 +1,5 @@
-#ifndef X11_EVENTS_H
-# define X11_EVENTS_H
+#ifndef X11_EVENTS_BONUS_H
+# define X11_EVENTS_BONUS_H
 
 /* Events */
 # define X11_KEYPRESS	2

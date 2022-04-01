@@ -1,5 +1,5 @@
-#ifndef TRACE_H
-# define TRACE_H
+#ifndef TRACE_BONUS_H
+# define TRACE_BONUS_H
 
 # include "structure_bonus.h"
 
