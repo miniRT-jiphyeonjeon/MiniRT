@@ -43,15 +43,16 @@ static t_hit_record	record_init(void)
 
 t_color3	ray_tracing(t_scene *scene)
 {
-	double	t;
+	// double	t;
 
 	scene->record = record_init();
 	if (hit(scene->objects, &scene->ray, &scene->record))
 		return (phong_illumination_model(scene));
 	else
 	{	
-		t = 0.5 * (scene->ray.direction.y + 1.0);
-		return (vec3_plus(vec3_mult_scalar(color3(1, 1, 1), 1.0 - t),
-				vec3_mult_scalar(color3(0.5, 0.7, 1.0), t)));
+		return (color3(-1, -1, -1));
+		// t = 0.5 * (scene->ray.direction.y + 1.0);
+		// return (vec3_plus(vec3_mult_scalar(color3(1, 1, 1), 1.0 - t),
+		// 		vec3_mult_scalar(color3(0.5, 0.7, 1.0), t)));
 	}
 }

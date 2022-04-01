@@ -8,6 +8,14 @@ void	my_mlx_pixel_put(t_image *image, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+int	my_mlx_pixel_get(t_image *image, int x, int y)
+{
+	char	*dst;
+
+	dst = image->addr + (y * image->line + x * (image->bpp / 8));
+	return (*(unsigned int *)dst);
+}
+
 int	color_calc(double rgb)
 {
 	int	color;

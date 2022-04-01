@@ -26,8 +26,12 @@ static void	ray_trace(t_mlx *mlx, t_scene *scene, int row, int col)
 	beta = (double)row / (WIN_HEIGHT - 1);
 	scene->ray = ray_primary(&scene->camera, alpha, beta);
 	pixel_color = ray_tracing(scene);
-	my_mlx_pixel_put(
-		&mlx->img, col, WIN_HEIGHT - 1 - row, get_color(pixel_color));
+	if (pixel_color.x == -1 && pixel_color.y == -1 && pixel_color.z == -1)
+		my_mlx_pixel_put(
+			&mlx->img, col, WIN_HEIGHT - 1 - row, my_mlx_pixel_get(&mlx->background, col, row));
+	else
+		my_mlx_pixel_put(
+			&mlx->img, col, WIN_HEIGHT - 1 - row, get_color(pixel_color));
 }
 
 static void	scene_create(t_mlx *mlx, t_scene *scene)
