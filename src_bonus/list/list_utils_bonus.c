@@ -10,7 +10,9 @@ t_obj_list	*new_obj_list(void *object, int type, t_color3 color)
 	new_lst = ft_calloc(sizeof(t_obj_list), 0);
 	new_lst->type = type;
 	new_lst->object = object;
-	new_lst->color = color;
+	new_lst->color.color = color;
+	new_lst->color.checkboard = NULL;
+	new_lst->color.bumpmap = NULL;
 	new_lst->next = NULL;
 	return (new_lst);
 }

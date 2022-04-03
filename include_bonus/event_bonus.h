@@ -4,23 +4,7 @@
 # define WIN_WIDTH	1920
 # define WIN_HEIGHT	1080
 
-# include "scene_bonus.h"
-
-typedef struct s_image
-{
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		line;
-	int		endian;
-}	t_image;
-
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*win;
-	t_image	img;
-}	t_mlx;
+# include "structure_bonus.h"
 
 // draw.c
 

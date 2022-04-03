@@ -16,6 +16,6 @@ void	light_set(t_scene *scene, t_parse_list *lst)
 	light->origin = vec_get(lst_parse->point, 0, 0);
 	light->bright_ratio = double_get(lst_parse->bri_ratio, 0.0, 1.0);
 	lst_new->type = POINT_LIGHT;
-	lst_new->color = vec_get(lst_parse->rgb, 0, 255);
+	lst_new->color.color = vec_get(lst_parse->rgb, 0, 255);
 	lst_new->object = light;
 }

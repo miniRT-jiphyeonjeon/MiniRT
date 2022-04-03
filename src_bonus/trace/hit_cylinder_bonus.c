@@ -19,7 +19,7 @@ static t_bool	check_cylinder(
 	rec->normal = vec3_unit(vec3_minus(rec->p, vec3_plus(cy->center,
 					vec3_mult_scalar(cy->normal, vec3_dot(
 							vec3_minus(rec->p, cy->center), cy->normal)))));
-	rec->color = objects->color;
+	rec->color = objects->color.color;
 	set_face_normal(ray, rec);
 	return (TRUE);
 }

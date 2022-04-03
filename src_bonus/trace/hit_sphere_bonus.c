@@ -13,7 +13,7 @@ static t_bool	check_sphere(
 	rec->t = root;
 	rec->p = ray_at(ray, root);
 	rec->normal = vec3_unit(vec3_minus(rec->p, sp->center));
-	rec->color = objects->color;
+	rec->color = objects->color.color;
 	set_face_normal(ray, rec);
 	return (TRUE);
 }

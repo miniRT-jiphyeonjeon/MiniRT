@@ -10,7 +10,7 @@ t_color3	phong_diffuse(t_scene *scene, t_obj_list *light, t_vec3 light_dir)
 	double		kd;
 
 	kd = fmax(0.0, vec3_dot(scene->record.normal, light_dir));
-	return (vec3_mult_scalar(light->color, kd));
+	return (vec3_mult_scalar(light->color.color, kd));
 }
 
 //	r = 2(n·l)n - l
@@ -33,7 +33,7 @@ t_color3	phong_specular(t_scene *scene, t_obj_list *light, t_vec3 light_dir)
 	view_dir = vec3_unit(vec3_mult_scalar(scene->ray.direction, -1));
 	reflect_dir = reflect(light_dir, scene->record.normal);
 	spec = pow(fmax(0.0, vec3_dot(reflect_dir, view_dir)), ksn);
-	return (vec3_mult_scalar(vec3_mult_scalar(light->color, ks), spec));
+	return (vec3_mult_scalar(vec3_mult_scalar(light->color.color, ks), spec));
 }
 
 t_bool	is_in_shadow(t_scene *scene, t_vec3 light_dir, double light_len)
