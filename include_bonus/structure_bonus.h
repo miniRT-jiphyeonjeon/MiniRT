@@ -8,8 +8,23 @@
 typedef struct s_vec3		t_vec3;
 typedef struct s_vec3		t_point3;
 typedef struct s_vec3		t_color3;
-
 typedef struct s_obj_list	t_parse_list;
+
+typedef struct s_image
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line;
+	int		endian;
+}	t_image;
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	t_image	img;
+}	t_mlx;
 
 struct s_vec3
 {
@@ -40,6 +55,9 @@ typedef enum e_obj_type
 	SPHERE = 3,
 	PLANE = 4,
 	CYLINDER = 5,
+	CONE = 6,
+	CHECKBOARD = 7,
+	BUMPMAP = 8,
 }	t_obj_type;
 
 typedef enum e_info
@@ -64,14 +82,40 @@ typedef struct s_parse
 	char		*height;
 	char		*fov;
 	char		*rgb;
+	t_obj_type	texture_id;
+	char		*check_color;
+	char		*check_width;
+	char		*check_height;
+	char		*texture_file;
+	char		*bump_file;
 }	t_parse;
+
+typedef struct s_checkboard
+{
+	t_color3	check_color;
+	int			width;
+	int			height;
+}	t_checkboard;
+
+typedef struct s_bumpmap
+{
+	t_image		*texture;
+	t_image		*bump;
+}	t_bumpmap;
+
+typedef struct s_color_info
+{
+	t_color3		color;
+	t_checkboard	*checkboard;
+	t_bumpmap		*bumpmap;
+}	t_color_info;
 
 typedef struct s_obj_list
 {
-	t_obj_type	type;
-	t_color3	color;
-	void		*object;
-	void		*next;
+	t_obj_type		type;
+	t_color_info	color;
+	void			*object;
+	void			*next;
 }	t_obj_list;
 
 typedef struct s_canvas

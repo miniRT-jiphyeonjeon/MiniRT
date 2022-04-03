@@ -20,6 +20,6 @@ t_bool	hit_plane(t_obj_list objects[], t_ray *ray, t_hit_record *rec)
 	rec->p = ray_at(ray, root);
 	rec->normal = pl->normal;
 	set_face_normal(ray, rec);
-	rec->color = objects->color;
+	rec->color = objects->color.color;
 	return (TRUE);
 }

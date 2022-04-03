@@ -10,10 +10,8 @@ static double	return_func(double d, t_res *valid, t_res res)
 static int	space_sign_check(char **str)
 {
 	int		sign;
-	int		i;
 
 	sign = 1;
-	i = 0;
 	while (ft_isspace(**str) == TRUE)
 		*str += 1;
 	if (**str == '+' || **str == '-')
