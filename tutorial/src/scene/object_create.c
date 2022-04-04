@@ -1,6 +1,6 @@
 #include "scene.h"
 
-t_object	*object(t_object_type type, void *data, t_color3 albedo)
+t_object	*object(t_object_type type, void *data, t_color3 albedo, t_checker checker)
 {
 	t_object	*new;
 
@@ -9,6 +9,7 @@ t_object	*object(t_object_type type, void *data, t_color3 albedo)
 	new->type = type;
 	new->data = data;
 	new->albedo = albedo;
+	new->checker = checker;
 	new->next = NULL;
 	return (new);
 }
