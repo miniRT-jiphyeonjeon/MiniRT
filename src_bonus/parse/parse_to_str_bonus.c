@@ -22,15 +22,17 @@ static t_obj_type	element_type_get(char *s)
 	return (NOTTYPE);
 }
 
-static void	parse_set(t_parse *lst, char **str)
+static int	parse_set(t_parse *lst, char **str)
 {
 	int		idx;
 
+	idx = 1;
 	lst->ident = str[0];
 	lst->id = element_type_get(str[0]);
 	if (lst->id == NOTTYPE)
 		error_user("invalid element name.\n");
-	idx = 1;
+	if (is_element_valid(lst->id, str) == FALSE)
+		error_user("Elements came in more than standard.\n");
 	if (is_info_valid(lst->id, POINT))
 		lst->point = str[idx++];
 	if (is_info_valid(lst->id, BRI_RATIO))
@@ -45,14 +47,43 @@ static void	parse_set(t_parse *lst, char **str)
 		lst->fov = str[idx++];
 	if (is_info_valid(lst->id, RGB))
 		lst->rgb = str[idx++];
-	if (is_element_valid(str, idx) == 0)
-		error_user("Elements came in more than standard.\n");
+	return (idx);
+}
+
+static void	parse_bonus_set(t_parse *lst, char **str, int idx)
+{
+	if (idx == split_len(str))
+	{
+		lst->texture_id = COLOR;
+		return ;
+	}
+	lst->t_ident = str[idx];
+	if (ft_strcmp(lst->t_ident, "ck") == 0)
+		lst->texture_id = CHECKBOARD;
+	else if (ft_strcmp(lst->t_ident, "bm") == 0)
+		lst->texture_id = BUMPMAP;
+	else
+		error_user("invalid texture name.\n");
+	if (is_texture_valid(lst->texture_id, str, idx) == FALSE)
+		error_user("texture info came in wrong.\n");
+	if (lst->texture_id == CHECKBOARD)
+	{
+		lst->check_color = str[++idx];
+		lst->check_width = str[++idx];
+		lst->check_height = str[++idx];
+	}
+	else if (lst->texture_id == BUMPMAP)
+	{
+		lst->texture_file = str[++idx];
+		lst->bump_file = str[++idx];
+	}
 }
 
 static t_parse	*element_set(char *line)
 {
 	char		**str_splited;
 	t_parse		*lst;
+	int			idx;
 
 	lst = new_parse();
 	str_splited = ft_split(line, " \t\v\f\r");
@@ -63,7 +94,8 @@ static t_parse	*element_set(char *line)
 		free(lst);
 		return (del_split(str_splited));
 	}
-	parse_set(lst, str_splited);
+	idx = parse_set(lst, str_splited);
+	parse_bonus_set(lst, str_splited, idx);
 	free(str_splited);
 	return (lst);
 }

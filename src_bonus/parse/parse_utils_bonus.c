@@ -30,6 +30,22 @@ void	del_parse(t_parse *parse)
 		free(parse->rgb);
 }
 
+void	del_parse_texture(t_parse *parse)
+{
+	if (parse->t_ident != NULL)
+		free(parse->t_ident);
+	if (parse->check_color != NULL)
+		free(parse->check_color);
+	if (parse->check_width != NULL)
+		free(parse->check_width);
+	if (parse->check_height != NULL)
+		free(parse->check_height);
+	if (parse->texture_file != NULL)
+		free(parse->texture_file);
+	if (parse->bump_file != NULL)
+		free(parse->bump_file);
+}
+
 t_parse	*del_split(char **str)
 {
 	int		idx;
@@ -39,4 +55,14 @@ t_parse	*del_split(char **str)
 		free(str[idx++]);
 	free(str);
 	return (NULL);
+}
+
+int	split_len(char **str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i] != NULL)
+		++i;
+	return (i);
 }

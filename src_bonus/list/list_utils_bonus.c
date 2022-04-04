@@ -11,9 +11,6 @@ t_obj_list	*new_obj_list(void *object, int type, t_color3 color)
 	new_lst->type = type;
 	new_lst->object = object;
 	new_lst->color.color = color;
-	new_lst->color.checkboard = NULL;
-	new_lst->color.bumpmap = NULL;
-	new_lst->next = NULL;
 	return (new_lst);
 }
 
@@ -63,6 +60,11 @@ void	del_obj_lst_parse(t_obj_list **lst)
 		first_lst = second_lst;
 		second_lst = second_lst->next;
 		del_parse(first_lst->object);
+		del_parse_texture(first_lst->object);
+		if (first_lst->color.checkboard != NULL)
+			free(first_lst->color.checkboard);
+		else if (first_lst->color.bumpmap != NULL)
+			free(first_lst->color.bumpmap);
 		free(first_lst->object);
 		free(first_lst);
 	}

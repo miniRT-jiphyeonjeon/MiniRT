@@ -46,6 +46,13 @@ typedef struct s_eq
 	double	c;
 }	t_eq;
 
+typedef enum e_color_type
+{
+	COLOR = 0,
+	CHECKBOARD = 1,
+	BUMPMAP = 2,
+}	t_color_type;
+
 typedef enum e_obj_type
 {
 	NOTTYPE = -1,
@@ -56,8 +63,6 @@ typedef enum e_obj_type
 	PLANE = 4,
 	CYLINDER = 5,
 	CONE = 6,
-	CHECKBOARD = 7,
-	BUMPMAP = 8,
 }	t_obj_type;
 
 typedef enum e_info
@@ -73,21 +78,22 @@ typedef enum e_info
 
 typedef struct s_parse
 {
-	t_obj_type	id;
-	char		*ident;
-	char		*bri_ratio;
-	char		*point;
-	char		*nor_vec;
-	char		*diameter;
-	char		*height;
-	char		*fov;
-	char		*rgb;
-	t_obj_type	texture_id;
-	char		*check_color;
-	char		*check_width;
-	char		*check_height;
-	char		*texture_file;
-	char		*bump_file;
+	t_obj_type		id;
+	char			*ident;
+	char			*bri_ratio;
+	char			*point;
+	char			*nor_vec;
+	char			*diameter;
+	char			*height;
+	char			*fov;
+	char			*rgb;
+	t_color_type	texture_id;
+	char			*t_ident;
+	char			*check_color;
+	char			*check_width;
+	char			*check_height;
+	char			*texture_file;
+	char			*bump_file;
 }	t_parse;
 
 typedef struct s_checkboard
@@ -99,8 +105,8 @@ typedef struct s_checkboard
 
 typedef struct s_bumpmap
 {
-	t_image		*texture;
-	t_image		*bump;
+	t_image		texture;
+	t_image		bump;
 }	t_bumpmap;
 
 typedef struct s_color_info
