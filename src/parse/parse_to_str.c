@@ -26,11 +26,13 @@ static void	parse_set(t_parse *lst, char **str)
 {
 	int		idx;
 
+	idx = 1;
 	lst->ident = str[0];
 	lst->id = element_type_get(str[0]);
 	if (lst->id == NOTTYPE)
 		error_user("invalid element name.\n");
-	idx = 1;
+	if (is_element_valid(lst->id, str) == FALSE)
+		error_user("Elements came in more than standard.\n");
 	if (is_info_valid(lst->id, POINT))
 		lst->point = str[idx++];
 	if (is_info_valid(lst->id, BRI_RATIO))
@@ -45,8 +47,6 @@ static void	parse_set(t_parse *lst, char **str)
 		lst->fov = str[idx++];
 	if (is_info_valid(lst->id, RGB))
 		lst->rgb = str[idx++];
-	if (is_element_valid(str, idx) == 0)
-		error_user("Elements came in more than standard.\n");
 }
 
 static t_parse	*element_set(char *line)

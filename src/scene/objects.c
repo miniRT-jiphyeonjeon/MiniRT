@@ -2,6 +2,7 @@
 #include "parse.h"
 #include "scene.h"
 #include "list.h"
+#include <math.h>
 
 void	sphere_set(t_scene *scene, t_parse_list *lst)
 {
@@ -14,7 +15,7 @@ void	sphere_set(t_scene *scene, t_parse_list *lst)
 	sphere = ft_calloc(sizeof(t_sphere), 0);
 	obj_list_add_back(&scene->objects, lst_new);
 	sphere->center = vec_get(lst_parse->point, 0, 0);
-	sphere->radius = double_get(lst_parse->diameter, 0, 0) / 2;
+	sphere->radius = double_get(lst_parse->diameter, 0, INFINITY) / 2;
 	sphere->radius2 = sphere->radius * sphere->radius;
 	lst_new->type = SPHERE;
 	lst_new->color = vec_get(lst_parse->rgb, 0, 255);
@@ -50,9 +51,9 @@ void	cylinder_set(t_scene *scene, t_parse_list *lst)
 	obj_list_add_back(&scene->objects, lst_new);
 	cylinder->center = vec_get(lst_parse->point, 0, 0);
 	cylinder->normal = vec_get(lst_parse->nor_vec, -1, 1);
-	cylinder->radius = double_get(lst_parse->diameter, 0, 0) / 2;
+	cylinder->radius = double_get(lst_parse->diameter, 0, INFINITY) / 2;
 	cylinder->radius2 = cylinder->radius * cylinder->radius;
-	cylinder->height = double_get(lst_parse->height, 0, 0);
+	cylinder->height = double_get(lst_parse->height, 0, INFINITY);
 	lst_new->type = CYLINDER;
 	lst_new->color = vec_get(lst_parse->rgb, 0, 255);
 	lst_new->object = cylinder;
