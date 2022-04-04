@@ -24,12 +24,15 @@ struct s_vec3	vec_get(char *s, double min, double max);
 
 t_parse			*new_parse(void);
 void			del_parse(t_parse *parse);
+void			del_parse_texture(t_parse *parse);
 t_parse			*del_split(char **str);
+int				split_len(char **str);
 
 // parse_bool
 
 t_bool			is_scene_env_valid(t_parse_list *lst);
-t_bool			is_element_valid(char **str, int idx);
 t_bool			is_info_valid(t_obj_type id, t_info info);
+t_bool			is_element_valid(t_obj_type id, char **str);
+t_bool			is_texture_valid(t_color_type id, char **str, int idx);
 
 #endif

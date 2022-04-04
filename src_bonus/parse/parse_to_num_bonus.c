@@ -2,6 +2,7 @@
 #include "libft.h"
 #include "vector3_bonus.h"
 #include "error_bonus.h"
+#include <math.h>
 
 double	double_get(char *s, double min, double max)
 {
@@ -13,6 +14,8 @@ double	double_get(char *s, double min, double max)
 		error_user("Elements must came in standard.\n");
 	if (min == 0 && max == 0)
 		return (d);
+	else if (min == 0 && max == INFINITY && d < 0)
+		error_user("The properties of the shape must be positive.\n");
 	if (d < min || d > max)
 		error_user("Elements must came in standard.\n");
 	return (d);
