@@ -5,33 +5,28 @@
 #include "trace_bonus.h"
 #include "list_bonus.h"
 
-static int	get_color(t_color3 pixel_color)
-{
-	int	color;
-
-	color = 0;
-	color |= color_calc(pixel_color.x) << 16;
-	color |= color_calc(pixel_color.y) << 8;
-	color |= color_calc(pixel_color.z);
-	return (color);
-}
-
 static void	ray_trace(t_mlx *mlx, t_scene *scene, int row, int col)
 {
 	double		alpha;
 	double		beta;
 	t_color3	pixel_color;
+	int			res_color;
 
 	alpha = (double)col / (WIN_WIDTH - 1);
 	beta = (double)row / (WIN_HEIGHT - 1);
 	scene->ray = ray_primary(&scene->camera, alpha, beta);
 	pixel_color = ray_tracing(scene);
+	row = WIN_HEIGHT - 1 - row;
 	if (pixel_color.x == -1 && pixel_color.y == -1 && pixel_color.z == -1)
-		my_mlx_pixel_put(
-			&mlx->img, col, WIN_HEIGHT - 1 - row, my_mlx_pixel_get(&mlx->background, col, row));
+	{
+		if (mlx->background.ratio_w < 1 || mlx->background.ratio_h < 1)
+			res_color = oversampling(&mlx->background, col, row);
+		else
+			res_color = xpm_pixel_get(&mlx->background, col, row);
+	}
 	else
-		my_mlx_pixel_put(
-			&mlx->img, col, WIN_HEIGHT - 1 - row, get_color(pixel_color));
+		res_color = color3_to_pixel(pixel_color);
+	my_mlx_pixel_put(&mlx->img, col, row, res_color);
 }
 
 static void	scene_create(t_mlx *mlx, t_scene *scene)

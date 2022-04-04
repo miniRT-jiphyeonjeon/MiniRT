@@ -19,12 +19,39 @@ typedef struct s_image
 	int		endian;
 }	t_image;
 
+typedef struct s_xpm_image
+{
+	t_image	data;
+	int		height;
+	int		width;
+	double	ratio_h;
+	double	ratio_w;
+}	t_xpm_image;
+
 typedef struct s_mlx
 {
-	void	*mlx;
-	void	*win;
-	t_image	img;
+	void		*mlx;
+	void		*win;
+	t_image		img;
+	t_xpm_image	background;
 }	t_mlx;
+
+typedef enum e_color_mask
+{
+	RED = 16,
+	GREEN = 8,
+	BLUE = 0,
+}	t_color_mask;
+
+typedef struct s_interpolation
+{
+	double	alpha;
+	double	beta;
+	int		a;
+	int		b;
+	int		c;
+	int		d;
+}	t_interpolation;
 
 struct s_vec3
 {

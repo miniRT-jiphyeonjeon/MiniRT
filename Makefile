@@ -34,7 +34,7 @@ vector3M	:= vector_operation1 vector_operation2 vector_operation3 vector_set
 PKGS_BONUS	:= error event list scene trace parse vector3
 
 errorB		:= error
-eventB		:= draw draw_util hook_key_n_exit
+eventB		:= draw draw_util hook_key_n_exit oversampling
 listB		:= list_utils
 sceneB		:= ambient camera light objects scene
 traceB		:= hit_cylinder hit_plane hit_sphere hit phong_illumination phong_light ray util
