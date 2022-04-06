@@ -157,6 +157,8 @@ typedef struct s_hit_record
 	double		tmin;
 	double		tmax;
 	double		t;
+	double		u;
+	double		v;
 	t_bool		front_face;
 	t_color3	color;
 }	t_hit_record;

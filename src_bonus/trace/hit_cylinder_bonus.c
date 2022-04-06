@@ -2,6 +2,26 @@
 #include "trace_bonus.h"
 #include "vector3_bonus.h"
 
+static void	cylinder_uv(t_hit_record *rec, t_cylinder *cy, double *u, double *v)
+{
+	double	theta;
+	double	height;
+	t_vec3	u_dir;
+	t_vec3	v_dir;
+	t_vec3	pc;
+
+	v_dir = vec3_cross(vec3(1, 0, 0), cy->normal);
+	if (vec3_length_square(v_dir) == 0)
+		v_dir = vec3_cross(vec3(0, 0, 1), cy->normal);
+	v_dir = vec3_unit(v_dir);
+	u_dir = vec3_unit(vec3_cross(v_dir, cy->normal));
+	pc = vec3_minus(rec->p, cy->center);
+	theta = atan2(-1 * vec3_dot(pc, v_dir), vec3_dot(pc, u_dir)) + M_PI;
+	height = vec3_dot(pc, cy->normal);
+	*u = theta * M_1_PI * 0.5;
+	*v = fmod(height, 1);
+}
+
 static t_bool	check_cylinder(
 	t_obj_list objects[], t_ray *ray, t_hit_record *rec, double root)
 {
@@ -19,7 +39,11 @@ static t_bool	check_cylinder(
 	rec->normal = vec3_unit(vec3_minus(rec->p, vec3_plus(cy->center,
 					vec3_mult_scalar(cy->normal, vec3_dot(
 							vec3_minus(rec->p, cy->center), cy->normal)))));
-	rec->color = objects->color.color;
+	cylinder_uv(rec, cy, &rec->u, &rec->v);
+	if (is_checkerboard(objects->color))
+		rec->color = checker_color(rec->u, rec->v, objects->color);
+	else
+		rec->color = objects->color.color;
 	set_face_normal(ray, rec);
 	return (TRUE);
 }

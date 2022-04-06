@@ -42,6 +42,10 @@ void	del_obj_list(t_obj_list **lst)
 	{
 		first_lst = second_lst;
 		second_lst = second_lst->next;
+		if (first_lst->color.checkboard)
+			free(first_lst->color.checkboard);
+		if (first_lst->color.bumpmap)
+			free(first_lst->color.bumpmap);
 		free(first_lst->object);
 		free(first_lst);
 	}

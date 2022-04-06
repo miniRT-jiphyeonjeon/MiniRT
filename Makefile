@@ -86,15 +86,17 @@ CL_BRESET	= \033[21m
 
 
 # ===== Rules =====
-.PHONY : all clean fclean tclean re rere bonus
+.PHONY : all clean fclean tclean re rere bonus bonus_re
 
 all : mlx $(LIBFT) $(NAME)
 
 bonus :
 	@make BONUS_MODE=1 all
 
+bonus_re : fclean bonus
+
 clean :
-	@$(RM) $(OBJS)
+	@$(RM) $(OBJS_M) $(OBJS_B)
 	@echo -e "🗑 Remove $(CL_BOLD)$(NAME)'s OBJs$(CL_RESET) ... Done"
 
 fclean : clean

@@ -5,7 +5,7 @@
 #include "list_bonus.h"
 #include <math.h>
 
-static void	texture_get(t_parse_list *l, t_parse *p)
+static void	texture_get(t_obj_list *l, t_parse *p)
 {
 	if (p->texture_id == COLOR)
 		return ;
@@ -40,7 +40,7 @@ void	sphere_set(t_scene *scene, t_parse_list *lst)
 	sphere->radius2 = sphere->radius * sphere->radius;
 	lst_new->type = SPHERE;
 	lst_new->color.color = vec_get(lst_parse->rgb, 0, 255);
-	texture_get(lst, lst_parse);
+	texture_get(lst_new, lst_parse);
 	lst_new->object = sphere;
 }
 
@@ -58,7 +58,7 @@ void	plane_set(t_scene *scene, t_parse_list *lst)
 	plane->normal = vec_get(lst_parse->nor_vec, -1, 1);
 	lst_new->type = PLANE;
 	lst_new->color.color = vec_get(lst_parse->rgb, 0, 255);
-	texture_get(lst, lst_parse);
+	texture_get(lst_new, lst_parse);
 	lst_new->object = plane;
 }
 
@@ -79,6 +79,6 @@ void	cylinder_set(t_scene *scene, t_parse_list *lst)
 	cylinder->height = double_get(lst_parse->height, 0, INFINITY);
 	lst_new->type = CYLINDER;
 	lst_new->color.color = vec_get(lst_parse->rgb, 0, 255);
-	texture_get(lst, lst_parse);
+	texture_get(lst_new, lst_parse);
 	lst_new->object = cylinder;
 }

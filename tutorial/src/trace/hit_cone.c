@@ -1,3 +1,4 @@
+#include <math.h>
 #include "structures.h"
 #include "utils.h"
 #include "trace.h"
@@ -42,6 +43,27 @@ static t_eq	get_equation(t_object objects[], t_ray *ray)
 	return (eq);
 }
 
+static void	get_cone_uv(t_hit_record *rec, t_cone *cn, double *u, double *v)
+{
+	double	theta;
+	double	height;
+	t_vec3	u_dir;
+	t_vec3	v_dir;
+	t_vec3	pc;
+
+	v_dir = vcross(vec3(1, 0, 0), cn->normal);
+	if (vlength2(v_dir) == 0)
+		v_dir = vcross(vec3(0, 0, 1), cn->normal);
+	v_dir = vunit(v_dir);
+	u_dir = vunit(vcross(v_dir, cn->normal));
+	pc = vminus_(rec->p, cn->center);
+
+	theta = atan2(-1 * vdot(pc, v_dir), vdot(pc, u_dir)) + M_PI;
+	height = vdot(pc, cn->normal);
+	*u = theta * M_1_PI * 0.5;
+	*v = fmod(height, 1);
+}
+
 static t_bool	check_cone(t_object objects[], t_ray *ray, t_hit_record *rec, double root)
 {
 	t_cone	*cn;
@@ -58,8 +80,12 @@ static t_bool	check_cone(t_object objects[], t_ray *ray, t_hit_record *rec, doub
 		return (FALSE);
 	rec->normal = vunit(vminus_(rec->p, vplus_(cn->center, vmult(cn->normal, 
 					vdot(vminus_(rec->p, cn->center), cn->normal)))));
-	rec->albedo = objects->albedo;
-	// set_face_normal(ray, rec);
+	get_cone_uv(rec, cn, &rec->u, &rec->v);
+	if (objects->checker.on == FALSE)
+		rec->albedo = objects->albedo;
+	else
+		rec->albedo = checker_color(rec->u, rec->v, rec->p, objects->checker);
+	set_face_normal(ray, rec);
 	return (TRUE);
 }
 
