@@ -45,6 +45,7 @@ t_bool	is_in_shadow(t_scene *scene, t_vec3 light_dir, double light_len)
 				vec3_mult_scalar(light_dir, EPSILON)), light_dir);
 	record.tmin = 0;
 	record.tmax = light_len;
+	record.texture = scene->texture;
 	if (hit(scene->objects, &shadow_ray, &record))
 		return (TRUE);
 	return (FALSE);

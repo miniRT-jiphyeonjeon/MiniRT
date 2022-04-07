@@ -46,9 +46,11 @@ t_color3	ray_tracing(t_scene *scene)
 	double	t;
 
 	scene->record = record_init();
+	scene->record.texture = scene->texture;
 	if (hit(scene->objects, &scene->ray, &scene->record))
 		return (phong_illumination_model(scene));
 	else
+		// return (color3(-1, -1, -1));
 	{	
 		t = 0.5 * (scene->ray.direction.y + 1.0);
 		return (vec3_plus(vec3_mult_scalar(color3(1, 1, 1), 1.0 - t),

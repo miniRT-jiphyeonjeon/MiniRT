@@ -1,6 +1,36 @@
 #include <math.h>
 #include "trace_bonus.h"
 #include "vector3_bonus.h"
+#include "event_bonus.h"
+
+static int	rgb_extract(int mlx_color, t_color_mask type)
+{
+	return ((mlx_color >> type) & 0xFF);
+}
+
+static t_color3	pixel_to_color3(int mlx_color)
+{
+	double	r;
+	double	g;
+	double	b;
+
+	r = (double)rgb_extract(mlx_color, RED) / 256;
+	g = (double)rgb_extract(mlx_color, GREEN) / 256;
+	b = (double)rgb_extract(mlx_color, BLUE) / 256;
+	return (color3(r, g, b));
+}
+
+static t_color3	image_mapping(double u, double v, t_xpm_image img)
+{
+	int		u_int;
+	int		v_int;
+	int		mlx_color;
+
+	u_int = (int)(u * img.width);
+	v_int = (int)((1.0 - v) * img.height);
+	mlx_color = xpm_pixel_get(&img, u_int, v_int);
+	return (pixel_to_color3(mlx_color));
+}
 
 static void	sphere_uv(t_vec3 normal, double *u, double *v)
 {
@@ -28,7 +58,8 @@ static t_bool	sphere_check(
 	if (is_checkerboard(objects->color))
 		rec->color = checker_color(rec->u, rec->v, objects->color);
 	else
-		rec->color = objects->color.color;
+		rec->color = image_mapping(rec->u, rec->v, rec->texture);
+		// rec->color = objects->color.color;
 	set_face_normal(ray, rec);
 	return (TRUE);
 }
