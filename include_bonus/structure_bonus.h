@@ -168,6 +168,8 @@ typedef struct s_hit_record
 {
 	t_point3	p;
 	t_vec3		normal;
+	t_vec3		u_dir;
+	t_vec3		v_dir;
 	double		tmin;
 	double		tmax;
 	double		t;

@@ -2,18 +2,22 @@
 #include "trace_bonus.h"
 #include "vector3_bonus.h"
 
-static void	plane_uv(t_point3 p, t_vec3 normal, double *u, double *v)
+static double	mod_abs(double x)
 {
-	t_vec3	u_dir;
-	t_vec3	v_dir;
+	if (x < 0)
+		return (x + 1);
+	return (x);
+}
 
-	v_dir = vec3_cross(normal, vec3(1, 0, 0));
-	if (vec3_length_square(v_dir) == 0)
-		v_dir = vec3_cross(normal, vec3(0, 0, 1));
-	v_dir = vec3_unit(v_dir);
-	u_dir = vec3_unit(vec3_cross(v_dir, normal));
-	*u = fmod(vec3_dot(p, u_dir), 1);
-	*v = fmod(vec3_dot(p, v_dir), 1);
+static void	plane_uv(t_hit_record *rec)
+{
+	rec->v_dir = vec3_cross(rec->normal, vec3(1, 0, 0));
+	if (vec3_length_square(rec->v_dir) == 0)
+		rec->v_dir = vec3_cross(rec->normal, vec3(0, 0, 1));
+	rec->v_dir = vec3_unit(rec->v_dir);
+	rec->u_dir = vec3_unit(vec3_cross(rec->v_dir, rec->normal));
+	rec->u = mod_abs(fmod(vec3_dot(rec->p, rec->u_dir), 1));
+	rec->v = mod_abs(fmod(vec3_dot(rec->p, rec->v_dir), 1));
 }
 
 t_bool	hit_plane(t_obj_list objects[], t_ray *ray, t_hit_record *rec)
@@ -34,11 +38,17 @@ t_bool	hit_plane(t_obj_list objects[], t_ray *ray, t_hit_record *rec)
 	rec->t = root;
 	rec->p = ray_at(ray, root);
 	rec->normal = pl->normal;
-	plane_uv(rec->p, rec->normal, &rec->u, &rec->v);
+	plane_uv(rec);
 	if (is_checkerboard(objects->color))
 		rec->color = checker_color(rec->u, rec->v, objects->color);
+	else if (is_bumpmap(objects->color))
+	{
+		rec->color = image_mapping(rec->u, rec->v, objects->color.bumpmap->texture);
+		rec->normal = normal_mapping(rec, objects->color.bumpmap->bump);
+	}
 	else
 		rec->color = objects->color.color;
+	
 	set_face_normal(ray, rec);
 	return (TRUE);
 }
