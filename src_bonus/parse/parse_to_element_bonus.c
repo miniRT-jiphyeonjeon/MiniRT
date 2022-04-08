@@ -18,12 +18,9 @@ t_scene	*parse_to_element(t_parse_list *lst, void *mlx_ptr)
 			scene->camera = camera_prev_set(scene, lst);
 		else if (lst_parse->id == POINT_LIGHT)
 			light_set(scene, lst);
-		else if (lst_parse->id == SPHERE)
-			sphere_set(scene, lst, mlx_ptr);
-		else if (lst_parse->id == PLANE)
-			plane_set(scene, lst, mlx_ptr);
-		else if (lst_parse->id == CYLINDER)
-			cylinder_set(scene, lst, mlx_ptr);
+		else if (lst_parse->id == SPHERE || lst_parse->id == PLANE || \
+		lst_parse->id == CYLINDER || lst_parse->id == CONE)
+			object_set(scene, lst, mlx_ptr);
 		lst = lst->next;
 	}
 	return (scene);

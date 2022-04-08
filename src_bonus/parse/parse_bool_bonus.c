@@ -31,21 +31,22 @@ t_bool	is_info_valid(t_obj_type id, t_info info)
 {
 	if (info == POINT && \
 	(id == CAMERA || id == POINT_LIGHT || id == SPHERE || id == PLANE || \
-	id == CYLINDER))
+	id == CYLINDER || id == CONE))
 		return (TRUE);
 	else if (info == BRI_RATIO && (id == AMBIENT || id == POINT_LIGHT))
 		return (TRUE);
-	else if (info == NOR_VEC && (id == CAMERA || id == PLANE || id == CYLINDER))
+	else if (info == NOR_VEC && \
+	(id == CAMERA || id == PLANE || id == CYLINDER || id == CONE))
 		return (TRUE);
-	else if (info == DIAMETER && (id == SPHERE || id == CYLINDER))
+	else if (info == DIAMETER && (id == SPHERE || id == CYLINDER || id == CONE))
 		return (TRUE);
-	else if (info == HEIGHT && (id == CYLINDER))
+	else if (info == HEIGHT && (id == CYLINDER || id == CONE))
 		return (TRUE);
 	else if (info == FOV && (id == CAMERA))
 		return (TRUE);
 	else if (info == RGB && \
 	(id == AMBIENT || id == POINT_LIGHT || id == SPHERE || id == PLANE || \
-	id == CYLINDER))
+	id == CYLINDER || id == CONE))
 		return (TRUE);
 	return (FALSE);
 }

@@ -182,28 +182,6 @@ typedef struct s_light
 	double		bright_ratio;
 }	t_light;
 
-typedef struct s_sphere
-{
-	t_point3	center;
-	double		radius;
-	double		radius2;
-}	t_sphere;
-
-typedef struct s_plane
-{
-	t_point3	point;
-	t_vec3		normal;
-}	t_plane;
-
-typedef struct s_cylinder
-{
-	t_point3	center;
-	t_vec3		normal;
-	double		radius;
-	double		radius2;
-	double		height;
-}	t_cylinder;
-
 typedef struct s_object
 {
 	t_point3	center;

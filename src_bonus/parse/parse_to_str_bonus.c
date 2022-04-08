@@ -19,6 +19,8 @@ static t_obj_type	element_type_get(char *s)
 		return (PLANE);
 	else if (!ft_strcmp(s, "cy"))
 		return (CYLINDER);
+	else if (!ft_strcmp(s, "co"))
+		return (CONE);
 	return (NOTTYPE);
 }
 

@@ -2,7 +2,7 @@
 #include "trace_bonus.h"
 #include "vector3_bonus.h"
 
-static void	cylinder_uv(t_hit_record *rec, t_cylinder *cy, double *u, double *v)
+static void	cylinder_uv(t_hit_record *rec, t_object *cy, double *u, double *v)
 {
 	double	theta;
 	double	height;
@@ -25,10 +25,10 @@ static void	cylinder_uv(t_hit_record *rec, t_cylinder *cy, double *u, double *v)
 static t_bool	check_cylinder(
 	t_obj_list objects[], t_ray *ray, t_hit_record *rec, double root)
 {
-	t_cylinder	*cy;
+	t_object	*cy;
 	double		p_height;
 
-	cy = (t_cylinder *)objects->object;
+	cy = (t_object *)objects->object;
 	if (isnan(root) || root < rec->tmin || rec->tmax < root)
 		return (FALSE);
 	rec->t = root;
@@ -50,11 +50,11 @@ static t_bool	check_cylinder(
 
 static t_eq	cylinder_equation(t_obj_list objects[], t_ray *ray)
 {
-	t_cylinder	*cy;
+	t_object	*cy;
 	t_eq		eq;
 	t_vec3		oc;
 
-	cy = (t_cylinder *)objects->object;
+	cy = (t_object *)objects->object;
 	oc = vec3_minus(ray->origin, cy->center);
 	eq.a = vec3_dot(ray->direction, ray->direction)
 		- vec3_dot(ray->direction, cy->normal)
