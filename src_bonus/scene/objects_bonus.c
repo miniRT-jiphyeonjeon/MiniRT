@@ -48,6 +48,32 @@ static void	texture_get(t_obj_list *l, t_parse *p, void *mlx_ptr)
 	}
 }
 
+void	object_set(t_scene *scene, t_parse_list *lst, void *mlx_ptr)
+{
+	t_obj_list	*lst_new;
+	t_parse		*lst_parse;
+	t_object	*object;
+
+	lst_parse = lst->object;
+	lst_new = ft_calloc(sizeof(t_obj_list), 0);
+	object = ft_calloc(sizeof(t_object), 0);
+	obj_list_add_back(&scene->objects, lst_new);
+	object->center = vec_get(lst_parse->point, 0, 0);
+	if (lst_parse->id != SPHERE)
+	object->normal = vec_get(lst_parse->nor_vec, -1, 1);
+	if (lst_parse->id != PLANE)
+	{
+		object->radius = double_get(lst_parse->diameter, 0, INFINITY) / 2;
+		object->radius2 = object->radius * object->radius;
+	}
+	if (lst_parse->id == CYLINDER || lst_parse->id == CONE)
+		object->height = double_get(lst_parse->height, 0, INFINITY);
+	lst_new->type = lst_parse->id;
+	lst_new->color.color = vec_get(lst_parse->rgb, 0, 255);
+	texture_get(lst_new, lst_parse, mlx_ptr);
+	lst_new->object = object;
+}
+
 void	sphere_set(t_scene *scene, t_parse_list *lst, void *mlx_ptr)
 {
 	t_obj_list	*lst_new;

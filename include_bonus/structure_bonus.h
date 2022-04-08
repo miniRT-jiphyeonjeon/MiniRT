@@ -204,6 +204,15 @@ typedef struct s_cylinder
 	double		height;
 }	t_cylinder;
 
+typedef struct s_object
+{
+	t_point3	center;
+	t_vec3		normal;
+	double		radius;
+	double		radius2;
+	double		height;
+}	t_object;
+
 typedef struct s_scene
 {
 	t_canvas		canvas;
