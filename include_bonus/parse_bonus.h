@@ -13,7 +13,7 @@ t_obj_list		*parse_to_str(int fd);
 
 // parse_to_element
 
-t_scene			*parse_to_element(t_parse_list *lst);
+t_scene			*parse_to_element(t_parse_list *lst, void *mlx_ptr);
 
 // parse_to_num
 

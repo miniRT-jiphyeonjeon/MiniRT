@@ -26,6 +26,13 @@ typedef struct s_mlx
 	t_image	img;
 }	t_mlx;
 
+typedef struct s_xpm_image
+{
+	t_image	data;
+	int		height;
+	int		width;
+}	t_xpm_image;
+
 struct s_vec3
 {
 	double	x;
@@ -105,8 +112,8 @@ typedef struct s_checkboard
 
 typedef struct s_bumpmap
 {
-	t_image		texture;
-	t_image		bump;
+	t_xpm_image	texture;
+	t_xpm_image	bump;
 }	t_bumpmap;
 
 typedef struct s_color_info

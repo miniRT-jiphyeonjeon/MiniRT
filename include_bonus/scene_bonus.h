@@ -29,8 +29,8 @@ void		light_set(t_scene *scene, t_obj_list *lst);
 
 // objects
 
-void		sphere_set(t_scene *scene, t_obj_list *lst);
-void		plane_set(t_scene *scene, t_obj_list *lst);
-void		cylinder_set(t_scene *scene, t_obj_list *lst);
+void		sphere_set(t_scene *scene, t_obj_list *lst, void *mlx_ptr);
+void		plane_set(t_scene *scene, t_obj_list *lst, void *mlx_ptr);
+void		cylinder_set(t_scene *scene, t_obj_list *lst, void *mlx_ptr);
 
 #endif
