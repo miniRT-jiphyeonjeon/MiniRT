@@ -146,3 +146,7 @@ $(LIBFT) :
 
 libft_fclean :
 	@make --no-print-directory -C $(LIBFT_DIR) fclean
+
+# ===== for Mini Earth =====
+earth :
+	$(CC) $(INCD) miniearth.c lib/libft/src/**/*.c src/vector3/*.c -o miniearth
