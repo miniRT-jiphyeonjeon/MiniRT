@@ -22,7 +22,7 @@ int	main(int argv, char **argc)
 
 	fd = fd_get(argv, argc);
 	info = parse_to_str(fd);
-	scene = parse_to_element(info);
+	scene = parse_to_element(info, mlx.mlx);
 	del_obj_lst_parse(&info);
 	program_init(&mlx);
 	scene_draw(&mlx, scene);

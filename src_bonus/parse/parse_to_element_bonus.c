@@ -3,7 +3,7 @@
 #include "parse_bonus.h"
 #include "event_bonus.h"
 
-t_scene	*parse_to_element(t_parse_list *lst)
+t_scene	*parse_to_element(t_parse_list *lst, void *mlx_ptr)
 {
 	t_scene		*scene;
 	t_parse		*lst_parse;
@@ -19,11 +19,11 @@ t_scene	*parse_to_element(t_parse_list *lst)
 		else if (lst_parse->id == POINT_LIGHT)
 			light_set(scene, lst);
 		else if (lst_parse->id == SPHERE)
-			sphere_set(scene, lst);
+			sphere_set(scene, lst, mlx_ptr);
 		else if (lst_parse->id == PLANE)
-			plane_set(scene, lst);
+			plane_set(scene, lst, mlx_ptr);
 		else if (lst_parse->id == CYLINDER)
-			cylinder_set(scene, lst);
+			cylinder_set(scene, lst, mlx_ptr);
 		lst = lst->next;
 	}
 	return (scene);
