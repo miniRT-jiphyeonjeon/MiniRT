@@ -11,13 +11,15 @@ static t_xpm_image	image_get(char *filename, void *mlx_ptr)
 	t_xpm_image	image;
 	char		*extension_name;
 	int			filename_len;
+	int			cmp_num;
 
 	extension_name = ".xpm";
 	filename_len = ft_strlen(filename);
 	if (filename_len < 4)
-		error_user("image file is not correct.\n");
-	if (ft_strcmp(extension_name, filename) != 0)
-		error_user("image file is not correct.\n");
+		error_user("The image file extension must be [.xpm].\n");
+	cmp_num = ft_strcmp(&filename[filename_len - 4], extension_name);
+	if (cmp_num != 0)
+		error_user("The image file extension must be [.xpm].\n");
 	image.data.img = mlx_xpm_file_to_image(mlx_ptr, \
 	filename, &image.width, &image.height);
 	if (image.data.img == NULL)

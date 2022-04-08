@@ -22,9 +22,9 @@ int	main(int argv, char **argc)
 
 	fd = fd_get(argv, argc);
 	info = parse_to_str(fd);
+	program_init(&mlx);
 	scene = parse_to_element(info, mlx.mlx);
 	del_obj_lst_parse(&info);
-	program_init(&mlx);
 	scene_draw(&mlx, scene);
 	mlx_hook(mlx.win, X11_KEYPRESS, 1L << 0, key_press, &mlx);
 	mlx_hook(mlx.win, X11_CLOSEBTN, 1L << 2, exit_button, &mlx);

@@ -35,7 +35,7 @@ PKGS_BONUS	:= error event list scene trace parse vector3
 
 errorB		:= error
 eventB		:= draw draw_util hook_key_n_exit
-listB		:= list_utils
+listB		:= list_utils list_del
 sceneB		:= ambient camera light objects scene
 traceB		:= hit_cylinder hit_plane hit_sphere hit phong_illumination phong_light ray util
 parseB		:= parse_bool parse_read parse_to_num parse_to_element parse_to_str parse_utils

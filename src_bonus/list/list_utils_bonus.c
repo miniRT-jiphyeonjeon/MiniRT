@@ -1,6 +1,5 @@
 #include "libft.h"
 #include "list_bonus.h"
-#include "parse_bonus.h"
 #include <stdlib.h>
 
 t_obj_list	*new_obj_list(void *object, int type, t_color3 color)
@@ -29,49 +28,6 @@ void	obj_list_add_back(t_obj_list **lst, t_obj_list *new_lst)
 	}
 	new_lst->next = NULL;
 	return ;
-}
-
-void	del_obj_list(t_obj_list **lst)
-{
-	t_obj_list	*first_lst;
-	t_obj_list	*second_lst;
-
-	second_lst = *lst;
-	*lst = NULL;
-	while (second_lst)
-	{
-		first_lst = second_lst;
-		second_lst = second_lst->next;
-		if (first_lst->color.checkboard)
-			free(first_lst->color.checkboard);
-		if (first_lst->color.bumpmap)
-			free(first_lst->color.bumpmap);
-		free(first_lst->object);
-		free(first_lst);
-	}
-}
-
-// 함수포인터 이용해서 리펙토링 필요할 듯
-void	del_obj_lst_parse(t_obj_list **lst)
-{
-	t_obj_list	*first_lst;
-	t_obj_list	*second_lst;
-
-	second_lst = *lst;
-	*lst = NULL;
-	while (second_lst)
-	{
-		first_lst = second_lst;
-		second_lst = second_lst->next;
-		del_parse(first_lst->object);
-		del_parse_texture(first_lst->object);
-		if (first_lst->color.checkboard != NULL)
-			free(first_lst->color.checkboard);
-		else if (first_lst->color.bumpmap != NULL)
-			free(first_lst->color.bumpmap);
-		free(first_lst->object);
-		free(first_lst);
-	}
 }
 
 int	obj_list_size(t_obj_list *lst)
