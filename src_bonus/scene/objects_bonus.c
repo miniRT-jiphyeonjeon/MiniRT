@@ -48,60 +48,28 @@ static void	texture_get(t_obj_list *l, t_parse *p, void *mlx_ptr)
 	}
 }
 
-void	sphere_set(t_scene *scene, t_parse_list *lst, void *mlx_ptr)
+void	object_set(t_scene *scene, t_parse_list *lst, void *mlx_ptr)
 {
 	t_obj_list	*lst_new;
 	t_parse		*lst_parse;
-	t_sphere	*sphere;
+	t_object	*object;
 
 	lst_parse = lst->object;
 	lst_new = ft_calloc(sizeof(t_obj_list), 0);
-	sphere = ft_calloc(sizeof(t_sphere), 0);
+	object = ft_calloc(sizeof(t_object), 0);
 	obj_list_add_back(&scene->objects, lst_new);
-	sphere->center = vec_get(lst_parse->point, 0, 0);
-	sphere->radius = double_get(lst_parse->diameter, 0, INFINITY) / 2;
-	sphere->radius2 = sphere->radius * sphere->radius;
-	lst_new->type = SPHERE;
+	object->center = vec_get(lst_parse->point, 0, 0);
+	if (lst_parse->id != SPHERE)
+		object->normal = vec_get(lst_parse->nor_vec, -1, 1);
+	if (lst_parse->id != PLANE)
+	{
+		object->radius = double_get(lst_parse->diameter, 0, INFINITY) / 2;
+		object->radius2 = object->radius * object->radius;
+	}
+	if (lst_parse->id == CYLINDER || lst_parse->id == CONE)
+		object->height = double_get(lst_parse->height, 0, INFINITY);
+	lst_new->type = lst_parse->id;
 	lst_new->color.color = vec_get(lst_parse->rgb, 0, 255);
 	texture_get(lst_new, lst_parse, mlx_ptr);
-	lst_new->object = sphere;
-}
-
-void	plane_set(t_scene *scene, t_parse_list *lst, void *mlx_ptr)
-{
-	t_obj_list	*lst_new;
-	t_parse		*lst_parse;
-	t_plane		*plane;
-
-	lst_parse = lst->object;
-	lst_new = ft_calloc(sizeof(t_obj_list), 0);
-	plane = ft_calloc(sizeof(t_plane), 0);
-	obj_list_add_back(&scene->objects, lst_new);
-	plane->point = vec_get(lst_parse->point, 0, 0);
-	plane->normal = vec_get(lst_parse->nor_vec, -1, 1);
-	lst_new->type = PLANE;
-	lst_new->color.color = vec_get(lst_parse->rgb, 0, 255);
-	texture_get(lst_new, lst_parse, mlx_ptr);
-	lst_new->object = plane;
-}
-
-void	cylinder_set(t_scene *scene, t_parse_list *lst, void *mlx_ptr)
-{
-	t_obj_list	*lst_new;
-	t_parse		*lst_parse;
-	t_cylinder	*cylinder;
-
-	lst_parse = lst->object;
-	lst_new = ft_calloc(sizeof(t_obj_list), 0);
-	cylinder = ft_calloc(sizeof(t_cylinder), 0);
-	obj_list_add_back(&scene->objects, lst_new);
-	cylinder->center = vec_get(lst_parse->point, 0, 0);
-	cylinder->normal = vec_get(lst_parse->nor_vec, -1, 1);
-	cylinder->radius = double_get(lst_parse->diameter, 0, INFINITY) / 2;
-	cylinder->radius2 = cylinder->radius * cylinder->radius;
-	cylinder->height = double_get(lst_parse->height, 0, INFINITY);
-	lst_new->type = CYLINDER;
-	lst_new->color.color = vec_get(lst_parse->rgb, 0, 255);
-	texture_get(lst_new, lst_parse, mlx_ptr);
-	lst_new->object = cylinder;
+	lst_new->object = object;
 }
