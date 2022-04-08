@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <math.h>
+#include <unistd.h>
+#include <string.h>
 #include "vector3.h"
 
 #define THETA 0
@@ -23,7 +25,8 @@ int	main(int argc, char *argv[])
 {
 	if (argc != 5)
 	{
-		printf("Error: Usage: ./miniearth <latitude> <S/N> <longitude> <W/E>\n");
+		const char	*error_msg = "Error: Usage: ./miniearth <latitude> <S/N> <longitude> <W/E>\n";
+		write(2, error_msg, strlen(error_msg));
 		return (1);
 	}
 	
@@ -76,5 +79,6 @@ int	main(int argc, char *argv[])
 		normal.x, normal.y, normal.z);
 	printf("L %f,%f,%f 0.8 255,255,255\n",
 		light.x, light.y, light.z);
-	printf("sp 0,0,0 10 25,51,127\n");
+	printf("sp 0,0,0 10 25,51,127 bm ./input_bonus/earthmap.xpm ./input_bonus/earthmap_normal.xpm\n");
+	printf("sp 0,0,0 50 25,51,127 bm ./input_bonus/milkyway.xpm ./input_bonus/milkyway.xpm\n");
 }

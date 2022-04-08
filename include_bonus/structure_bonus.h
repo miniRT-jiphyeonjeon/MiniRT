@@ -19,15 +19,6 @@ typedef struct s_image
 	int		endian;
 }	t_image;
 
-typedef struct s_xpm_image
-{
-	t_image	data;
-	int		height;
-	int		width;
-	double	ratio_h;
-	double	ratio_w;
-}	t_xpm_image;
-
 typedef struct s_mlx
 {
 	void	*mlx;
@@ -184,7 +175,6 @@ typedef struct s_hit_record
 	double		v;
 	t_bool		front_face;
 	t_color3	color;
-	t_xpm_image	texture;
 }	t_hit_record;
 
 typedef struct s_ambient
@@ -217,7 +207,6 @@ typedef struct s_scene
 	t_ambient		ambient;
 	t_ray			ray;
 	t_hit_record	record;
-	t_xpm_image		texture;
 }	t_scene;
 
 typedef t_bool				(*t_obj_hit_f)(

@@ -43,16 +43,6 @@ static void	scene_create(t_mlx *mlx, t_scene *scene)
 
 void	scene_draw(t_mlx *mlx, t_scene *scene)
 {
-	//////////
-	scene->texture.data.img = mlx_xpm_file_to_image(mlx->mlx,
-			"./input_bonus/earthmap.xpm",
-			&scene->texture.width, &scene->texture.height);
-	scene->texture.data.addr = mlx_get_data_addr(
-		scene->texture.data.img, &scene->texture.data.bpp,
-		&scene->texture.data.line, &scene->texture.data.endian);
-	scene->texture.ratio_w = (double)scene->texture.width / (double)WIN_WIDTH;
-	scene->texture.ratio_h = (double)scene->texture.height / (double)WIN_HEIGHT;
-	//////////
 	scene_create(mlx, scene);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, 0, 0);
 }

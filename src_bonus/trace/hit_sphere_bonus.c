@@ -57,9 +57,10 @@ static t_bool	sphere_check(
 	sphere_uv(rec->normal, &rec->u, &rec->v);
 	if (is_checkerboard(objects->color))
 		rec->color = checker_color(rec->u, rec->v, objects->color);
+	else if (is_bumpmap(objects->color))
+		rec->color = image_mapping(rec->u, rec->v, objects->color.bumpmap->texture);
 	else
-		rec->color = image_mapping(rec->u, rec->v, rec->texture);
-		// rec->color = objects->color.color;
+		rec->color = objects->color.color;
 	set_face_normal(ray, rec);
 	return (TRUE);
 }

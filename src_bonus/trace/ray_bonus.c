@@ -46,7 +46,6 @@ t_color3	ray_tracing(t_scene *scene)
 	double	t;
 
 	scene->record = record_init();
-	scene->record.texture = scene->texture;
 	if (hit(scene->objects, &scene->ray, &scene->record))
 		return (phong_illumination_model(scene));
 	else
