@@ -14,4 +14,12 @@ typedef enum e_res
 	ERR = -2,
 }	t_res;
 
+typedef enum e_gnl_res
+{
+	READFAIL = -2,
+	ERROR = -1,
+	FIN = 0,
+	SUCCESS = 1,
+}	t_gnl_res;
+
 #endif

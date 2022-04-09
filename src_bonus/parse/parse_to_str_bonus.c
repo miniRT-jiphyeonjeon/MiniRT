@@ -105,18 +105,18 @@ static t_parse	*element_set(char *line)
 t_obj_list	*parse_to_str(int fd)
 {
 	char		*line;
-	int			gnl_ret;
+	t_gnl_res	gnl_ret;
 	t_obj_list	*lst_head;
 	t_parse		*lst_parse;
 
-	gnl_ret = 1;
+	gnl_ret = SUCCESS;
 	lst_head = NULL;
-	while (gnl_ret == 1)
+	while (gnl_ret == SUCCESS)
 	{
 		gnl_ret = get_next_line(fd, &line);
-		if (gnl_ret == -1)
-			error_user("get_next_line - dynamic allocation problem.\n");
-		else if (gnl_ret == -2)
+		if (gnl_ret == ERROR)
+			error_user("get_next_line error.\n");
+		else if (gnl_ret == READFAIL)
 			error_user("File format dose not match.\n");
 		lst_parse = element_set(line);
 		if (lst_parse != NULL)

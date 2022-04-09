@@ -42,27 +42,27 @@ char **buffer)
 	return (1);
 }
 
-static int	free_buffer(char **buffer, int i)
+static t_gnl_res	free_buffer(char **buffer, t_gnl_res res)
 {
 	free(*buffer);
-	return (i);
+	return (res);
 }
 
 static int	read_fin(char **buffer, char **line_tmp, char **line, \
 int read_num)
 {
 	if (read_num < 0)
-		return (free_buffer(buffer, -2));
+		return (free_buffer(buffer, READFAIL));
 	else
 	{
 		if (*line_tmp)
-			return (free_buffer(buffer, 0));
+			return (free_buffer(buffer, FIN));
 		*line = ft_strdup("");
-		return (free_buffer(buffer, 0));
+		return (free_buffer(buffer, FIN));
 	}
 }
 
-int	get_next_line(int fd, char **line)
+t_gnl_res	get_next_line(int fd, char **line)
 {
 	static char		*line_save[FD_MAX + 1];
 	char			*buffer;
@@ -70,12 +70,12 @@ int	get_next_line(int fd, char **line)
 	int				read_num;
 
 	if (fd < 0 || fd > FD_MAX || BUFFER_SIZE <= 0 || !line)
-		return (-1);
+		return (ERROR);
 	buffer = ft_calloc(sizeof(char), BUFFER_SIZE);
 	line_tmp = line_save[fd];
 	if (line_save[fd])
 		if (!(make_line(line, &line_save[fd], &line_tmp, NULL)))
-			return (free_buffer(&buffer, -1));
+			return (free_buffer(&buffer, ERROR));
 	while (!line_save[fd])
 	{
 		read_num = read(fd, buffer, BUFFER_SIZE);
@@ -83,7 +83,7 @@ int	get_next_line(int fd, char **line)
 			return (read_fin(&buffer, &line_tmp, line, read_num));
 		buffer[read_num] = '\0';
 		if (!(make_line(line, &line_save[fd], &line_tmp, &buffer)))
-			return (free_buffer(&buffer, -1));
+			return (free_buffer(&buffer, ERROR));
 	}
-	return (free_buffer(&buffer, 1));
+	return (free_buffer(&buffer, SUCCESS));
 }
