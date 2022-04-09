@@ -12,8 +12,6 @@ static int	tok_line(char *s, char **next)
 	{
 		*s++ = '\0';
 		*next = ft_strdup(s);
-		if (!(*next))
-			return (0);
 		return (1);
 	}
 	else
@@ -31,16 +29,12 @@ char **buffer)
 		if (!(tok_line(*buffer, line_save)))
 			return (0);
 		*line = ft_strjoin(*line_tmp, *buffer);
-		if (!(*line))
-			return (0);
 	}
 	else
 	{
 		if (!(tok_line(*line_save, line_save)))
 			return (0);
 		*line = ft_strdup(*line_tmp);
-		if (!(*line))
-			return (0);
 	}
 	if (*line_tmp)
 		free(*line_tmp);
@@ -58,16 +52,13 @@ static int	read_fin(char **buffer, char **line_tmp, char **line, \
 int read_num)
 {
 	if (read_num < 0)
-		return (free_buffer(buffer, -1));
+		return (free_buffer(buffer, -2));
 	else
 	{
 		if (*line_tmp)
 			return (free_buffer(buffer, 0));
 		*line = ft_strdup("");
-		if (!(*line))
-			return (free_buffer(buffer, -1));
-		else
-			return (free_buffer(buffer, 0));
+		return (free_buffer(buffer, 0));
 	}
 }
 
@@ -80,9 +71,7 @@ int	get_next_line(int fd, char **line)
 
 	if (fd < 0 || fd > FD_MAX || BUFFER_SIZE <= 0 || !line)
 		return (-1);
-	buffer = (char *)malloc(BUFFER_SIZE + 1);
-	if (!buffer)
-		return (-1);
+	buffer = ft_calloc(sizeof(char), BUFFER_SIZE);
 	line_tmp = line_save[fd];
 	if (line_save[fd])
 		if (!(make_line(line, &line_save[fd], &line_tmp, NULL)))
