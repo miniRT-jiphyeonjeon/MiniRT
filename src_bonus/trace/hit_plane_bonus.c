@@ -1,23 +1,14 @@
 #include <math.h>
 #include "trace_bonus.h"
 #include "vector3_bonus.h"
-
-static double	mod_abs(double x)
-{
-	if (x < 0)
-		return (x + 1);
-	return (x);
-}
+#include "libft.h"
 
 static void	plane_uv(t_hit_record *rec)
 {
-	rec->v_dir = vec3_cross(rec->normal, vec3(1, 0, 0));
-	if (vec3_length_square(rec->v_dir) == 0)
-		rec->v_dir = vec3_cross(rec->normal, vec3(0, 0, 1));
-	rec->v_dir = vec3_unit(rec->v_dir);
-	rec->u_dir = vec3_unit(vec3_cross(rec->v_dir, rec->normal));
-	rec->u = mod_abs(fmod(vec3_dot(rec->p, rec->u_dir), 1));
-	rec->v = mod_abs(fmod(vec3_dot(rec->p, rec->v_dir), 1));
+	rec->u_dir = vec3_unit(vec3_cross(vec3_up(rec->normal), rec->normal));
+	rec->v_dir = vec3_unit(vec3_cross(rec->normal, rec->u_dir));
+	rec->u = ft_fmod_abs(fmod(vec3_dot(rec->p, rec->u_dir), 1), 1);
+	rec->v = ft_fmod_abs(fmod(vec3_dot(rec->p, rec->v_dir), 1), 1);
 }
 
 t_bool	hit_plane(t_obj_list objects[], t_ray *ray, t_hit_record *rec)
@@ -48,7 +39,6 @@ t_bool	hit_plane(t_obj_list objects[], t_ray *ray, t_hit_record *rec)
 	}
 	else
 		rec->color = objects->color.color;
-	
 	set_face_normal(ray, rec);
 	return (TRUE);
 }

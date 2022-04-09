@@ -27,3 +27,12 @@ t_vec3	vec3_min(t_vec3 vec1, t_vec3 vec2)
 		vec1.z = vec2.z;
 	return (vec1);
 }
+
+t_vec3	vec3_up(t_vec3 vec)
+{
+	if (is_vec_equal(vec, vec3(0, 1, 0)))
+		return (vec3(0, 0, 1));
+	if (is_vec_equal(vec, vec3(0, -1, 0)))
+		return (vec3(0, 0, -1));
+	return (vec3(0, 1, 0));
+}

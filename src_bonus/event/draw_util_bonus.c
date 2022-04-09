@@ -1,13 +1,5 @@
 #include "event_bonus.h"
-
-static int	clamp(int x, int min, int max)
-{
-	if (x < min)
-		return (min);
-	if (x > max)
-		return (max);
-	return (x);
-}
+#include "libft.h"
 
 static int	color_calc(double rgb)
 {

@@ -150,9 +150,9 @@ typedef struct s_camera
 	t_point3	origin;
 	double		viewport_height;
 	double		viewport_width;
-	t_vec3		w_direction;
-	t_vec3		u_upside;
-	t_vec3		v_cross;
+	t_vec3		w_dir;
+	t_vec3		u_dir;
+	t_vec3		v_dir;
 	t_vec3		horizontal;
 	t_vec3		vertical;
 	t_point3	left_bottom;
