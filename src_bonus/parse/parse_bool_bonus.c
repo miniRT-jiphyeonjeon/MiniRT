@@ -22,7 +22,7 @@ t_bool	is_scene_env_valid(t_parse_list *lst)
 			++camera_num;
 		lst = lst->next;
 	}
-	if (ambient_num == 1 && light_num == 1 && camera_num == 1)
+	if (ambient_num == 1 && light_num >= 1 && camera_num == 1)
 		return (TRUE);
 	return (FALSE);
 }
