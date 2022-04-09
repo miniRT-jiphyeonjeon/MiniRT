@@ -8,6 +8,6 @@
 #  define FD_MAX 256
 # endif
 
-int		get_next_line(int fd, char **line);
+t_gnl_res		get_next_line(int fd, char **line);
 
 #endif
