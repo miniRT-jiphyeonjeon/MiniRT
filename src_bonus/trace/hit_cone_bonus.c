@@ -16,7 +16,6 @@ static void	cone_uv(t_hit_record *rec, t_object *co, double *u, double *v)
 	v_dir = vec3_unit(v_dir);
 	u_dir = vec3_unit(vec3_cross(v_dir, co->normal));
 	pc = vec3_minus(rec->p, co->center);
-
 	theta = atan2(-1 * vec3_dot(pc, v_dir), vec3_dot(pc, u_dir)) + M_PI;
 	height = vec3_dot(pc, co->normal);
 	*u = theta * M_1_PI * 0.5;
