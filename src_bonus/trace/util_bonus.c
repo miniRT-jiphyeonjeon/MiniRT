@@ -32,6 +32,13 @@ t_bool	is_checkerboard(t_color_info texture)
 	return (TRUE);
 }
 
+t_bool	is_bumpmap(t_color_info texture)
+{
+	if (!texture.bumpmap)
+		return (FALSE);
+	return (TRUE);
+}
+
 t_color3	checker_color(double u, double v, t_color_info color)
 {
 	int	u_int;

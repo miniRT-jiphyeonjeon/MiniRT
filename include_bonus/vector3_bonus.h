@@ -12,6 +12,7 @@ void		vec3_set(t_vec3 *vec, double x, double y, double z);
 
 // vector_operation1.c
 
+t_bool		is_vec_equal(t_vec3 vec1, t_vec3 vec2);
 t_vec3		vec3_plus_scalar(t_vec3 vec, double x, double y, double z);
 t_vec3		vec3_plus(t_vec3 vec1, t_vec3 vec2);
 t_vec3		vec3_minus_scalar(t_vec3 vec, double x, double y, double z);
@@ -31,5 +32,6 @@ double		vec3_length_square(t_vec3 vec);
 double		vec3_length(t_vec3 vec);
 t_vec3		vec3_unit(t_vec3 vec);
 t_vec3		vec3_min(t_vec3 vec1, t_vec3 vec2);
+t_vec3		vec3_up(t_vec3 vec);
 
 #endif

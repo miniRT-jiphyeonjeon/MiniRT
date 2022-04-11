@@ -1,25 +1,21 @@
 #include <math.h>
 #include "trace_bonus.h"
 #include "vector3_bonus.h"
+#include "libft.h"
 
-static void	cylinder_uv(t_hit_record *rec, t_object *cy, double *u, double *v)
+static void	cylinder_uv(t_hit_record *rec, t_object *cy)
 {
 	double	theta;
 	double	height;
-	t_vec3	u_dir;
-	t_vec3	v_dir;
 	t_vec3	pc;
 
-	v_dir = vec3_cross(vec3(1, 0, 0), cy->normal);
-	if (vec3_length_square(v_dir) == 0)
-		v_dir = vec3_cross(vec3(0, 0, 1), cy->normal);
-	v_dir = vec3_unit(v_dir);
-	u_dir = vec3_unit(vec3_cross(v_dir, cy->normal));
+	rec->u_dir = vec3_unit(vec3_cross(vec3_up(cy->normal), cy->normal));
+	rec->v_dir = vec3_unit(vec3_cross(cy->normal, rec->u_dir));
 	pc = vec3_minus(rec->p, cy->center);
-	theta = atan2(-1 * vec3_dot(pc, v_dir), vec3_dot(pc, u_dir)) + M_PI;
+	theta = atan2(-1 * vec3_dot(pc, rec->v_dir), vec3_dot(pc, rec->u_dir)) + M_PI;
 	height = vec3_dot(pc, cy->normal);
-	*u = theta * M_1_PI * 0.5;
-	*v = fmod(height, 1);
+	rec->u = theta * M_1_PI * 0.5;
+	rec->v = ft_fmod_abs(fmod(height, 1), 1);
 }
 
 static t_bool	check_cylinder(
@@ -39,9 +35,14 @@ static t_bool	check_cylinder(
 	rec->normal = vec3_unit(vec3_minus(rec->p, vec3_plus(cy->center,
 					vec3_mult_scalar(cy->normal, vec3_dot(
 							vec3_minus(rec->p, cy->center), cy->normal)))));
-	cylinder_uv(rec, cy, &rec->u, &rec->v);
+	cylinder_uv(rec, cy);
 	if (is_checkerboard(objects->color))
 		rec->color = checker_color(rec->u, rec->v, objects->color);
+	else if (is_bumpmap(objects->color))
+	{
+		rec->color = image_mapping(rec->u, rec->v, objects->color.bumpmap->texture);
+		// rec->normal = normal_mapping(rec, objects->color.bumpmap->bump);
+	}
 	else
 		rec->color = objects->color.color;
 	set_face_normal(ray, rec);
