@@ -74,11 +74,10 @@ static void	parse_bonus_set(t_parse *lst, char **str, int idx)
 		lst->check_width = str[++idx];
 		lst->check_height = str[++idx];
 	}
-	else if (lst->texture_id == BUMPMAP)
-	{
+	if (lst->texture_id == BUMPMAP)
 		lst->texture_file = str[++idx];
-		lst->bump_file = str[++idx];
-	}
+	if (lst->texture_id == BUMPMAP && str[++idx] != NULL)
+		lst->bump_file = str[idx];
 }
 
 static t_parse	*element_set(char *line)

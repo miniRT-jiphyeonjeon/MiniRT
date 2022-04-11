@@ -8,10 +8,18 @@ void	del_color(t_color_info color)
 		free(color.checkboard);
 	if (color.bumpmap != NULL)
 	{
-		if (color.bumpmap->texture.data.img != NULL)
-			free(color.bumpmap->texture.data.img);
-		if (color.bumpmap->bump.data.img != NULL)
-			free(color.bumpmap->bump.data.img);
+		if (color.bumpmap->texture != NULL)
+		{
+			if (color.bumpmap->texture->data.img != NULL)
+				free(color.bumpmap->texture->data.img);
+			free(color.bumpmap->texture);
+		}
+		if (color.bumpmap->bump != NULL)
+		{
+			if (color.bumpmap->bump->data.img != NULL)
+				free(color.bumpmap->bump->data.img);
+			free(color.bumpmap->bump);
+		}
 		free(color.bumpmap);
 	}
 }

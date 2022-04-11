@@ -90,7 +90,7 @@ t_bool	is_texture_valid(t_color_type id, char **str, int idx)
 		return (FALSE);
 	if (id == CHECKBOARD && i - idx == 4)
 		return (TRUE);
-	else if (id == BUMPMAP && i - idx == 3)
+	else if (id == BUMPMAP && (i - idx == 2 || i - idx == 3))
 		return (TRUE);
 	return (FALSE);
 }
