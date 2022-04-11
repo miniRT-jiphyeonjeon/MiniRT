@@ -112,8 +112,8 @@ typedef struct s_checkboard
 
 typedef struct s_bumpmap
 {
-	t_xpm_image	texture;
-	t_xpm_image	bump;
+	t_xpm_image	*texture;
+	t_xpm_image	*bump;
 }	t_bumpmap;
 
 typedef struct s_color_info
