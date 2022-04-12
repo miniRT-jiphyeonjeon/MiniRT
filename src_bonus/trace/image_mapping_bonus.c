@@ -19,28 +19,28 @@ static t_color3	pixel_to_color3(int mlx_color)
 	return (color3(r, g, b));
 }
 
-t_color3	image_mapping(double u, double v, t_xpm_image img)
+t_color3	image_mapping(double u, double v, t_xpm_image *img)
 {
 	int		u_int;
 	int		v_int;
 	int		mlx_color;
 
-	u_int = (int)(u * img.width);
-	v_int = (int)((1.0 - v) * img.height);
-	mlx_color = xpm_pixel_get(&img, u_int, v_int);
+	u_int = (int)(u * img->width);
+	v_int = (int)((1.0 - v) * img->height);
+	mlx_color = xpm_pixel_get(img, u_int, v_int);
 	return (pixel_to_color3(mlx_color));
 }
 
-t_vec3	normal_mapping(t_hit_record *rec, t_xpm_image img)
+t_vec3	normal_mapping(t_hit_record *rec, t_xpm_image *img)
 {
 	int		u_int;
 	int		v_int;
 	int		mlx_color;
 	t_vec3	normal_color;
 
-	u_int = (int)(rec->u * img.width);
-	v_int = (int)((1.0 - rec->v) * img.height);
-	mlx_color = xpm_pixel_get(&img, u_int, v_int);
+	u_int = (int)(rec->u * img->width);
+	v_int = (int)((1.0 - rec->v) * img->height);
+	mlx_color = xpm_pixel_get(img, u_int, v_int);
 	normal_color = pixel_to_color3(mlx_color);
 	normal_color = vec3_minus(vec3_mult_scalar(normal_color, 2), vec3(1, 1, 1));
 	return (vec3_unit(vec3(vec3_dot(rec->u_dir, normal_color),

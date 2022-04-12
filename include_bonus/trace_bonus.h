@@ -42,7 +42,7 @@ t_bool		is_checkerboard(t_color_info texture);
 t_bool		is_bumpmap(t_color_info texture);
 t_color3	checker_color(double u, double v, t_color_info color);
 
-t_color3	image_mapping(double u, double v, t_xpm_image img);
-t_vec3		normal_mapping(t_hit_record *rec, t_xpm_image img);
+t_color3	image_mapping(double u, double v, t_xpm_image *img);
+t_vec3		normal_mapping(t_hit_record *rec, t_xpm_image *img);
 
 #endif
