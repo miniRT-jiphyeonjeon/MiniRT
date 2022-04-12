@@ -34,8 +34,7 @@ t_camera
 	theta = degree_to_radian(h_fov);
 	field_width = tan(theta / 2) * 2.0;
 	cam.w_dir = direct;
-	cam.u_dir = vec3_unit(vec3_cross(vec3_up(cam.w_dir), cam.w_dir));
-	cam.v_dir = vec3_unit(vec3_cross(cam.w_dir, cam.u_dir));
+	coordinate_system(&cam.u_dir, &cam.v_dir, cam.w_dir);
 	cam.origin = origin;
 	cam.viewport_width = field_width;
 	cam.viewport_height = field_width * canvas->aspect_ratio;

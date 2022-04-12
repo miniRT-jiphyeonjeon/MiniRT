@@ -43,7 +43,6 @@ t_vec3	normal_mapping(t_hit_record *rec, t_xpm_image *img)
 	mlx_color = xpm_pixel_get(img, u_int, v_int);
 	normal_color = pixel_to_color3(mlx_color);
 	normal_color = vec3_minus(vec3_mult_scalar(normal_color, 2), vec3(1, 1, 1));
-	return (vec3_unit(vec3(vec3_dot(rec->u_dir, normal_color),
-				vec3_dot(rec->v_dir, normal_color),
-				vec3_dot(rec->normal, normal_color))));
+	return (mat3_mult_vec3(
+			mat3_set(rec->u_dir, rec->v_dir, rec->normal), normal_color));
 }

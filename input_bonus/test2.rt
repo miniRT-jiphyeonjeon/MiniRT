@@ -8,6 +8,6 @@ pl 0,-0.5,0        0,1,0     204,204,25 bm ./input_bonus/rock.xpm ./input_bonus/
 sp 0,-100.5,-1	    									200 					204,204,0
 sp 0,0,-1  1  25,51,127 bm ./input_bonus/icecream.xpm ./input_bonus/icecream_normal.xpm
 cy -0.2,0,-1 -1,0,0 1  1 204,204,25 bm ./input_bonus/block.xpm ./input_bonus/block_normal.xpm
-co 0.2,0,-1  1,0,0   1 1 204,153,51 bm  ./input_bonus/marble.xpm ./input_bonus/marble_normal.xpm
+co 0.2,0,-1  1,0,0   1 1 204,153,51 bm  ./input_bonus/rock.xpm ./input_bonus/rock_normal.xpm
 pl -3,0,0     1,0,0     30,127,30
 pl 0,0,-3        0,0,-1    127,30,30 ck 255,255,255 4 4
