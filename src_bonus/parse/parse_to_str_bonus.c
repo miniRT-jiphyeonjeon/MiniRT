@@ -71,19 +71,20 @@ static t_parse	*element_set(char *line)
 t_obj_list	*parse_to_str(int fd)
 {
 	char		*line;
-	int			gnl_ret;
+	t_gnl_res	gnl_ret;
 	t_obj_list	*lst_head;
 	t_parse		*lst_parse;
 	t_color3	color;
 
-	color = color3(0, 0, 0);
-	gnl_ret = 1;
+	gnl_ret = SUCCESS;
 	lst_head = NULL;
-	while (gnl_ret == 1)
+	while (gnl_ret == SUCCESS)
 	{
 		gnl_ret = get_next_line(fd, &line);
-		if (gnl_ret == -1)
-			error_user("get_next_line - dynamic allocation problem.\n");
+		if (gnl_ret == ERROR)
+			error_user("get_next_line error.\n");
+		else if (gnl_ret == READFAIL)
+			error_user("File format dose not match.\n");
 		lst_parse = element_set(line);
 		if (lst_parse != NULL)
 			obj_list_add_back(&lst_head, new_obj_list(lst_parse, 0, color));
