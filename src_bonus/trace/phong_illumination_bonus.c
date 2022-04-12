@@ -40,3 +40,18 @@ t_color3	point_light_get(t_scene *scene, t_obj_list *light)
 			phong_specular(scene, light, light_dir));
 	return (vec3_mult_scalar(phong_color, light_data->bright_ratio));
 }
+
+void	hit_color_set(t_hit_record *rec, t_obj_list objects[])
+{
+	if (is_checkerboard(objects->color))
+		rec->color = checker_color(rec->u, rec->v, objects->color);
+	else if (is_bumptexture(objects->color))
+	{
+		rec->color
+			= image_mapping(rec->u, rec->v, objects->color.bumpmap->texture);
+		if (is_bumpmap(objects->color))
+			rec->normal = normal_mapping(rec, objects->color.bumpmap->bump);
+	}
+	else
+		rec->color = objects->color.color;
+}

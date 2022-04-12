@@ -36,3 +36,9 @@ void	vec3_set(t_vec3 *vec, double x, double y, double z)
 	vec->y = y;
 	vec->z = z;
 }
+
+void	coordinate_system(t_vec3 *u, t_vec3 *v, t_vec3 w)
+{
+	*u = vec3_unit(vec3_cross(vec3_up(w), w));
+	*v = vec3_unit(vec3_cross(w, *u));
+}

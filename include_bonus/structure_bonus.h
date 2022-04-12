@@ -9,6 +9,7 @@ typedef struct s_vec3		t_vec3;
 typedef struct s_vec3		t_point3;
 typedef struct s_vec3		t_color3;
 typedef struct s_obj_list	t_parse_list;
+typedef double	(*t_mat3)[3];
 
 typedef struct s_image
 {

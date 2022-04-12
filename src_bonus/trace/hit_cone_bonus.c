@@ -9,10 +9,10 @@ static void	cone_uv(t_hit_record *rec, t_object *co)
 	double	height;
 	t_vec3	pc;
 
-	rec->u_dir = vec3_unit(vec3_cross(vec3_up(co->normal), co->normal));
-	rec->v_dir = vec3_unit(vec3_cross(co->normal, rec->u_dir));
+	coordinate_system(&rec->u_dir, &rec->v_dir, co->normal);
 	pc = vec3_minus(rec->p, co->center);
-	theta = atan2(-1 * vec3_dot(pc, rec->v_dir), vec3_dot(pc, rec->u_dir)) + M_PI;
+	theta
+		= atan2(-1 * vec3_dot(pc, rec->v_dir), vec3_dot(pc, rec->u_dir)) + M_PI;
 	height = vec3_dot(pc, co->normal);
 	rec->u = theta * M_1_PI * 0.5;
 	rec->v = ft_fmod_abs(fmod(height, 1), 1);
@@ -35,17 +35,9 @@ static t_bool	check_cone(
 	rec->normal = vec3_unit(vec3_minus(rec->p, vec3_plus(co->center,
 					vec3_mult_scalar(co->normal, vec3_dot(
 							vec3_minus(rec->p, co->center), co->normal)))));
-	cone_uv(rec, co);
-	if (is_checkerboard(objects->color))
-		rec->color = checker_color(rec->u, rec->v, objects->color);
-	else if (is_bumpmap(objects->color))
-	{
-		rec->color = image_mapping(rec->u, rec->v, objects->color.bumpmap->texture);
-		// rec->normal = normal_mapping(rec, objects->color.bumpmap->bump);
-	}
-	else
-		rec->color = objects->color.color;
 	set_face_normal(ray, rec);
+	cone_uv(rec, co);
+	hit_color_set(rec, objects);
 	return (TRUE);
 }
 
