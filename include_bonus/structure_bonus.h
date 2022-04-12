@@ -83,6 +83,13 @@ typedef enum e_info
 	RGB = 6,
 }	t_info;
 
+typedef enum e_color_mask
+{
+	RED = 16,
+	GREEN = 8,
+	BLUE = 0,
+}	t_color_mask;
+
 typedef struct s_parse
 {
 	t_obj_type		id;
@@ -143,9 +150,9 @@ typedef struct s_camera
 	t_point3	origin;
 	double		viewport_height;
 	double		viewport_width;
-	t_vec3		w_direction;
-	t_vec3		u_upside;
-	t_vec3		v_cross;
+	t_vec3		w_dir;
+	t_vec3		u_dir;
+	t_vec3		v_dir;
 	t_vec3		horizontal;
 	t_vec3		vertical;
 	t_point3	left_bottom;
@@ -161,6 +168,8 @@ typedef struct s_hit_record
 {
 	t_point3	p;
 	t_vec3		normal;
+	t_vec3		u_dir;
+	t_vec3		v_dir;
 	double		tmin;
 	double		tmax;
 	double		t;

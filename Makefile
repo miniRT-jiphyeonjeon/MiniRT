@@ -37,7 +37,7 @@ errorB		:= error
 eventB		:= draw draw_util hook_key_n_exit
 listB		:= list_utils list_del
 sceneB		:= ambient camera light objects scene
-traceB		:= hit_cylinder hit_plane hit_sphere hit_cone hit phong_illumination phong_light ray util
+traceB		:= hit_cone hit_cylinder hit_plane hit_sphere hit image_mapping phong_illumination phong_light ray util
 parseB		:= parse_bool parse_read parse_to_num parse_to_element parse_to_str parse_utils
 vector3B	:= vector_operation1 vector_operation2 vector_operation3 vector_set
 
@@ -146,3 +146,7 @@ $(LIBFT) :
 
 libft_fclean :
 	@make --no-print-directory -C $(LIBFT_DIR) fclean
+
+# ===== for Mini Earth =====
+earth :
+	$(CC) $(INCD) miniearth.c lib/libft/src/**/*.c src/vector3/*.c -o miniearth
