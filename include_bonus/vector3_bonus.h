@@ -9,6 +9,7 @@ t_vec3		vec3(double x, double y, double z);
 t_point3	point3(double x, double y, double z);
 t_color3	color3(double r, double g, double b);
 void		vec3_set(t_vec3 *vec, double x, double y, double z);
+void		coordinate_system(t_vec3 *u, t_vec3 *v, t_vec3 w);
 
 // vector_operation1.c
 
@@ -33,5 +34,10 @@ double		vec3_length(t_vec3 vec);
 t_vec3		vec3_unit(t_vec3 vec);
 t_vec3		vec3_min(t_vec3 vec1, t_vec3 vec2);
 t_vec3		vec3_up(t_vec3 vec);
+
+// vector_matrix.c
+
+t_mat3		mat3_set(t_vec3 vec1, t_vec3 vec2, t_vec3 vec3);
+t_vec3		mat3_mult_vec3(t_mat3 mat, t_vec3 vec);
 
 #endif
