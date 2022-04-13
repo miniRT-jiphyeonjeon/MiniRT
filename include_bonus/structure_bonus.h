@@ -82,6 +82,9 @@ typedef enum e_info
 	HEIGHT = 4,
 	FOV = 5,
 	RGB = 6,
+	KD = 7,
+	KS = 8,
+	KSN = 9,
 }	t_info;
 
 typedef enum e_color_mask
@@ -102,6 +105,9 @@ typedef struct s_parse
 	char			*height;
 	char			*fov;
 	char			*rgb;
+	char			*kd;
+	char			*ks;
+	char			*ksn;
 	t_color_type	texture_id;
 	char			*t_ident;
 	char			*check_color;
@@ -199,6 +205,9 @@ typedef struct s_object
 	double		radius;
 	double		radius2;
 	double		height;
+	double		kd;
+	double		ks;
+	double		ksn;
 }	t_object;
 
 typedef struct s_scene
