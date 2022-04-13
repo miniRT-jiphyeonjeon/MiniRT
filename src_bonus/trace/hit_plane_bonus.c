@@ -28,6 +28,7 @@ t_bool	hit_plane(t_obj_list objects[], t_ray *ray, t_hit_record *rec)
 	rec->t = root;
 	rec->p = ray_at(ray, root);
 	rec->normal = pl->normal;
+	rec->obj = pl;
 	set_face_normal(ray, rec);
 	plane_uv(rec);
 	hit_color_set(rec, objects);

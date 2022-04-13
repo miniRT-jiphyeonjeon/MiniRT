@@ -82,6 +82,9 @@ typedef enum e_info
 	HEIGHT = 4,
 	FOV = 5,
 	RGB = 6,
+	KD = 7,
+	KS = 8,
+	KSN = 9,
 }	t_info;
 
 typedef enum e_color_mask
@@ -102,6 +105,9 @@ typedef struct s_parse
 	char			*height;
 	char			*fov;
 	char			*rgb;
+	char			*kd;
+	char			*ks;
+	char			*ksn;
 	t_color_type	texture_id;
 	char			*t_ident;
 	char			*check_color;
@@ -138,6 +144,18 @@ typedef struct s_obj_list
 	void			*object;
 	void			*next;
 }	t_obj_list;
+
+typedef struct s_object
+{
+	t_point3	center;
+	t_vec3		normal;
+	double		radius;
+	double		radius2;
+	double		height;
+	double		kd;
+	double		ks;
+	double		ksn;
+}	t_object;
 
 typedef struct s_canvas
 {
@@ -178,6 +196,7 @@ typedef struct s_hit_record
 	double		v;
 	t_bool		front_face;
 	t_color3	color;
+	t_object	*obj;
 }	t_hit_record;
 
 typedef struct s_ambient
@@ -191,15 +210,6 @@ typedef struct s_light
 	t_point3	origin;
 	double		bright_ratio;
 }	t_light;
-
-typedef struct s_object
-{
-	t_point3	center;
-	t_vec3		normal;
-	double		radius;
-	double		radius2;
-	double		height;
-}	t_object;
 
 typedef struct s_scene
 {

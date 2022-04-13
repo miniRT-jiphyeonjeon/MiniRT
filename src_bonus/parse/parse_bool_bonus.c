@@ -48,6 +48,9 @@ t_bool	is_info_valid(t_obj_type id, t_info info)
 	(id == AMBIENT || id == POINT_LIGHT || id == SPHERE || id == PLANE || \
 	id == CYLINDER || id == CONE))
 		return (TRUE);
+	else if ((info == KD || info == KS || info == KSN) && \
+	(id == SPHERE || id == PLANE || id == CYLINDER || id == CONE))
+		return (TRUE);
 	return (FALSE);
 }
 
@@ -58,20 +61,28 @@ t_bool	is_element_valid(t_obj_type id, char **str)
 
 	i = 0;
 	idx = 1;
-	if (is_info_valid(id, POINT))
-		++idx;
-	if (is_info_valid(id, BRI_RATIO))
-		++idx;
-	if (is_info_valid(id, NOR_VEC))
-		++idx;
-	if (is_info_valid(id, DIAMETER))
-		++idx;
-	if (is_info_valid(id, HEIGHT))
-		++idx;
-	if (is_info_valid(id, FOV))
-		++idx;
-	if (is_info_valid(id, RGB))
-		++idx;
+	idx += is_info_valid(id, POINT);
+	idx += is_info_valid(id, BRI_RATIO);
+	idx += is_info_valid(id, NOR_VEC);
+	idx += is_info_valid(id, DIAMETER);
+	idx += is_info_valid(id, HEIGHT);
+	idx += is_info_valid(id, FOV);
+	idx += is_info_valid(id, RGB);
+	while (str[i] != NULL)
+		++i;
+	if (i < idx)
+		return (FALSE);
+	return (TRUE);
+}
+
+t_bool	is_obj_spec_valid(t_obj_type id, char **str, int idx)
+{
+	int		i;
+
+	i = 0;
+	idx += is_info_valid(id, KD);
+	idx += is_info_valid(id, KS);
+	idx += is_info_valid(id, KSN);
 	while (str[i] != NULL)
 		++i;
 	if (i < idx)

@@ -70,6 +70,9 @@ void	object_set(t_scene *scene, t_parse_list *lst, void *mlx_ptr)
 	}
 	if (lst_parse->id == CYLINDER || lst_parse->id == CONE)
 		object->height = double_get(lst_parse->height, 0, INFINITY);
+	object->kd = double_get(lst_parse->kd, 0, 1);
+	object->ks = double_get(lst_parse->ks, 0, 1);
+	object->ksn = double_get(lst_parse->ksn, 0, INFINITY);
 	lst_new->type = lst_parse->id;
 	lst_new->color.color = vec_get(lst_parse->rgb, 0, 255);
 	texture_get(lst_new, lst_parse, mlx_ptr);
