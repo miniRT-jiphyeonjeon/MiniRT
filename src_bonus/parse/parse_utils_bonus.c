@@ -28,6 +28,12 @@ void	del_parse(t_parse *parse)
 		free(parse->fov);
 	if (parse->rgb != NULL)
 		free(parse->rgb);
+	if (parse->kd != NULL)
+		free(parse->kd);
+	if (parse->ks != NULL)
+		free(parse->ks);
+	if (parse->ksn != NULL)
+		free(parse->ksn);
 }
 
 void	del_parse_texture(t_parse *parse)

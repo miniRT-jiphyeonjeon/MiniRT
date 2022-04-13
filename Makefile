@@ -40,7 +40,7 @@ sceneB		:= ambient camera light objects scene
 traceB		:= hit_cone hit_cylinder hit_plane hit_sphere hit image_mapping \
 				phong_illumination phong_light ray texture util
 parseB		:= parse_bool parse_read parse_to_num parse_to_element \
-				parse_to_str parse_utils
+				parse_to_str parse_utils parse_str_set
 vector3B	:= vector_operation1 vector_operation2 vector_operation3 \
 				vector_set vector_matrix
 
