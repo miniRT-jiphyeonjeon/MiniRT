@@ -26,6 +26,7 @@ static t_bool	sphere_check(
 	rec->t = root;
 	rec->p = ray_at(ray, root);
 	rec->normal = vec3_unit(vec3_minus(rec->p, sp->center));
+	rec->obj = sp;
 	set_face_normal(ray, rec);
 	sphere_uv(rec);
 	hit_color_set(rec, objects);

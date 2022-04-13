@@ -35,6 +35,7 @@ static t_bool	check_cylinder(
 	rec->normal = vec3_unit(vec3_minus(rec->p, vec3_plus(cy->center,
 					vec3_mult_scalar(cy->normal, vec3_dot(
 							vec3_minus(rec->p, cy->center), cy->normal)))));
+	rec->obj = cy;
 	set_face_normal(ray, rec);
 	cylinder_uv(rec, cy);
 	hit_color_set(rec, objects);

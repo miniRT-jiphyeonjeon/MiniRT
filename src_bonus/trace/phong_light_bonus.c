@@ -9,7 +9,8 @@ t_color3	phong_diffuse(t_scene *scene, t_obj_list *light, t_vec3 light_dir)
 {
 	double		kd;
 
-	kd = fmax(0.0, vec3_dot(scene->record.normal, light_dir));
+	kd = fmax(0.0, vec3_dot(scene->record.normal, light_dir)) * \
+	scene->record.obj->kd;
 	return (vec3_mult_scalar(light->color.color, kd));
 }
 
@@ -27,9 +28,11 @@ t_color3	phong_specular(t_scene *scene, t_obj_list *light, t_vec3 light_dir)
 	t_vec3			view_dir;
 	t_vec3			reflect_dir;
 	double			spec;
-	const double	ksn = 5;
-	const double	ks = 0.2;
+	double			ksn;
+	double			ks;
 
+	ksn = scene->record.obj->ksn;
+	ks = scene->record.obj->ks;
 	view_dir = vec3_unit(vec3_mult_scalar(scene->ray.direction, -1));
 	reflect_dir = reflect(light_dir, scene->record.normal);
 	spec = pow(fmax(0.0, vec3_dot(reflect_dir, view_dir)), ksn);
