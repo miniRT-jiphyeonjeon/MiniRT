@@ -35,6 +35,7 @@ static t_bool	check_cone(
 	rec->normal = vec3_unit(vec3_minus(rec->p, vec3_plus(co->center,
 					vec3_mult_scalar(co->normal, vec3_dot(
 							vec3_minus(rec->p, co->center), co->normal)))));
+	rec->obj = co;
 	set_face_normal(ray, rec);
 	cone_uv(rec, co);
 	hit_color_set(rec, objects);
