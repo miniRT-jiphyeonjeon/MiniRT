@@ -44,9 +44,7 @@ t_bool	is_info_valid(t_obj_type id, t_info info)
 		return (TRUE);
 	else if (info == FOV && (id == CAMERA))
 		return (TRUE);
-	else if (info == RGB && \
-	(id == AMBIENT || id == POINT_LIGHT || id == SPHERE || id == PLANE || \
-	id == CYLINDER || id == CONE))
+	else if (info == RGB && (id == AMBIENT || id == POINT_LIGHT))
 		return (TRUE);
 	else if ((info == KD || info == KS || info == KSN) && \
 	(id == SPHERE || id == PLANE || id == CYLINDER || id == CONE))
@@ -67,7 +65,6 @@ t_bool	is_element_valid(t_obj_type id, char **str)
 	idx += is_info_valid(id, DIAMETER);
 	idx += is_info_valid(id, HEIGHT);
 	idx += is_info_valid(id, FOV);
-	idx += is_info_valid(id, RGB);
 	while (str[i] != NULL)
 		++i;
 	if (i < idx)
@@ -75,33 +72,30 @@ t_bool	is_element_valid(t_obj_type id, char **str)
 	return (TRUE);
 }
 
-t_bool	is_obj_spec_valid(t_obj_type id, char **str, int idx)
+t_bool	is_color_obj_valid(t_obj_type id, char **str, int idx)
 {
 	int		i;
 
 	i = 0;
-	idx += is_info_valid(id, KD);
-	idx += is_info_valid(id, KS);
-	idx += is_info_valid(id, KSN);
 	while (str[i] != NULL)
 		++i;
-	if (i < idx)
+	if (id == AMBIENT || id == POINT_LIGHT)
+	{
+		if (i != ++idx)
+			return (FALSE);
+	}
+	else if (id == SPHERE || id == PLANE || id == CYLINDER || id == CONE)
+	{
+		if (i < idx)
+			return (FALSE);
+		if (ft_strcmp(str[idx], "rgb") == 0 && i - idx == 5)
+			return (TRUE);
+		else if (ft_strcmp(str[idx], "ck") == 0 && i - idx == 8)
+			return (TRUE);
+		else if (ft_strcmp(str[idx], "bm") == 0 && \
+		(i - idx == 5 || i - idx == 6))
+			return (TRUE);
 		return (FALSE);
+	}
 	return (TRUE);
-}
-
-t_bool	is_texture_valid(t_color_type id, char **str, int idx)
-{
-	int		i;
-
-	i = 0;
-	while (str[i] != NULL)
-		++i;
-	if (i <= idx)
-		return (FALSE);
-	if (id == CHECKBOARD && i - idx == 4)
-		return (TRUE);
-	else if (id == BUMPMAP && (i - idx == 2 || i - idx == 3))
-		return (TRUE);
-	return (FALSE);
 }

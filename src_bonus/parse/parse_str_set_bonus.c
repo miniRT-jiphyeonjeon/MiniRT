@@ -22,6 +22,17 @@ static t_obj_type	element_type_get(char *s)
 	return (NOTTYPE);
 }
 
+static t_color_type	color_type_get(char *s)
+{
+	if (!ft_strcmp(s, "rgb"))
+		return (COLOR);
+	else if (!ft_strcmp(s, "ck"))
+		return (CHECKBOARD);
+	else if (!ft_strcmp(s, "bm"))
+		return (BUMPMAP);
+	return (NOTCOLOR);
+}
+
 int	parse_set(t_parse *lst, char **str)
 {
 	int		idx;
@@ -45,48 +56,40 @@ int	parse_set(t_parse *lst, char **str)
 		lst->height = str[idx++];
 	if (is_info_valid(lst->id, FOV))
 		lst->fov = str[idx++];
-	if (is_info_valid(lst->id, RGB))
+	return (idx);
+}
+
+static void	parse_obj_set(t_parse *lst, char **str, int idx)
+{
+	lst->t_ident = str[idx++];
+	lst->texture_id = color_type_get(lst->t_ident);
+	if (lst->texture_id == NOTCOLOR)
+		error_user("invalid color name.\n");
+	if (lst->texture_id == COLOR)
 		lst->rgb = str[idx++];
-	return (idx);
-}
-
-int	parse_obj_spec_set(t_parse *lst, char **str, int idx)
-{
-	if (is_obj_spec_valid(lst->id, str, idx) == FALSE)
-		error_user("objecet spec came in wrong.\n");
-	if (is_info_valid(lst->id, KD))
-		lst->kd = str[idx++];
-	if (is_info_valid(lst->id, KS))
-		lst->ks = str[idx++];
-	if (is_info_valid(lst->id, KSN))
-		lst->ksn = str[idx++];
-	return (idx);
-}
-
-void	parse_texture_set(t_parse *lst, char **str, int idx)
-{
-	if (idx == split_len(str))
+	else if (lst->texture_id == CHECKBOARD)
 	{
-		lst->texture_id = COLOR;
-		return ;
-	}
-	lst->t_ident = str[idx];
-	if (ft_strcmp(lst->t_ident, "ck") == 0)
-		lst->texture_id = CHECKBOARD;
-	else if (ft_strcmp(lst->t_ident, "bm") == 0)
-		lst->texture_id = BUMPMAP;
-	else
-		error_user("invalid texture name.\n");
-	if (is_texture_valid(lst->texture_id, str, idx) == FALSE)
-		error_user("texture info came in wrong.\n");
-	if (lst->texture_id == CHECKBOARD)
-	{
-		lst->check_color = str[++idx];
-		lst->check_width = str[++idx];
-		lst->check_height = str[++idx];
+		lst->rgb = str[idx++];
+		lst->check_color = str[idx++];
+		lst->check_width = str[idx++];
+		lst->check_height = str[idx++];
 	}
 	if (lst->texture_id == BUMPMAP)
-		lst->texture_file = str[++idx];
-	if (lst->texture_id == BUMPMAP && str[++idx] != NULL)
-		lst->bump_file = str[idx];
+		lst->texture_file = str[idx++];
+	if (lst->texture_id == BUMPMAP && str[idx + 3] != NULL)
+		lst->bump_file = str[idx++];
+	lst->kd = str[idx++];
+	lst->ks = str[idx++];
+	lst->ksn = str[idx++];
+}
+
+void	parse_color_obj_set(t_parse *lst, char **str, int idx)
+{
+	if (is_color_obj_valid(lst->id, str, idx) == FALSE)
+		error_user("Color info or object spec - Not standard.");
+	if (lst->id == AMBIENT || lst->id == POINT_LIGHT)
+		lst->rgb = str[idx++];
+	else if (lst->id == SPHERE || lst->id == PLANE || \
+	lst->id == CYLINDER || lst->id == CONE)
+		parse_obj_set(lst, str, idx);
 }

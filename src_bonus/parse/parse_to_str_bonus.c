@@ -21,8 +21,7 @@ static t_parse	*element_set(char *line)
 		return (del_split(str_splited));
 	}
 	idx = parse_set(lst, str_splited);
-	idx = parse_obj_spec_set(lst, str_splited, idx);
-	parse_texture_set(lst, str_splited, idx);
+	parse_color_obj_set(lst, str_splited, idx);
 	free(str_splited);
 	return (lst);
 }

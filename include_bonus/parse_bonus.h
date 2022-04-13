@@ -14,8 +14,7 @@ t_obj_list		*parse_to_str(int fd);
 // parse_str_set_bonus
 
 int				parse_set(t_parse *lst, char **str);
-int				parse_obj_spec_set(t_parse *lst, char **str, int idx);
-void			parse_texture_set(t_parse *lst, char **str, int idx);
+void			parse_color_obj_set(t_parse *lst, char **str, int idx);
 
 // parse_to_element
 
@@ -39,7 +38,6 @@ int				split_len(char **str);
 t_bool			is_scene_env_valid(t_parse_list *lst);
 t_bool			is_info_valid(t_obj_type id, t_info info);
 t_bool			is_element_valid(t_obj_type id, char **str);
-t_bool			is_obj_spec_valid(t_obj_type id, char **str, int idx);
-t_bool			is_texture_valid(t_color_type id, char **str, int idx);
+t_bool			is_color_obj_valid(t_obj_type id, char **str, int idx);
 
 #endif
