@@ -7,11 +7,12 @@
 */
 t_color3	phong_diffuse(t_scene *scene, t_obj_list *light, t_vec3 light_dir)
 {
-	double		kd;
+	double	kd;
+	double	diffuse;
 
-	kd = fmax(0.0, vec3_dot(scene->record.normal, light_dir)) * \
-	scene->record.obj->kd;
-	return (vec3_mult_scalar(light->color.color, kd));
+	kd = scene->record.obj->kd;
+	diffuse = fmax(0.0, vec3_dot(scene->record.normal, light_dir)) * kd;
+	return (vec3_mult_scalar(light->color.color, diffuse));
 }
 
 //	r = 2(n·l)n - l

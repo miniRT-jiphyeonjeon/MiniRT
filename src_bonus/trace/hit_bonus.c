@@ -26,10 +26,8 @@ static t_obj_hit_f	object_type_check(t_obj_list object)
 		return (hit_sphere);
 	if (object.type == PLANE)
 		return (hit_plane);
-	if (object.type == CYLINDER)
-		return (hit_cylinder);
-	if (object.type == CONE)
-		return (hit_cone);
+	if (object.type == CYLINDER || object.type == CONE)
+		return (hit_quadric);
 	return (0);
 }
 

@@ -1,5 +1,5 @@
 A 0.2 255,255,255
 C 4.571133,-6.809857,12.559084 0.304742,-0.453990,0.837272 45
 L 0.649039,-2.354825,16.402242 0.8 255,255,255
-sp 0,0,0 10 25,51,127 bm ./input_bonus/earthmap.xpm ./input_bonus/earthmap_normal.xpm
-sp 0,0,0 50 25,51,127 bm ./input_bonus/milkyway.xpm
+sp 0,0,0 10 25,51,127 1 0.5 2 bm ./input_bonus/earthmap.xpm ./input_bonus/earthmap_normal.xpm
+sp 0,0,0 50 25,51,127 1 0.5 2 bm ./input_bonus/milkyway.xpm
