@@ -30,7 +30,7 @@ static void	parse_set(t_parse *lst, char **str)
 	lst->ident = str[0];
 	lst->id = element_type_get(str[0]);
 	if (lst->id == NOTTYPE)
-		error_user("invalid element name.\n");
+		error_user("Invalid element name.\n");
 	if (is_element_valid(lst->id, str) == FALSE)
 		error_user("Elements came in more than standard.\n");
 	if (is_info_valid(lst->id, POINT))
@@ -92,6 +92,6 @@ t_obj_list	*parse_to_str(int fd)
 			free(line);
 	}
 	if (is_scene_env_valid(lst_head) == FALSE)
-		error_user("Each Ambient, Light and Camera must be one.");
+		error_user("Each Ambient, Light and Camera must be one.\n");
 	return (lst_head);
 }
