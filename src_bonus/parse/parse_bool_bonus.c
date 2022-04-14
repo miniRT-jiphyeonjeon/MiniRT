@@ -71,31 +71,3 @@ t_bool	is_element_valid(t_obj_type id, char **str)
 		return (FALSE);
 	return (TRUE);
 }
-
-t_bool	is_color_obj_valid(t_obj_type id, char **str, int idx)
-{
-	int		i;
-
-	i = 0;
-	while (str[i] != NULL)
-		++i;
-	if (id == AMBIENT || id == POINT_LIGHT)
-	{
-		if (i != ++idx)
-			return (FALSE);
-	}
-	else if (id == SPHERE || id == PLANE || id == CYLINDER || id == CONE)
-	{
-		if (i < idx)
-			return (FALSE);
-		if (ft_strcmp(str[idx], "rgb") == 0 && i - idx == 5)
-			return (TRUE);
-		else if (ft_strcmp(str[idx], "ck") == 0 && i - idx == 8)
-			return (TRUE);
-		else if (ft_strcmp(str[idx], "bm") == 0 && \
-		(i - idx == 5 || i - idx == 6))
-			return (TRUE);
-		return (FALSE);
-	}
-	return (TRUE);
-}

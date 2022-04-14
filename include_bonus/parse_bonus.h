@@ -38,6 +38,5 @@ int				split_len(char **str);
 t_bool			is_scene_env_valid(t_parse_list *lst);
 t_bool			is_info_valid(t_obj_type id, t_info info);
 t_bool			is_element_valid(t_obj_type id, char **str);
-t_bool			is_color_obj_valid(t_obj_type id, char **str, int idx);
 
 #endif

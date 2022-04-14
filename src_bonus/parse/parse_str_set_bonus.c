@@ -22,15 +22,32 @@ static t_obj_type	element_type_get(char *s)
 	return (NOTTYPE);
 }
 
-static t_color_type	color_type_get(char *s)
+static t_color_type	color_obj_valid_get(t_obj_type id, char **str, int idx)
 {
-	if (!ft_strcmp(s, "rgb"))
-		return (COLOR);
-	else if (!ft_strcmp(s, "ck"))
-		return (CHECKBOARD);
-	else if (!ft_strcmp(s, "bm"))
-		return (BUMPMAP);
-	return (NOTCOLOR);
+	int		i;
+
+	i = 0;
+	while (str[i] != NULL)
+		++i;
+	if (id == AMBIENT || id == POINT_LIGHT)
+	{
+		if (i != ++idx)
+			return (NOTCOLOR);
+	}
+	else if (id == SPHERE || id == PLANE || id == CYLINDER || id == CONE)
+	{
+		if (i < idx)
+			return (NOTCOLOR);
+		if (ft_strcmp(str[idx], "rgb") == 0 && i - idx == 5)
+			return (COLOR);
+		else if (ft_strcmp(str[idx], "ck") == 0 && i - idx == 8)
+			return (CHECKBOARD);
+		else if (ft_strcmp(str[idx], "bm") == 0 && \
+		(i - idx == 5 || i - idx == 6))
+			return (BUMPMAP);
+		return (NOTCOLOR);
+	}
+	return (COLOR);
 }
 
 int	parse_set(t_parse *lst, char **str)
@@ -61,10 +78,7 @@ int	parse_set(t_parse *lst, char **str)
 
 static void	parse_obj_set(t_parse *lst, char **str, int idx)
 {
-	lst->t_ident = str[idx++];
-	lst->texture_id = color_type_get(lst->t_ident);
-	if (lst->texture_id == NOTCOLOR)
-		error_user("invalid color name.\n");
+	idx++;
 	if (lst->texture_id == COLOR)
 		lst->rgb = str[idx++];
 	else if (lst->texture_id == CHECKBOARD)
@@ -85,7 +99,8 @@ static void	parse_obj_set(t_parse *lst, char **str, int idx)
 
 void	parse_color_obj_set(t_parse *lst, char **str, int idx)
 {
-	if (is_color_obj_valid(lst->id, str, idx) == FALSE)
+	lst->texture_id = color_obj_valid_get(lst->id, str, idx);
+	if (lst->texture_id == NOTCOLOR)
 		error_user("Color info or object spec - Not standard.");
 	if (lst->id == AMBIENT || lst->id == POINT_LIGHT)
 		lst->rgb = str[idx++];
