@@ -101,7 +101,7 @@ void	parse_color_obj_set(t_parse *lst, char **str, int idx)
 {
 	lst->texture_id = color_obj_valid_get(lst->id, str, idx);
 	if (lst->texture_id == NOTCOLOR)
-		error_user("Color info or object spec - Not standard.");
+		error_user("Color info or object spec - Not standard.\n");
 	if (lst->id == AMBIENT || lst->id == POINT_LIGHT)
 		lst->rgb = str[idx++];
 	else if (lst->id == SPHERE || lst->id == PLANE || \
