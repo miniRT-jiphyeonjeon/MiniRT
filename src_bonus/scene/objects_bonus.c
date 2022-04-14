@@ -33,9 +33,10 @@ static t_xpm_image	*image_get(char *filename, void *mlx_ptr)
 static void	texture_get(t_obj_list *l, t_parse *p, void *mlx_ptr)
 {
 	if (p->texture_id == COLOR)
-		return ;
+		l->color.color = vec_get(p->rgb, 0, 255);
 	else if (p->texture_id == CHECKBOARD)
 	{
+		l->color.color = vec_get(p->rgb, 0, 255);
 		l->color.checkboard = ft_calloc(sizeof(t_checkboard), 0);
 		l->color.checkboard->check_color = vec_get(p->check_color, 0, 255);
 		l->color.checkboard->width = double_get(p->check_width, 0, INFINITY);
@@ -74,7 +75,6 @@ void	object_set(t_scene *scene, t_parse_list *lst, void *mlx_ptr)
 	object->ks = double_get(lst_parse->ks, 0, 1);
 	object->ksn = double_get(lst_parse->ksn, 0, INFINITY);
 	lst_new->type = lst_parse->id;
-	lst_new->color.color = vec_get(lst_parse->rgb, 0, 255);
 	texture_get(lst_new, lst_parse, mlx_ptr);
 	lst_new->object = object;
 }
