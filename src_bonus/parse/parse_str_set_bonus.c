@@ -78,7 +78,7 @@ int	parse_set(t_parse *lst, char **str)
 
 static void	parse_obj_set(t_parse *lst, char **str, int idx)
 {
-	idx++;
+	lst->t_ident = str[idx++];
 	if (lst->texture_id == COLOR)
 		lst->rgb = str[idx++];
 	else if (lst->texture_id == CHECKBOARD)
