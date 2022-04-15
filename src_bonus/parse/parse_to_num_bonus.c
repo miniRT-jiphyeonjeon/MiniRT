@@ -17,6 +17,10 @@ double	double_get(char *s, double min, double max)
 		return (d);
 	else if (min == 0 && max == INFINITY && d < 0)
 		error_user("The properties of the shape must be positive.\n");
+	else if (min == 0 && max == 180 && d >= 180)
+		error_user("FOV range should be under 180.\n");
+	else if (min == 0 && max == 180 && d < 0)
+		error_user("FOV range should be over 0.\n");
 	if (d < min || d > max)
 		error_user("Elements must came in standard.\n");
 	return (d);
