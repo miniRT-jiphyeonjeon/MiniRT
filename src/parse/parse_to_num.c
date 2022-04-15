@@ -18,7 +18,7 @@ double	double_get(char *s, double min, double max)
 	else if (min == 0 && max == INFINITY && d < 0)
 		error_user("The properties of the shape must be positive.\n");
 	if (d < min || d > max)
-		error_user("Elements must came in standard.\n");
+		error_user("Elements must came in standard range.\n");
 	return (d);
 }
 
@@ -34,11 +34,11 @@ struct s_vec3	vec_get(char *s, double min, double max)
 	vec.y = double_get(ft_strsep(&s_tmp, ','), min, max);
 	vec.z = double_get(ft_strsep(&s_tmp, ','), min, max);
 	if (ft_strsep(&s_tmp, ',') != NULL)
-		error_user("Elements must came in standard.\n");
+		error_user("[x,y,z] elements must came in standard.\n");
 	if (min == -1 && max == 1)
 	{
 		if (vec3_length(vec) == 0.0)
-			error_user("Elements must came in standard.\n");
+			error_user("Normalized vector must came in standard.\n");
 		vec = vec3_unit(vec);
 	}
 	else if (min == 0 && max == 255)

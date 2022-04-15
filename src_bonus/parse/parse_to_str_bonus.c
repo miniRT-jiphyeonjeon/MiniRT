@@ -92,6 +92,6 @@ t_obj_list	*parse_to_str(int fd)
 			free(line);
 	}
 	if (is_scene_env_valid(lst_head) == FALSE)
-		error_user("Each Ambient, Light and Camera must be one.");
+		error_user("Each Ambient, Light and Camera must be one.\n");
 	return (lst_head);
 }
