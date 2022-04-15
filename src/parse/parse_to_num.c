@@ -3,6 +3,7 @@
 #include "vector3.h"
 #include "error.h"
 #include <math.h>
+#include <stdlib.h>
 
 double	double_get(char *s, double min, double max)
 {
@@ -24,20 +25,16 @@ double	double_get(char *s, double min, double max)
 struct s_vec3	vec_get(char *s, double min, double max)
 {
 	struct s_vec3	vec;
-	char			**str_splited;
-	int				i;
+	char			*s_tmp;
+	char			*s_tmp_ptr;
 
-	i = 0;
-	str_splited = ft_split(s, ",");
-	if (str_splited == NULL)
-		error_user("color_get - dynamic allocation problem.\n");
-	while (str_splited[i] != NULL)
-		i++;
-	if (i != 3)
+	s_tmp = ft_strdup(s);
+	s_tmp_ptr = s_tmp;
+	vec.x = double_get(ft_strsep(&s_tmp, ','), min, max);
+	vec.y = double_get(ft_strsep(&s_tmp, ','), min, max);
+	vec.z = double_get(ft_strsep(&s_tmp, ','), min, max);
+	if (ft_strsep(&s_tmp, ',') != NULL)
 		error_user("Elements must came in standard.\n");
-	vec.x = double_get(str_splited[0], min, max);
-	vec.y = double_get(str_splited[1], min, max);
-	vec.z = double_get(str_splited[2], min, max);
 	if (min == -1 && max == 1)
 	{
 		if (vec3_length(vec) == 0.0)
@@ -46,6 +43,6 @@ struct s_vec3	vec_get(char *s, double min, double max)
 	}
 	else if (min == 0 && max == 255)
 		vec = vec3_divide_scalar(vec, 255);
-	del_split(str_splited);
+	free(s_tmp_ptr);
 	return (vec);
 }
