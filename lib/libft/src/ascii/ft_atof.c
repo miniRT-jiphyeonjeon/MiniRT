@@ -54,10 +54,6 @@ static double	str_to_decimal(char **str)
 	return (decimal);
 }
 
-/*
-e+10 e-10 E+10 E-10 미구현, 찾아봐야할듯
-25줄 이슈 있음
-*/
 double	ft_atof(char *str, t_res *valid)
 {
 	int			sign;

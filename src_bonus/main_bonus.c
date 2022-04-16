@@ -10,7 +10,6 @@ static void	program_init(t_mlx *mlx)
 	mlx->img.img = mlx_new_image(mlx->mlx, WIN_WIDTH, WIN_HEIGHT);
 	mlx->img.addr = mlx_get_data_addr(
 			mlx->img.img, &mlx->img.bpp, &mlx->img.line, &mlx->img.endian);
-	mlx->win = mlx_new_window(mlx->mlx, WIN_WIDTH, WIN_HEIGHT, "miniRT");
 }
 
 int	main(int argv, char **argc)
@@ -25,6 +24,7 @@ int	main(int argv, char **argc)
 	program_init(&mlx);
 	scene = parse_to_element(info, mlx.mlx);
 	del_obj_lst_parse(&info);
+	mlx.win = mlx_new_window(mlx.mlx, WIN_WIDTH, WIN_HEIGHT, "miniRT");
 	scene_draw(&mlx, scene);
 	mlx_hook(mlx.win, X11_KEYPRESS, 1L << 0, key_press, &mlx);
 	mlx_hook(mlx.win, X11_CLOSEBTN, 1L << 2, exit_button, &mlx);
