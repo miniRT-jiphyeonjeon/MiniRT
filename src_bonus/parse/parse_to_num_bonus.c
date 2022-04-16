@@ -38,7 +38,7 @@ struct s_vec3	vec_get(char *s, double min, double max)
 	vec.y = double_get(ft_strsep(&s_tmp, ','), min, max);
 	vec.z = double_get(ft_strsep(&s_tmp, ','), min, max);
 	if (ft_strsep(&s_tmp, ',') != NULL)
-		error_user("[x,y,z] elements must came in standard.\n");
+		error_user("[x,y,z] or [r,g,b] elements must came in standard.\n");
 	if (min == -1 && max == 1)
 	{
 		if (vec3_length(vec) == 0.0)
