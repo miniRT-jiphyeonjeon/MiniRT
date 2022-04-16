@@ -11,10 +11,15 @@ int				fd_get(int argv, char **argc);
 
 t_obj_list		*parse_to_str(int fd);
 
-// parse_str_set_bonus
+// parse_str_set
 
 int				parse_set(t_parse *lst, char **str);
 void			parse_color_obj_set(t_parse *lst, char **str, int idx);
+
+// parse_str_get
+
+t_obj_type		element_type_get(char *s);
+t_color_type	color_obj_valid_get(t_obj_type id, char **str, int idx);
 
 // parse_to_element
 

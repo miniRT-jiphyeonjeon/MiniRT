@@ -56,6 +56,8 @@ typedef struct s_eq
 
 typedef enum e_color_type
 {
+	ERROR_LESS = -3,
+	ERROR_MORE = -2,
 	NOTCOLOR = -1,
 	COLOR = 0,
 	CHECKBOARD = 1,
