@@ -41,7 +41,7 @@ t_obj_list	*parse_to_str(int fd)
 		if (gnl_ret == ERROR)
 			error_user("get_next_line error.\n");
 		else if (gnl_ret == READFAIL)
-			error_user("File format dose not match.\n");
+			error_user("File format does not match.\n");
 		lst_parse = element_set(line);
 		if (lst_parse != NULL)
 			obj_list_add_back(&lst_head, \
