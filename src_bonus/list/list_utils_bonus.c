@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list_utils_bonus.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:03:58 by cjang             #+#    #+#             */
+/*   Updated: 2022/04/17 21:30:18 by cjang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
 #include "libft.h"
 #include "list_bonus.h"
-#include <stdlib.h>
 
 t_obj_list	*new_obj_list(void *object, int type, t_color3 color)
 {

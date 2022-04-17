@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_to_str.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:06:26 by cjang             #+#    #+#             */
+/*   Updated: 2022/04/17 21:25:57 by cjang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
 #include "libft.h"
 #include "parse.h"
 #include "vector3.h"
 #include "list.h"
 #include "error.h"
-#include <stdlib.h>
 
 static t_obj_type	element_type_get(char *s)
 {

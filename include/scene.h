@@ -1,11 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   scene.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:14:26 by cjang             #+#    #+#             */
+/*   Updated: 2022/04/17 21:47:07 by cjang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SCENE_H
 # define SCENE_H
 
 # include "structure.h"
 
-// scene.c
+// scene
 
-t_canvas	canvas_set(int width, int height);
 t_scene		*new_scene(int width, int height);
 
 // ambient
@@ -15,8 +26,7 @@ t_ambient	ambient_set(t_obj_list *lst);
 // camera
 
 t_camera	camera_prev_set(t_scene *scene, t_obj_list *lst);
-t_camera	camera_set(
-				t_canvas *canvas, t_point3 origin, t_vec3 direct, double h_fov);
+
 // light
 
 void		light_set(t_scene *scene, t_obj_list *lst);

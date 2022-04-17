@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:14:28 by cjang             #+#    #+#             */
+/*   Updated: 2022/04/17 21:42:16 by cjang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSE_H
 # define PARSE_H
 
@@ -17,7 +29,6 @@ t_scene			*parse_to_element(t_parse_list *lst);
 
 // parse_to_num
 
-int				int_get(char *s, int min, int max);
 double			double_get(char *s, double min, double max);
 struct s_vec3	vec_int_get(char *s, int min, int max);
 struct s_vec3	vec_double_get(char *s, double min, double max);
