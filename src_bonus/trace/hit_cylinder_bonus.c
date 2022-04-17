@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hit_cylinder_bonus.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyojekim <hyojekim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:46:12 by hyojekim          #+#    #+#             */
+/*   Updated: 2022/04/17 21:48:30 by hyojekim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <math.h>
 #include "trace_bonus.h"
 #include "vector3_bonus.h"
@@ -36,7 +48,7 @@ static t_bool	check_cylinder(
 					vec3_mult_scalar(cy->normal, vec3_dot(
 							vec3_minus(rec->p, cy->center), cy->normal)))));
 	rec->obj = cy;
-	set_face_normal(ray, rec);
+	face_normal_set(ray, rec);
 	cylinder_uv(rec, cy);
 	hit_color_set(rec, objects);
 	return (TRUE);
