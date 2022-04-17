@@ -12,8 +12,8 @@ t_camera	camera_prev_set(t_scene *scene, t_parse_list *lst)
 	double		h_fov;
 
 	lst_parse = lst->object;
-	origin = vec_get(lst_parse->point, 0, 0);
-	direct = vec_get(lst_parse->nor_vec, -1, 1);
+	origin = vec_double_get(lst_parse->point, 0, 0);
+	direct = vec_double_get(lst_parse->nor_vec, -1, 1);
 	h_fov = double_get(lst_parse->fov, 0, 180);
 	camera = camera_set(&scene->canvas, origin, direct, h_fov);
 	return (camera);

@@ -23,7 +23,7 @@ t_obj_type	element_type_get(char *s)
 
 static t_color_type	obj_info_get(char **str, int len, int idx)
 {
-	if (len < idx)
+	if (len <= idx)
 		return (ERROR_LESS);
 	if (ft_strcmp(str[idx], "rgb") == 0)
 	{

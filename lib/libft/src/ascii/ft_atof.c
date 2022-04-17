@@ -1,5 +1,6 @@
 #include "libft.h"
 #include <stdlib.h>
+#include <math.h>
 
 static double	return_func(double d, t_res *valid, t_res res)
 {
@@ -39,16 +40,22 @@ static double	str_to_integer(char **str)
 static double	str_to_decimal(char **str)
 {
 	double	decimal;
+	double	deciaml_tmp;
 	int		idx;
 
 	decimal = 0.0;
 	idx = 0;
 	while (**str != '\0' && ft_isdigit(**str) == TRUE)
 	{
-		decimal = decimal * 10 + **str - '0';
+		deciaml_tmp = decimal * 10 + **str - '0';
+		if (deciaml_tmp == INFINITY)
+			break ;
+		decimal = deciaml_tmp;
 		*str += 1;
 		++idx;
 	}
+	while (**str != '\0' && ft_isdigit(**str) == TRUE)
+		*str += 1;
 	while (--idx >= 0)
 		decimal /= 10;
 	return (decimal);

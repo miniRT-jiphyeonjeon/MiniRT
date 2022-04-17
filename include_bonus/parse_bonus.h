@@ -27,8 +27,10 @@ t_scene			*parse_to_element(t_parse_list *lst, void *mlx_ptr);
 
 // parse_to_num
 
+int				int_get(char *s, int min, int max);
 double			double_get(char *s, double min, double max);
-struct s_vec3	vec_get(char *s, double min, double max);
+struct s_vec3	vec_int_get(char *s, int min, int max);
+struct s_vec3	vec_double_get(char *s, double min, double max);
 
 // parse_utils
 

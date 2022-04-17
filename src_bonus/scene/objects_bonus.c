@@ -33,12 +33,12 @@ static t_xpm_image	*image_get(char *filename, void *mlx_ptr)
 static void	texture_get(t_obj_list *l, t_parse *p, void *mlx_ptr)
 {
 	if (p->texture_id == COLOR)
-		l->color.color = vec_get(p->rgb, 0, 255);
+		l->color.color = vec_int_get(p->rgb, 0, 255);
 	else if (p->texture_id == CHECKBOARD)
 	{
-		l->color.color = vec_get(p->rgb, 0, 255);
+		l->color.color = vec_int_get(p->rgb, 0, 255);
 		l->color.checkboard = ft_calloc(sizeof(t_checkboard), 0);
-		l->color.checkboard->check_color = vec_get(p->check_color, 0, 255);
+		l->color.checkboard->check_color = vec_int_get(p->check_color, 0, 255);
 		l->color.checkboard->width = double_get(p->check_width, 0, INFINITY);
 		l->color.checkboard->height = double_get(p->check_height, 0, INFINITY);
 	}
@@ -61,9 +61,9 @@ void	object_set(t_scene *scene, t_parse_list *lst, void *mlx_ptr)
 	lst_new = ft_calloc(sizeof(t_obj_list), 0);
 	object = ft_calloc(sizeof(t_object), 0);
 	obj_list_add_back(&scene->objects, lst_new);
-	object->center = vec_get(lst_parse->point, 0, 0);
+	object->center = vec_double_get(lst_parse->point, 0, 0);
 	if (lst_parse->id != SPHERE)
-		object->normal = vec_get(lst_parse->nor_vec, -1, 1);
+		object->normal = vec_double_get(lst_parse->nor_vec, -1, 1);
 	if (lst_parse->id != PLANE)
 	{
 		object->radius = double_get(lst_parse->diameter, 0, INFINITY) / 2;
