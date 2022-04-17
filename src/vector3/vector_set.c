@@ -6,7 +6,7 @@
 /*   By: hyojekim <hyojekim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:27:17 by hyojekim          #+#    #+#             */
-/*   Updated: 2022/04/17 21:27:18 by hyojekim         ###   ########.fr       */
+/*   Updated: 2022/04/17 22:17:16 by hyojekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,10 @@ void	vec3_set(t_vec3 *vec, double x, double y, double z)
 	vec->x = x;
 	vec->y = y;
 	vec->z = z;
+}
+
+void	coordinate_system(t_vec3 *u, t_vec3 *v, t_vec3 w)
+{
+	*u = vec3_unit(vec3_cross(vec3_up(w), w));
+	*v = vec3_unit(vec3_cross(w, *u));
 }

@@ -6,7 +6,7 @@
 /*   By: hyojekim <hyojekim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:20:02 by hyojekim          #+#    #+#             */
-/*   Updated: 2022/04/17 21:21:02 by hyojekim         ###   ########.fr       */
+/*   Updated: 2022/04/17 22:18:20 by hyojekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,9 @@ typedef struct s_camera
 	t_point3	origin;
 	double		viewport_height;
 	double		viewport_width;
-	t_vec3		w_direction;
-	t_vec3		u_upside;
-	t_vec3		v_cross;
+	t_vec3		w_dir;
+	t_vec3		u_dir;
+	t_vec3		v_dir;
 	t_vec3		horizontal;
 	t_vec3		vertical;
 	t_point3	left_bottom;
