@@ -1,7 +1,6 @@
 #include "mlx.h"
 #include "parse.h"
 #include "list.h"
-#include "x11_events.h"
 #include "event.h"
 
 static void	program_init(t_mlx *mlx)

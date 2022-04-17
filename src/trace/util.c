@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   util.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyojekim <hyojekim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:34:09 by hyojekim          #+#    #+#             */
+/*   Updated: 2022/04/17 21:34:09 by hyojekim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <math.h>
 #include "trace.h"
 #include "vector3.h"
@@ -18,7 +30,7 @@ double	root(t_eq eq, t_root_type type)
 	return (NAN);
 }
 
-void	set_face_normal(t_ray *ray, t_hit_record *rec)
+void	face_normal_set(t_ray *ray, t_hit_record *rec)
 {
 	rec->front_face = vec3_dot(ray->direction, rec->normal) < 0;
 	if (!rec->front_face)

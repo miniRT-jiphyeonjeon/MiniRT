@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hook_key_n_exit_bonus.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyojekim <hyojekim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:41:54 by hyojekim          #+#    #+#             */
+/*   Updated: 2022/04/17 21:41:54 by hyojekim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "mlx.h"
-#include "x11_events_bonus.h"
 #include "event_bonus.h"
 
 int	key_press(int keycode, t_mlx *mlx)

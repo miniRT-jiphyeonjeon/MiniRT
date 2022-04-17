@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vector_operation2_bonus.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyojekim <hyojekim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:44:34 by hyojekim          #+#    #+#             */
+/*   Updated: 2022/04/17 22:09:26 by hyojekim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "libft.h"
 #include "vector3_bonus.h"
@@ -22,7 +34,7 @@ t_vec3	vec3_divide_scalar(t_vec3 vec, double t)
 {
 	if (!t)
 	{
-		ft_write(2, "Error\n:Devider is 0");
+		ft_write(2, "Error\n:Divider is 0\n");
 		exit(1);
 	}
 	return (vec3_mult_scalar(vec, 1 / t));

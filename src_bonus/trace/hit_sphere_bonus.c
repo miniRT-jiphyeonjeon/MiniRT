@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hit_sphere_bonus.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyojekim <hyojekim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:46:21 by hyojekim          #+#    #+#             */
+/*   Updated: 2022/04/17 21:48:30 by hyojekim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <math.h>
 #include "trace_bonus.h"
 #include "vector3_bonus.h"
@@ -27,7 +39,7 @@ static t_bool	sphere_check(
 	rec->p = ray_at(ray, root);
 	rec->normal = vec3_unit(vec3_minus(rec->p, sp->center));
 	rec->obj = sp;
-	set_face_normal(ray, rec);
+	face_normal_set(ray, rec);
 	sphere_uv(rec);
 	hit_color_set(rec, objects);
 	return (TRUE);

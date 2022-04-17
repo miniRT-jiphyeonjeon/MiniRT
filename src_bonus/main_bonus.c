@@ -1,7 +1,6 @@
 #include "mlx.h"
 #include "parse_bonus.h"
 #include "list_bonus.h"
-#include "x11_events_bonus.h"
 #include "event_bonus.h"
 
 static void	program_init(t_mlx *mlx)

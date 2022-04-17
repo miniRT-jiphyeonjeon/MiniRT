@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hit_sphere.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyojekim <hyojekim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:31:10 by hyojekim          #+#    #+#             */
+/*   Updated: 2022/04/17 21:32:54 by hyojekim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <math.h>
 #include "trace.h"
 #include "vector3.h"
@@ -13,8 +25,8 @@ static t_bool	check_sphere(
 	rec->t = root;
 	rec->p = ray_at(ray, root);
 	rec->normal = vec3_unit(vec3_minus(rec->p, sp->center));
+	face_normal_set(ray, rec);
 	rec->color = objects->color;
-	set_face_normal(ray, rec);
 	return (TRUE);
 }
 

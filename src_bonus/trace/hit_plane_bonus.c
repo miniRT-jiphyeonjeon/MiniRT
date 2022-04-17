@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hit_plane_bonus.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyojekim <hyojekim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:46:19 by hyojekim          #+#    #+#             */
+/*   Updated: 2022/04/17 21:48:30 by hyojekim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <math.h>
 #include "trace_bonus.h"
 #include "vector3_bonus.h"
@@ -29,7 +41,7 @@ t_bool	hit_plane(t_obj_list objects[], t_ray *ray, t_hit_record *rec)
 	rec->p = ray_at(ray, root);
 	rec->normal = pl->normal;
 	rec->obj = pl;
-	set_face_normal(ray, rec);
+	face_normal_set(ray, rec);
 	plane_uv(rec);
 	hit_color_set(rec, objects);
 	return (TRUE);
