@@ -6,11 +6,12 @@
 /*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:07:29 by cjang             #+#    #+#             */
-/*   Updated: 2022/04/17 21:07:32 by cjang            ###   ########.fr       */
+/*   Updated: 2022/04/17 22:37:36 by cjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
+#include "ft_ascii.h"
 
 static double	return_func(int i, t_res *valid, t_res res)
 {

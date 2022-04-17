@@ -6,11 +6,11 @@
 /*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:19:39 by cjang             #+#    #+#             */
-/*   Updated: 2022/04/17 21:19:42 by cjang            ###   ########.fr       */
+/*   Updated: 2022/04/17 22:43:16 by cjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_memory.h"
 
 void	ft_bzero(void *s, size_t n)
 {

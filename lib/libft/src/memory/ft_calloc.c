@@ -6,13 +6,13 @@
 /*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:19:40 by cjang             #+#    #+#             */
-/*   Updated: 2022/04/17 21:50:28 by cjang            ###   ########.fr       */
+/*   Updated: 2022/04/17 22:30:27 by cjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "libft.h"
+#include "ft_memory.h"
 
 void	*ft_calloc(size_t size, size_t count)
 {

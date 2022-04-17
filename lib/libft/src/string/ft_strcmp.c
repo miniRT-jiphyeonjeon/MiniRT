@@ -6,11 +6,11 @@
 /*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:07:56 by cjang             #+#    #+#             */
-/*   Updated: 2022/04/17 21:08:09 by cjang            ###   ########.fr       */
+/*   Updated: 2022/04/17 22:28:17 by cjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_string.h"
 
 int	ft_strcmp(char *s1, char *s2)
 {

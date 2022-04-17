@@ -6,11 +6,11 @@
 /*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:08:03 by cjang             #+#    #+#             */
-/*   Updated: 2022/04/17 21:08:05 by cjang            ###   ########.fr       */
+/*   Updated: 2022/04/17 22:29:13 by cjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_string.h"
 
 char	*ft_strsep(char **stringp, const char delim)
 {

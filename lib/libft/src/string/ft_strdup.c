@@ -6,12 +6,13 @@
 /*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:07:58 by cjang             #+#    #+#             */
-/*   Updated: 2022/04/17 21:50:26 by cjang            ###   ########.fr       */
+/*   Updated: 2022/04/17 22:32:46 by cjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
+#include "ft_string.h"
+#include "ft_memory.h"
 
 char	*ft_strdup(const char *s1)
 {

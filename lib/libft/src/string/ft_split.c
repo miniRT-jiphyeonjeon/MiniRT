@@ -6,12 +6,12 @@
 /*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:07:55 by cjang             #+#    #+#             */
-/*   Updated: 2022/04/17 21:50:26 by cjang            ###   ########.fr       */
+/*   Updated: 2022/04/17 22:28:14 by cjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
+#include "ft_string.h"
 
 static int	find_start(char const *s, char *cset, size_t index)
 {

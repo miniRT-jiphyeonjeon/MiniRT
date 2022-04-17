@@ -6,18 +6,18 @@
 /*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:08:01 by cjang             #+#    #+#             */
-/*   Updated: 2022/04/17 21:08:06 by cjang            ###   ########.fr       */
+/*   Updated: 2022/04/17 22:43:14 by cjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_string.h"
 
 size_t	ft_strlen(const char *str)
 {
 	int	i;
 
 	if (!str)
-		return (ERR);
+		return (-1);
 	i = 0;
 	while (str[i])
 		i++;
