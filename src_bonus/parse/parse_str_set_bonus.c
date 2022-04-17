@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_str_set_bonus.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:04:12 by cjang             #+#    #+#             */
+/*   Updated: 2022/04/17 21:32:51 by cjang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
 #include "libft.h"
 #include "parse_bonus.h"
 #include "error_bonus.h"
-#include <stdlib.h>
 
 int	parse_set(t_parse *lst, char **str)
 {

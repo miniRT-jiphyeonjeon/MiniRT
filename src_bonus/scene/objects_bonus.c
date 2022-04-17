@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   objects_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:04:59 by cjang             #+#    #+#             */
+/*   Updated: 2022/04/17 21:38:25 by cjang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <math.h>
 #include "libft.h"
 #include "mlx.h"
 #include "error_bonus.h"
 #include "parse_bonus.h"
 #include "scene_bonus.h"
 #include "list_bonus.h"
-#include <math.h>
 
 static t_xpm_image	*image_get(char *filename, void *mlx_ptr)
 {

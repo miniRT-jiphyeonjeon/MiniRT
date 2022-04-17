@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_to_str_bonus.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:04:42 by cjang             #+#    #+#             */
+/*   Updated: 2022/04/17 21:34:09 by cjang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
 #include "libft.h"
 #include "parse_bonus.h"
 #include "vector3_bonus.h"
 #include "list_bonus.h"
 #include "error_bonus.h"
-#include <stdlib.h>
 
 static t_parse	*element_set(char *line)
 {
