@@ -6,13 +6,13 @@
 /*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:06:27 by cjang             #+#    #+#             */
-/*   Updated: 2022/04/17 21:26:05 by cjang            ###   ########.fr       */
+/*   Updated: 2022/04/17 22:50:11 by cjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
-#include "structure.h"
+#include "parse.h"
 
 t_parse	*new_parse(void)
 {

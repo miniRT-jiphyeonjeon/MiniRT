@@ -6,13 +6,13 @@
 /*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:06:39 by cjang             #+#    #+#             */
-/*   Updated: 2022/04/17 21:40:31 by cjang            ###   ########.fr       */
+/*   Updated: 2022/04/17 22:51:22 by cjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "parse.h"
 #include "scene.h"
+#include "parse.h"
 #include "vector3.h"
 
 static double	degree_to_radian(double degree)

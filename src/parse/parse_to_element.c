@@ -6,13 +6,13 @@
 /*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:06:24 by cjang             #+#    #+#             */
-/*   Updated: 2022/04/17 21:06:29 by cjang            ###   ########.fr       */
+/*   Updated: 2022/04/17 22:49:57 by cjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "scene.h"
 #include "parse.h"
+#include "scene.h"
 #include "event.h"
 
 t_scene	*parse_to_element(t_parse_list *lst)

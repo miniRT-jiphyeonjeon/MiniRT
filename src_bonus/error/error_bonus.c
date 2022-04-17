@@ -6,13 +6,14 @@
 /*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:03:53 by cjang             #+#    #+#             */
-/*   Updated: 2022/04/17 21:29:56 by cjang            ###   ########.fr       */
+/*   Updated: 2022/04/17 22:48:54 by cjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "libft.h"
+#include "error_bonus.h"
 
 void	error_user(char *s)
 {

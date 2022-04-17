@@ -6,10 +6,11 @@
 /*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:06:38 by cjang             #+#    #+#             */
-/*   Updated: 2022/04/17 21:06:46 by cjang            ###   ########.fr       */
+/*   Updated: 2022/04/17 22:51:01 by cjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "scene.h"
 #include "parse.h"
 
 t_ambient	ambient_set(t_parse_list *lst)

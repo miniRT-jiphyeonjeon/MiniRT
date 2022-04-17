@@ -6,12 +6,12 @@
 /*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:06:20 by cjang             #+#    #+#             */
-/*   Updated: 2022/04/17 21:06:30 by cjang            ###   ########.fr       */
+/*   Updated: 2022/04/17 22:50:13 by cjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "structure.h"
+#include "parse.h"
 
 t_bool	is_scene_env_valid(t_parse_list *lst)
 {

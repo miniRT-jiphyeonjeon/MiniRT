@@ -6,13 +6,12 @@
 /*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:06:44 by cjang             #+#    #+#             */
-/*   Updated: 2022/04/17 21:46:55 by cjang            ###   ########.fr       */
+/*   Updated: 2022/04/17 22:54:13 by cjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 #include "libft.h"
-#include "list.h"
 
 static t_canvas	canvas_set(int width, int height)
 {

@@ -6,14 +6,14 @@
 /*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:06:25 by cjang             #+#    #+#             */
-/*   Updated: 2022/04/17 21:41:48 by cjang            ###   ########.fr       */
+/*   Updated: 2022/04/17 22:50:03 by cjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include <stdlib.h>
-#include "parse.h"
 #include "libft.h"
+#include "parse.h"
 #include "vector3.h"
 #include "error.h"
 
