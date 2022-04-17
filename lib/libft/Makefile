@@ -16,7 +16,7 @@ INCD		:= -I./include/
 # ===== Packages =====
 PKGS		:= math memory string write ascii read
 
-asciiV		:= ft_atof ft_isdigit ft_isspace
+asciiV		:= ft_atof ft_atoi ft_isdigit ft_isspace
 mathV		:= ft_clamp ft_fmod_abs
 memoryV		:= ft_bzero ft_calloc ft_memset
 readV		:= get_next_line
