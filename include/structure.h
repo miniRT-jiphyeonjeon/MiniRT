@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structure.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyojekim <hyojekim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:20:02 by hyojekim          #+#    #+#             */
+/*   Updated: 2022/04/17 21:21:02 by hyojekim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCTURE_H
 # define STRUCTURE_H
 
@@ -156,7 +168,7 @@ typedef struct s_scene
 	t_hit_record	record;
 }	t_scene;
 
-typedef t_bool			(*t_obj_hit_f)(
+typedef t_bool				(*t_obj_hit_f)(
 		t_obj_list *objects, t_ray *ray, t_hit_record *rec);
 
 #endif

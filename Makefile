@@ -2,7 +2,7 @@ SHELL = bash
 
 
 # ===== Target & FLAGS =====
-NAME		:= minirt
+NAME		:= miniRT
 
 CC			:= gcc
 CFLAGS		:= -Wall -Wextra -Werror
