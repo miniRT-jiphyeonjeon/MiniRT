@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+         #
+#    By: hyojekim <hyojekim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/17 22:15:57 by cjang             #+#    #+#              #
-#    Updated: 2022/04/17 22:15:57 by cjang            ###   ########.fr        #
+#    Updated: 2022/04/18 10:05:39 by hyojekim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -161,7 +161,3 @@ $(LIBFT) :
 
 libft_fclean :
 	@make --no-print-directory -C $(LIBFT_DIR) fclean
-
-# ===== for Mini Earth =====
-earth :
-	$(CC) $(INCD) miniearth.c lib/libft/src/**/*.c src/vector3/*.c -o miniearth

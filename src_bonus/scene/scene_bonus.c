@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hyojekim <hyojekim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:05:00 by cjang             #+#    #+#             */
-/*   Updated: 2022/04/17 22:53:56 by cjang            ###   ########.fr       */
+/*   Updated: 2022/04/18 10:07:37 by hyojekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static t_canvas	canvas_set(int width, int height)
 	canvas.aspect_ratio = (double)height / (double)width;
 	return (canvas);
 }
-
 
 t_scene	*new_scene(int width, int height)
 {

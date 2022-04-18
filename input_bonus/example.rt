@@ -1,29 +1,7 @@
-A 0.2 255,255,255
-C 0,4,16 0,0.25,1 90
-L 0,3,6 0.8 255,255,255
-sp 0,0,0 50 bm ./input_bonus/milkyway.xpm 1 0.5 2
-sp 0,0,0 5 bm ./input_bonus/sun.xpm 1 0.5 2
-
-cy 0,0,0 0,-1,0 16 0.05 rgb 127,127,127 0 0 0
-sp -8,0,0 2 bm ./input_bonus/mercury.xpm 1 0.5 2
-
-cy 0,0,0 0,-1,0 18 0.05 rgb 127,127,127 0 0 0
-sp 9,0,0 2 bm ./input_bonus/venus.xpm 1 0.5 2
-
-cy 0,0,0 0,-1,0 20 0.05 rgb 127,127,127 0 0 0
-sp -10,0,0 2 bm ./input_bonus/earthmap.xpm 1 0.5 2
-
-cy 0,0,0 0,-1,0 22 0.05 rgb 127,127,127 0 0 0
-sp 11,0,0 2 bm ./input_bonus/mars.xpm 1 0.5 2
-
-cy 0,0,0 0,-1,0 24 0.05 rgb 127,127,127 0 0 0
-sp -12,0,0 2 bm ./input_bonus/jupiter.xpm 1 0.5 2
-
-cy 0,0,0 0,-1,0 26 0.05 rgb 127,127,127 0 0 0
-sp 13,0,0 2 bm ./input_bonus/saturn.xpm 1 0.5 2
-
-cy 0,0,0 0,-1,0 28 0.05 rgb 127,127,127 0 0 0
-sp -14,0,0 2 bm ./input_bonus/uranus.xpm 1 0.5 2
-
-cy 0,0,0 0,-1,0 30 0.05 rgb 127,127,127 0 0 0
-sp 15,0,0 2 bm ./input_bonus/neptune.xpm 1 0.5 2
+A 0.05 255,255,255
+C 0,0,5 0,0,-1 90
+L 0,0.8,5 0.6 255,255,255
+L 0,0,5 0.6 255,255,255
+sp 0,0.8,0 2.2 bm ./input_bonus/icecream.xpm ./input_bonus/icecream_normal.xpm 1 0.5 100
+co 0,0.6,0 0,-1,0 2 3 bm ./input_bonus/waffle.xpm ./input_bonus/waffle_normal.xpm 1 0 0
+co 0,-0.4,0 0,-1,0 1.33 2.1 ck 3,95,176 222,91,167 8 1 1 0.5 30
