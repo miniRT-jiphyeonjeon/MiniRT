@@ -44,9 +44,13 @@ static t_bool	check_cone(
 	p_height = vec3_dot(vec3_minus(rec->p, co->center), co->normal);
 	if (p_height < 0 || p_height > co->height)
 		return (FALSE);
+	p_height = co->height - p_height;
 	rec->normal = vec3_unit(vec3_minus(rec->p, vec3_plus(co->center,
 					vec3_mult_scalar(co->normal, vec3_dot(
 							vec3_minus(rec->p, co->center), co->normal)))));
+	rec->normal = vec3_unit(vec3_plus(\
+			vec3_mult_scalar(co->normal, co->radius * p_height / co->height), \
+			vec3_mult_scalar(rec->normal, p_height)));
 	rec->obj = co;
 	face_normal_set(ray, rec);
 	cone_uv(rec, co);
