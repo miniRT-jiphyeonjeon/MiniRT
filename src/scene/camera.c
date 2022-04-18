@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hyojekim <hyojekim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:06:39 by cjang             #+#    #+#             */
-/*   Updated: 2022/04/17 22:51:22 by cjang            ###   ########.fr       */
+/*   Updated: 2022/04/18 09:30:34 by hyojekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_camera
 
 	theta = degree_to_radian(h_fov);
 	field_width = tan(theta / 2) * 2.0;
-	cam.w_dir = direct;
+	cam.w_dir = vec3_mult_scalar(direct, -1);
 	coordinate_system(&cam.u_dir, &cam.v_dir, cam.w_dir);
 	cam.origin = origin;
 	cam.viewport_width = field_width;

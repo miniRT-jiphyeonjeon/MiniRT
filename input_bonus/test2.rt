@@ -1,13 +1,13 @@
 A 0.2                  255,255,255
 
 
-C 0,2,1	 	0.2,1,1	90
+C 0,2,1	 	-0.2,-1,-1	90
 L 5,20,5		    	      			0.6			        255,255,255
 
-pl 0,-0.5,0        0,1,0     204,204,25 bm ./input_bonus/rock.xpm ./input_bonus/rock_normal.xpm
-sp 0,-100.5,-1	    									200 					204,204,0
-sp 0,0,-1  1  25,51,127 bm ./input_bonus/icecream.xpm ./input_bonus/icecream_normal.xpm
-cy -0.2,0,-1 -1,0,0 1  1 204,204,25 bm ./input_bonus/block.xpm ./input_bonus/block_normal.xpm
-co 0.2,0,-1  1,0,0   1 1 204,153,51 bm  ./input_bonus/rock.xpm ./input_bonus/rock_normal.xpm
-pl -3,0,0     1,0,0     30,127,30
-pl 0,0,-3        0,0,-1    127,30,30 ck 255,255,255 4 4
+pl 0,-0.5,0        0,1,0     bm ./input_bonus/rock.xpm ./input_bonus/rock_normal.xpm 1 0.5 64
+sp 0,-100.5,-1	    									200 					rgb 204,204,0 1 0.5 64
+sp 0,0,-1  1  bm ./input_bonus/icecream.xpm ./input_bonus/icecream_normal.xpm 1 0.1 10
+cy -0.2,0,-1 -1,0,0 1  1 bm ./input_bonus/block.xpm ./input_bonus/block_normal.xpm 1 0.1 5
+co 0.2,0,-1  1,0,0   1 1 bm  ./input_bonus/rock.xpm ./input_bonus/rock_normal.xpm 1 0.1 5
+pl -3,0,0     1,0,0     rgb 30,127,30 1 0.5 64
+pl 0,0,-3        0,0,-1    ck  127,30,30  255,255,255 4 4 1 0.5 64

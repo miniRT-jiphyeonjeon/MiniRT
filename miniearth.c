@@ -76,9 +76,9 @@ int	main(int argc, char *argv[])
 	printf("A 0.2 255,255,255\n");
 	printf("C %f,%f,%f %f,%f,%f 45\n",
 		camera_origin.x, camera_origin.y, camera_origin.z,
-		normal.x, normal.y, normal.z);
+		normal.x * -1, normal.y * -1, normal.z * -1);
 	printf("L %f,%f,%f 0.8 255,255,255\n",
 		light.x, light.y, light.z);
-	printf("sp 0,0,0 10 25,51,127 bm ./input_bonus/earthmap.xpm ./input_bonus/earthmap_normal.xpm\n");
-	printf("sp 0,0,0 50 25,51,127 bm ./input_bonus/milkyway.xpm\n");
+	printf("sp 0,0,0 10 bm ./input_bonus/earthmap.xpm ./input_bonus/earthmap_normal.xpm 1 0.5 2\n");
+	printf("sp 0,0,0 50 bm ./input_bonus/milkyway.xpm 1 0.5 2\n");
 }
