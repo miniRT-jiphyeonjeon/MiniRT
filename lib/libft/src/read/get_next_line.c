@@ -1,6 +1,21 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:07:26 by cjang             #+#    #+#             */
+/*   Updated: 2022/04/17 22:39:08 by cjang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <stdlib.h>
+#include "ft_read.h"
+#include "ft_string.h"
+#include "ft_memory.h"
+#include "libft_type.h"
 
 static int	tok_line(char *s, char **next)
 {

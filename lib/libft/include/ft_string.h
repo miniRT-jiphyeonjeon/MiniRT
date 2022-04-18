@@ -1,5 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_string.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:15:02 by cjang             #+#    #+#             */
+/*   Updated: 2022/04/17 22:41:16 by cjang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_STRING_H
 # define FT_STRING_H
+
+# include <stddef.h>
 
 char	**ft_split(char const *s, char *charset);
 int		ft_strcmp(char *s1, char *s2);

@@ -1,11 +1,23 @@
-#include "parse.h"
-#include "libft.h"
-#include "vector3.h"
-#include "error.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_to_num.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:06:25 by cjang             #+#    #+#             */
+/*   Updated: 2022/04/17 22:50:03 by cjang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <math.h>
 #include <stdlib.h>
+#include "libft.h"
+#include "parse.h"
+#include "vector3.h"
+#include "error.h"
 
-int	int_get(char *s, int min, int max)
+static int	int_get(char *s, int min, int max)
 {
 	int		i;
 	t_res	res;

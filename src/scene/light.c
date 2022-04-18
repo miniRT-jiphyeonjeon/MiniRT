@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   light.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:06:40 by cjang             #+#    #+#             */
+/*   Updated: 2022/04/17 22:51:32 by cjang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include "parse.h"
 #include "scene.h"
+#include "parse.h"
 #include "list.h"
 
 void	light_set(t_scene *scene, t_parse_list *lst)

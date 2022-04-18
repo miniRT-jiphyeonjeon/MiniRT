@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_read_bonus.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:04:06 by cjang             #+#    #+#             */
+/*   Updated: 2022/04/17 21:32:00 by cjang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <fcntl.h>
 #include "libft.h"
 #include "parse_bonus.h"
 #include "error_bonus.h"
-#include <fcntl.h>
 
 int	fd_get(int argv, char **argc)
 {

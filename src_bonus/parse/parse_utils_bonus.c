@@ -1,6 +1,18 @@
-#include "libft.h"
-#include "structure_bonus.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_utils_bonus.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjang <cjang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/17 21:04:45 by cjang             #+#    #+#             */
+/*   Updated: 2022/04/17 22:53:08 by cjang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
+#include "libft.h"
+#include "parse_bonus.h"
 
 t_parse	*new_parse(void)
 {
