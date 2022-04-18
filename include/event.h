@@ -6,7 +6,7 @@
 /*   By: hyojekim <hyojekim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:19:25 by hyojekim          #+#    #+#             */
-/*   Updated: 2022/04/17 21:58:11 by hyojekim         ###   ########.fr       */
+/*   Updated: 2022/04/17 22:20:17 by hyojekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # define X11_CLOSEBTN	17
 # define KEY_ESC		53
 
-# define WIN_WIDTH	1920
-# define WIN_HEIGHT	1080
+# define WIN_WIDTH	1000
+# define WIN_HEIGHT	1000
 
 # include "structure.h"
 

@@ -6,7 +6,7 @@
 /*   By: hyojekim <hyojekim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 21:27:39 by hyojekim          #+#    #+#             */
-/*   Updated: 2022/04/17 21:27:39 by hyojekim         ###   ########.fr       */
+/*   Updated: 2022/04/17 22:16:19 by hyojekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,13 @@ t_vec3	vec3_min(t_vec3 vec1, t_vec3 vec2)
 	if (vec1.z > vec2.z)
 		vec1.z = vec2.z;
 	return (vec1);
+}
+
+t_vec3	vec3_up(t_vec3 vec)
+{
+	if (is_vec_equal(vec, vec3(0, 1, 0)))
+		return (vec3(0, 0, 1));
+	if (is_vec_equal(vec, vec3(0, -1, 0)))
+		return (vec3(0, 0, -1));
+	return (vec3(0, 1, 0));
 }
